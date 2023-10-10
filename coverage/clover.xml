@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1692705996642" clover="3.2.0">
+  <project timestamp="1692705996643" name="All files">
+    <metrics statements="103" coveredstatements="37" conditionals="38" coveredconditionals="6" methods="30" coveredmethods="12" elements="171" coveredelements="55" complexity="0" loc="103" ncloc="103" packages="9" files="9" classes="9"/>
+    <package name="components.footer">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="Index.jsx" path="/home/sameer-rog/work/shadowcast/fourthStar/fourth-star-web-user-frontend/src/components/footer/Index.jsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="15" count="7" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.header">
+      <metrics statements="4" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+      <file name="Index.jsx" path="/home/sameer-rog/work/shadowcast/fourthStar/fourth-star-web-user-frontend/src/components/header/Index.jsx">
+        <metrics statements="4" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="20" count="8" type="stmt"/>
+        <line num="21" count="8" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.sidebar">
+      <metrics statements="11" coveredstatements="10" conditionals="6" coveredconditionals="3" methods="3" coveredmethods="2"/>
+      <file name="Index.jsx" path="/home/sameer-rog/work/shadowcast/fourthStar/fourth-star-web-user-frontend/src/components/sidebar/Index.jsx">
+        <metrics statements="11" coveredstatements="10" conditionals="6" coveredconditionals="3" methods="3" coveredmethods="2"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="4" type="stmt"/>
+        <line num="21" count="4" type="stmt"/>
+        <line num="23" count="4" type="stmt"/>
+        <line num="25" count="4" type="stmt"/>
+        <line num="26" count="4" type="stmt"/>
+        <line num="27" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="28" count="4" type="stmt"/>
+        <line num="29" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="32" count="4" type="stmt"/>
+        <line num="74" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="pages.home">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="Index.jsx" path="/home/sameer-rog/work/shadowcast/fourthStar/fourth-star-web-user-frontend/src/pages/home/Index.jsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="5" type="stmt"/>
+      </file>
+    </package>
+    <package name="pages.marketplace">
+      <metrics statements="18" coveredstatements="10" conditionals="8" coveredconditionals="3" methods="5" coveredmethods="4"/>
+      <file name="Index.jsx" path="/home/sameer-rog/work/shadowcast/fourthStar/fourth-star-web-user-frontend/src/pages/marketplace/Index.jsx">
+        <metrics statements="18" coveredstatements="10" conditionals="8" coveredconditionals="3" methods="5" coveredmethods="4"/>
+        <line num="19" count="24" type="stmt"/>
+        <line num="21" count="24" type="stmt"/>
+        <line num="35" count="48" type="stmt"/>
+        <line num="41" count="1" type="stmt"/>
+        <line num="42" count="8" type="stmt"/>
+        <line num="43" count="8" type="stmt"/>
+        <line num="48" count="8" type="stmt"/>
+        <line num="49" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="52" count="0" type="stmt"/>
+        <line num="54" count="0" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="57" count="0" type="stmt"/>
+        <line num="58" count="0" type="stmt"/>
+        <line num="60" count="0" type="stmt"/>
+        <line num="64" count="8" type="stmt"/>
+        <line num="65" count="8" type="cond" truecount="1" falsecount="1"/>
+        <line num="67" count="8" type="stmt"/>
+      </file>
+    </package>
+    <package name="pages.marketplace.apartments">
+      <metrics statements="9" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="3"/>
+      <file name="Index.jsx" path="/home/sameer-rog/work/shadowcast/fourthStar/fourth-star-web-user-frontend/src/pages/marketplace/apartments/Index.jsx">
+        <metrics statements="9" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="3"/>
+        <line num="36" count="2" type="stmt"/>
+        <line num="37" count="9" type="stmt"/>
+        <line num="39" count="9" type="stmt"/>
+        <line num="79" count="9" type="stmt"/>
+        <line num="97" count="9" type="stmt"/>
+        <line num="147" count="36" type="stmt"/>
+        <line num="185" count="27" type="stmt"/>
+        <line num="223" count="0" type="stmt"/>
+        <line num="290" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="pages.marketplace.entertainments">
+      <metrics statements="34" coveredstatements="1" conditionals="18" coveredconditionals="0" methods="5" coveredmethods="0"/>
+      <file name="Index.jsx" path="/home/sameer-rog/work/shadowcast/fourthStar/fourth-star-web-user-frontend/src/pages/marketplace/entertainments/Index.jsx">
+        <metrics statements="34" coveredstatements="1" conditionals="18" coveredconditionals="0" methods="5" coveredmethods="0"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="54" count="1" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="56" count="0" type="stmt"/>
+        <line num="58" count="0" type="stmt"/>
+        <line num="64" count="0" type="stmt"/>
+        <line num="66" count="0" type="stmt"/>
+        <line num="67" count="0" type="stmt"/>
+        <line num="68" count="0" type="cond" truecount="0" falsecount="6"/>
+        <line num="70" count="0" type="stmt"/>
+        <line num="71" count="0" type="stmt"/>
+        <line num="73" count="0" type="stmt"/>
+        <line num="74" count="0" type="stmt"/>
+        <line num="76" count="0" type="stmt"/>
+        <line num="77" count="0" type="stmt"/>
+        <line num="79" count="0" type="stmt"/>
+        <line num="80" count="0" type="stmt"/>
+        <line num="82" count="0" type="stmt"/>
+        <line num="83" count="0" type="stmt"/>
+        <line num="85" count="0" type="stmt"/>
+        <line num="89" count="0" type="stmt"/>
+        <line num="91" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="92" count="0" type="stmt"/>
+        <line num="93" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="94" count="0" type="stmt"/>
+        <line num="95" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="96" count="0" type="stmt"/>
+        <line num="97" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="98" count="0" type="stmt"/>
+        <line num="99" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="100" count="0" type="stmt"/>
+        <line num="103" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="pages.marketplace.entertainments.components">
+      <metrics statements="18" coveredstatements="1" conditionals="6" coveredconditionals="0" methods="5" coveredmethods="0"/>
+      <file name="Index.jsx" path="/home/sameer-rog/work/shadowcast/fourthStar/fourth-star-web-user-frontend/src/pages/marketplace/entertainments/components/Index.jsx">
+        <metrics statements="18" coveredstatements="1" conditionals="6" coveredconditionals="0" methods="5" coveredmethods="0"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="52" count="1" type="stmt"/>
+        <line num="53" count="0" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="61" count="0" type="stmt"/>
+        <line num="63" count="0" type="stmt"/>
+        <line num="64" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="66" count="0" type="stmt"/>
+        <line num="67" count="0" type="stmt"/>
+        <line num="69" count="0" type="stmt"/>
+        <line num="70" count="0" type="stmt"/>
+        <line num="72" count="0" type="stmt"/>
+        <line num="73" count="0" type="stmt"/>
+        <line num="75" count="0" type="stmt"/>
+        <line num="80" count="0" type="stmt"/>
+        <line num="83" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="pages.marketplace.ships">
+      <metrics statements="5" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
+      <file name="Index.jsx" path="/home/sameer-rog/work/shadowcast/fourthStar/fourth-star-web-user-frontend/src/pages/marketplace/ships/Index.jsx">
+        <metrics statements="5" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="214" count="0" type="stmt"/>
+        <line num="225" count="0" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>
