@@ -17,6 +17,7 @@ import EntertainmentChannel from 'pages/marketplace/entertainments/channel/Index
 import SignUp from 'pages/auth/signup';
 import Layout from 'layout/Index.jsx';
 import AuthLayout from 'AuthLayout/index';
+import SignIn from 'pages/auth/signIn';
 
 /* The code is exporting a default function that returns an array of route objects. Each route object
 represents a specific route in a web application. */
@@ -119,6 +120,13 @@ represents a specific route in a web application. */
       key: 'Create-Account',
       route: '/signup',
       component: <SignUp />,
+      useLayout: <AuthLayout/>,
+    },
+    {
+      name: 'Login-Account',
+      key: 'Login-Account',
+      route: '/signin',
+      component: <SignIn />,
       useLayout: <AuthLayout/>,
     },
   ];
