@@ -10,7 +10,7 @@ import { useEffect } from 'react';
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { createTheme } from '@mui/material';
 
-import {routes} from './routes';
+import { routes } from './routes';
 import Header from 'components/header/Index.jsx';
 import SideBar from 'components/sidebar/Index.jsx';
 import Layout from 'layout/Index.jsx';
@@ -30,7 +30,9 @@ function App() {
   const getRoutes = (allRoutes) =>
     allRoutes.map((route) => {
       return (
-        <Route path={route.route} element={route.component} key={route.key} />
+        <Route path="/" element={route.useLayout} key={route.key}>
+          <Route path={route.route} element={route.component} />
+        </Route>
       );
     });
 
@@ -48,14 +50,18 @@ function App() {
           </Routes>
         }
       ></SideBar> */}
-      <Layout
+      {/* <Layout
         children={
           <Routes>
             {getRoutes(routes)}
             <Route path="/*" element={<Navigate replace to="/" />} />
           </Routes>
         }
-      />
+      /> */}
+      <Routes>
+        {getRoutes(routes)}
+        <Route path="/*" element={<Navigate replace to="/" />} />
+      </Routes>
     </>
   );
 }

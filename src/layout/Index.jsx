@@ -7,7 +7,7 @@
  */
 
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Outlet } from 'react-router-dom';
 import { Button, Grid, Typography } from '@mui/material';
 
 import StorefrontIcon from '@mui/icons-material/Storefront';
@@ -17,7 +17,7 @@ import Footer from 'components/footer/Index.jsx';
 import ImgTest from 'assets/images/test_bg.png';
 
 /* The code defines a functional component called `Index` that takes in a prop called `children`. */
-const Index = ({ children }) => {
+const Index = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
@@ -33,7 +33,7 @@ const Index = ({ children }) => {
   return (
     <>
 
-    {console.log('cleideren',children)}
+    {/* {console.log('cleideren',children)} */}
       <Header />
 
       <Grid 
@@ -55,7 +55,8 @@ const Index = ({ children }) => {
           className=""
           sx={{ width: '100vw', overflow: 'hidden' }}
         >
-          {children}
+          {/* {children} */}
+          <Outlet/>
         </Grid>
       </Grid>
       {/* </div> */}

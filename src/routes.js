@@ -15,6 +15,8 @@ import ShipsDetail from 'pages/marketplace/ships/detail/Index.jsx';
 import EntertainmentDetail from 'pages/marketplace/entertainments/detail/Index.jsx';
 import EntertainmentChannel from 'pages/marketplace/entertainments/channel/Index.jsx';
 import SignUp from 'pages/auth/signup';
+import Layout from 'layout/Index.jsx';
+import AuthLayout from 'AuthLayout/index';
 
 /* The code is exporting a default function that returns an array of route objects. Each route object
 represents a specific route in a web application. */
@@ -26,98 +28,111 @@ represents a specific route in a web application. */
       key: 'home',
       route: '/',
       component: <Home />,
+      useLayout: <Layout/>,
     },
     {
       name: 'Marketplace',
       key: 'marketplace',
       route: '/marketplace',
       component: <Marketplace value="0" />,
+      useLayout: <Layout/>,
     },
     {
       name: 'Marketplace-Apartments',
       key: 'marketplace-apartments',
       route: '/marketplace/apartments',
       component: <Marketplace value="0" />,
+      useLayout: <Layout/>,
     },
     {
       name: 'Marketplace-Apartments-Details',
       key: 'marketplace-apartments-details',
       route: '/marketplace/apartments/:apartment_name',
       component: <ApartmentDetail />,
+      useLayout: <Layout/>,
     },
     {
       name: 'Marketplace-Ships',
       key: 'marketplace-ships',
       route: '/marketplace/ships',
       component: <Marketplace value="1" />,
+      useLayout: <Layout/>,
     },
     {
       name: 'Marketplace-Ships-Details',
       key: 'marketplace-ships-details',
       route: '/marketplace/ships/:ship_name',
       component: <ShipsDetail />,
+      useLayout: <Layout/>,
     },
     {
       name: 'Marketplace-Entertainment',
       key: 'marketplace-entertainment',
       route: `/marketplace/entertainments/:type`,
       component: <Marketplace value="2" />,
+      useLayout: <Layout/>,
     },
     {
       name: 'Marketplace-Entertainment',
       key: 'marketplace-entertainment',
       route: `/marketplace/entertainments/:type/:id`,
       component: <EntertainmentDetail />,
+      useLayout: <Layout/>,
     },
     {
       name: 'Marketplace-Channel',
       key: 'marketplace-channel',
       route: `/marketplace/entertainments/:type/:channelId`,
       component: <EntertainmentChannel />,
+      useLayout: <Layout/>,
     },
     {
       name: 'Marketplace-Channel',
       key: 'marketplace-channel',
       route: `/marketplace/entertainments/:type/:channelId/:channelContentId`,
       component: <EntertainmentChannel />,
+      useLayout: <Layout/>,
     },
     {
       name: 'Marketplace-Clothing',
       key: 'marketplace-clothing',
       route: '/marketplace/clothing',
       component: <Marketplace />,
+      useLayout: <Layout/>,
     },
     {
       name: 'Marketplace-Games',
       key: 'marketplace-games',
       route: '/marketplace/games',
       component: <Marketplace />,
+      useLayout: <Layout/>,
     },
     {
       name: 'Marketplace-Companions',
       key: 'marketplace-companions',
       route: '/marketplace/companions',
       component: <Marketplace />,
+      useLayout: <Layout/>,
     },
     {
       name: 'Create-Account',
       key: 'Create-Account',
       route: '/signup',
       component: <SignUp />,
-      useLayout: false
+      useLayout: <AuthLayout/>,
     },
   ];
 
-  const nonAuthRoutes = [
-    {
-      name: 'Create-Account',
-      key: 'Create-Account',
-      route: '/signup',
-      component: <SignUp />,
-      useLayout: false
-    },
+  // const nonAuthRoutes = [
+  //   {
+  //     name: 'Create-Account',
+  //     key: 'Create-Account',
+  //     route: '/signup',
+  //     component: <SignUp />,
+  //     useLayout: false
+  //   },
     
-  ]
+  // ]
 
-  export {routes, nonAuthRoutes};
+  export {routes};
 // }
