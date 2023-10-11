@@ -7,6 +7,7 @@ module.exports = {
       colors: {
         main: "#1D1D1D",
         dark : "#000000",
+        error: "#FF5063",
       },
       minHeight: {
         'auth': 'calc(100vh - 160px)',
