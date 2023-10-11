@@ -1,0 +1,79 @@
+.wrapper-container {
+  max-width: 1440px;
+  margin: auto;
+}
+
+.leftShadow {
+  width: 775px;
+  height: 775px;
+  flex-shrink: 0;
+  border-radius: 775px;
+  opacity: 0.5;
+  background: rgba(255, 233, 201, 0.7);
+  filter: blur(250px);
+  position: absolute;
+  top: -34%;
+  left: -20%;
+}
+
+.rightShadow {
+  width: 775px;
+  height: 775px;
+  flex-shrink: 0;
+  border-radius: 775px;
+  opacity: 0.5;
+  background: rgba(255, 233, 201, 0.7);
+  filter: blur(250px);
+  position: absolute;
+  bottom: 0;
+  right: -44%;
+}
+
+.signin {
+  /* position: relative; */
+}
+
+.signin-form{
+    border-radius: 8px;
+border: 1px solid #363636;
+background: rgba(251, 188, 94, 0.05);
+backdrop-filter: blur(4px);
+max-width: 772px;
+}
+.authheading{
+    color: #FFF;
+font-family: Krona One !important;
+font-size: 20px;
+}
+
+
+.input-field{
+    border: 1px solid #FFF;
+    border-radius: 8px !important;
+    padding-bottom: 16px !important;
+    height: 55px !important;
+    max-width: 500px;
+    /* margin: auto; */
+}
+
+.input-label{
+    color: rgba(255, 255, 255, 0.80) !important;
+/* font-family: Montserrat ; */
+font-size: 14px !important;
+font-style: normal !important;
+font-weight: 500 !important;
+line-height: normal !important;
+padding-bottom: 10px;
+letter-spacing: 1px;
+margin:  0 !important;
+}
+
+.create-account-btn{
+    max-width: 500px;
+}
+
+.createBtn{
+    border-radius: 8px;
+background: var(#FBBC5E, linear-gradient(90deg, #FBBC5E 0.13%, #F3A151 99.89%)) !important;
+
+}

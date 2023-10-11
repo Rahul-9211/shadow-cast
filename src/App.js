@@ -10,7 +10,7 @@ import { useEffect } from 'react';
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { createTheme } from '@mui/material';
 
-import routes from './routes';
+import {routes} from './routes';
 import Header from 'components/header/Index.jsx';
 import SideBar from 'components/sidebar/Index.jsx';
 import Layout from 'layout/Index.jsx';
@@ -51,7 +51,7 @@ function App() {
       <Layout
         children={
           <Routes>
-            {getRoutes(routes())}
+            {getRoutes(routes)}
             <Route path="/*" element={<Navigate replace to="/" />} />
           </Routes>
         }

@@ -32,9 +32,11 @@ const Index = ({ children }) => {
   }, [pathname]);
   return (
     <>
+
+    {console.log('cleideren',children)}
       <Header />
 
-      <Grid
+      <Grid 
         container
         item
         xs={12}

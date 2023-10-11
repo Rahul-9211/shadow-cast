@@ -14,11 +14,12 @@ import ApartmentDetail from 'pages/marketplace/apartments/detail/Index.jsx';
 import ShipsDetail from 'pages/marketplace/ships/detail/Index.jsx';
 import EntertainmentDetail from 'pages/marketplace/entertainments/detail/Index.jsx';
 import EntertainmentChannel from 'pages/marketplace/entertainments/channel/Index.jsx';
+import SignUp from 'pages/auth/signup';
 
 /* The code is exporting a default function that returns an array of route objects. Each route object
 represents a specific route in a web application. */
 // eslint-disable-next-line
-export default function () {
+// export default function () {
   const routes = [
     {
       name: 'Home',
@@ -98,7 +99,25 @@ export default function () {
       route: '/marketplace/companions',
       component: <Marketplace />,
     },
+    {
+      name: 'Create-Account',
+      key: 'Create-Account',
+      route: '/signup',
+      component: <SignUp />,
+      useLayout: false
+    },
   ];
 
-  return routes;
-}
+  const nonAuthRoutes = [
+    {
+      name: 'Create-Account',
+      key: 'Create-Account',
+      route: '/signup',
+      component: <SignUp />,
+      useLayout: false
+    },
+    
+  ]
+
+  export {routes, nonAuthRoutes};
+// }
