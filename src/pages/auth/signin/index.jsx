@@ -166,7 +166,7 @@ const SignIn = () => {
                             <input
                                 type="email"
                                 name="email"
-                                className="rounded-lg w-full bg-transparent border border-white focus:border-[#51A2FF] font-normal py-3 px-5 leading-normal font-semibold outline-none"
+                                className={`rounded-lg w-full bg-transparent border border-white focus:border-[#51A2FF] font-normal py-3 px-5 leading-normal font-semibold outline-none ${formErrors.email ? '!border-error': ''}`}
                                 id="email"
                                 value={formData.email}
                                 onChange={handleInputChange}
@@ -190,11 +190,7 @@ const SignIn = () => {
                             <input
                                 type="password"
                                 name="password"
-                                className={
-                                    isPasswordValid
-                                        ? "rounded-lg w-full bg-transparent border border-white focus:border-[#51A2FF] font-normal py-3 px-5 leading-normal font-semibold outline-none font-inter pr-[40px] border-error"
-                                        : "rounded-lg w-full bg-transparent border border-red-500 focus:border-red-500 font-normal py-3 px-5 leading-normal font-semibold outline-none font-inter pr-[40px] border-error"
-                                }
+                                className={`rounded-lg w-full bg-transparent border border-white focus:border-[#51A2FF] font-normal py-3 px-5 leading-normal font-semibold outline-none font-inter pr-[40px] ${!isPasswordValid ? '!border-error' : ''}`}
                                 id="password"
                                 value={formData.password}
                                 onChange={handleInputChange}
