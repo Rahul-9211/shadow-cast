@@ -6,13 +6,23 @@
 
   html,
   body {
-    @apply font-body;    
+    @apply font-body;
     @apply text-base;
     @apply h-full;
   }
+
   #root {
     @apply bg-main;
     @apply text-white;
+  }
+}
+
+@layer utilities {
+  .placeholder-normal::placeholder {
+    @apply font-normal;
+    @apply text-sm;
+    @apply font-body;
+    @apply text-white/[0.5];
   }
 }
 

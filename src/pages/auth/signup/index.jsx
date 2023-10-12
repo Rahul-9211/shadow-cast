@@ -3,7 +3,7 @@
  *(c) 2023 ShadowCast.Io <craig@shadowcast.io>
  *------------------------------------------------------
  *@module SingUp
- *@developer Sudhanshu <<sudhanshut@instaacoders.com>>
+ *@developer Sudhanshu <sudhanshut@instaacoders.com>
  */
 
 import { Box } from "@mui/material";
@@ -11,13 +11,15 @@ import { useRef, useState } from "react";
 import GoogleLogin from "components/buttons/Google";
 
 import { isValidEmail, isStrongPassword } from "../ValidationUtils";
-
+import eyeOn from "assets/images/eye-on.svg";
+import eyeOff from "assets/images/eye-off.svg";
 /* This code is a React component for user registration with the option to switch between "User" and "Creator" accounts. It performs real-time validation for name, email, and password, including password strength checks. Users can toggle the visibility of the password, and the form is enabled for submission when all requirements are met.
  */
 const SignUp = () => {
   const ref = useRef(null);
 
   const [signUpType, setSignUpType] = useState("user");
+  const [passVisIcon, setPassVisIcon] = useState(eyeOff);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -35,9 +37,11 @@ const SignUp = () => {
     setSignUpType((prevSignUpType) =>
       prevSignUpType === "user" ? "creator" : "user"
     );
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
   };
-
- 
 
   // Function to validate the form data
   const validateForm = () => {
@@ -69,10 +73,6 @@ const SignUp = () => {
     return isValid;
   };
 
-  // Regular expression for strong password validation
-  const passwordStrengthRegex =
-    /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&!])[A-Za-z\d@#$%^&!]{8,}$/;
-
   // Function to handle input changes
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -82,7 +82,7 @@ const SignUp = () => {
     });
 
     if (name === "password") {
-      const isValid = passwordStrengthRegex.test(value);
+      const isValid = isStrongPassword(value);
       setIsPasswordValid(isValid);
 
       if (!isValid) {
@@ -94,6 +94,21 @@ const SignUp = () => {
         setFormErrors({
           ...formErrors,
           password: "",
+        });
+      }
+    }
+    if (name === "email") {
+      const isValid = isValidEmail(value);
+
+      if (!isValid) {
+        setFormErrors({
+          ...formErrors,
+          email: "Invalid email address",
+        });
+      } else {
+        setFormErrors({
+          ...formErrors,
+          email: "",
         });
       }
     }
@@ -113,20 +128,13 @@ const SignUp = () => {
   // Function to toggle password visibility
   const togglePasswordVisibility = (event) => {
     const passwordInput = event.currentTarget.previousElementSibling;
-
     if (passwordInput.tagName === "INPUT") {
       if (passwordInput.getAttribute("type") === "password") {
         passwordInput.setAttribute("type", "text");
-        event.currentTarget.innerHTML = `
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <!-- Your SVG path for visible password icon -->
-          </svg>`;
+        setPassVisIcon(eyeOn);
       } else {
         passwordInput.setAttribute("type", "password");
-        event.currentTarget.innerHTML = `
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <!-- Your SVG path for hidden password icon -->
-          </svg>`;
+        setPassVisIcon(eyeOff);
       }
     }
   };
@@ -135,14 +143,19 @@ const SignUp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm() && isPasswordValid) {
-      console.log("Form data submitted:", formData);
+      alert(JSON.stringify(formData))
+      setFormData({
+        name: "",
+        email: "",
+        password: "",
+      })
     }
+
   };
 
   return (
     <Box
       className="w-full max-w-[700px] rounded-lg border border-[#363636] p-[32px] md:p-[58px] signin-form"
-      ref={ref}
     >
       <Box className="text-white max-w-[500px] mx-auto">
         <h1 className="text-xl text-center font-heading mb-[36px]">
@@ -163,7 +176,7 @@ const SignUp = () => {
               <input
                 type="text"
                 name="name"
-                className="rounded-lg w-full bg-transparent border border-white focus.border-[#51A2FF] font-normal py-3 px-5 leading-normal font-semibold outline-none"
+                className={`rounded-lg w-full bg-transparent border border-white focus:border-[#51A2FF] font-normal py-3 px-5 leading-normal font-semibold outline-none ${formErrors.name ? '!border-error': ''}`}
                 id="name"
                 value={formData.name}
                 onChange={handleInputChange}
@@ -187,7 +200,7 @@ const SignUp = () => {
               <input
                 type="email"
                 name="email"
-                className="rounded-lg w-full bg-transparent border border-white focus.border-[#51A2FF] font-normal py-3 px-5 leading-normal font-semibold outline-none"
+                className={`rounded-lg w-full bg-transparent border border-white focus:border-[#51A2FF] font-normal py-3 px-5 leading-normal font-semibold outline-none ${formErrors.email ? '!border-error': ''}`}
                 id="email"
                 value={formData.email}
                 onChange={handleInputChange}
@@ -211,11 +224,7 @@ const SignUp = () => {
               <input
                 type="password"
                 name="password"
-                className={
-                  isPasswordValid
-                    ? "rounded-lg w-full bg-transparent border border-white focus.border-[#51A2FF] font-normal py-3 px-5 leading-normal font-semibold outline-none font-inter pr-[40px] border-error"
-                    : "rounded-lg w-full bg-transparent border border-red-500 focus.border-red-500 font-normal py-3 px-5 leading-normal font-semibold outline-none font-inter pr-[40px] border-error"
-                }
+                className={`rounded-lg w-full bg-transparent border border-white focus:border-[#51A2FF] font-normal py-3 px-5 leading-normal font-semibold outline-none font-inter pr-[40px] ${!isPasswordValid ? '!border-error' : ''}`}
                 id="password"
                 value={formData.password}
                 onChange={handleInputChange}
@@ -224,30 +233,7 @@ const SignUp = () => {
                 className="vector absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-white"
                 onClick={(e) => togglePasswordVisibility(e)}
               >
-                {
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                  >
-                    <path
-                      d="M8.81999 8.82227C8.50748 9.13489 8.33195 9.55885 8.33203 10.0009C8.33211 10.4429 8.50778 10.8668 8.82041 11.1793C9.13303 11.4919 9.557 11.6674 9.99903 11.6673C10.4411 11.6672 10.865 11.4916 11.1775 11.1789"
-                      stroke="white"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M13.9008 13.8942C12.7319 14.6255 11.3789 15.0091 10 15C7 15 4.5 13.3333 2.5 10C3.56 8.23333 4.76 6.935 6.1 6.105M8.48333 5.15C8.98253 5.04894 9.49068 4.99869 10 5C13 5 15.5 6.66667 17.5 10C16.945 10.925 16.3508 11.7225 15.7183 12.3917M2.5 2.5L17.5 17.5"
-                      stroke="white"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                }
+                <img src={passVisIcon} alt="PasswordVisibility" />
               </span>
             </div>
             {!isPasswordValid && formErrors.password && (
@@ -278,7 +264,7 @@ const SignUp = () => {
 
         <p className="mb-5 text-sm text-center">
           Already have an account?{" "}
-          <a href="" className="clip-text font-medium">
+          <a href="/signin" className="clip-text font-medium">
             Sign In
           </a>
         </p>

@@ -8,7 +8,18 @@ describe("SignUp Component", () => {
     render(<SignUp />);
     expect(screen.getByText(/Create User Account/i)).toBeInTheDocument();
   });
+  
+  it('displays an error when an invalid email is provided', () => {
+    render(<SignUp />);
+    const emailInput = screen.getByLabelText('Email');
+    fireEvent.change(emailInput, { target: { value: 'invalid-email' } });
 
+    const submitButton = screen.getByText('Create my account');
+    fireEvent.click(submitButton);
+
+    expect(screen.getByText('Invalid email address')).toBeInTheDocument();
+  });
+  
   it("displays an error when an invalid password is provided", () => {
     render(<SignUp />);
     const passwordInput = screen.getByLabelText("Password");
@@ -55,14 +66,4 @@ describe("SignUp Component", () => {
   //     expect(screen.getByText('Password is required')).toBeInTheDocument();
   //   });
 
-  //   it('displays an error when an invalid email is provided', () => {
-  //     render(<SignUp />);
-  //     const emailInput = screen.getByLabelText('Email');
-  //     fireEvent.change(emailInput, { target: { value: 'invalid-email' } });
-
-  //     const submitButton = screen.getByText('Create my account');
-  //     fireEvent.click(submitButton);
-
-  //     expect(screen.getByText('Invalid email address')).toBeInTheDocument();
-  //   });
 });

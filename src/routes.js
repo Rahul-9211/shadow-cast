@@ -17,6 +17,9 @@ import EntertainmentChannel from 'pages/marketplace/entertainments/channel/Index
 import SignUp from 'pages/auth/signup';
 import Layout from 'layout/Index.jsx';
 import AuthLayout from 'AuthLayout/index';
+import SignIn from "pages/auth/signin";
+import VerifyForm from 'pages/auth/verify';
+import ResetPassword from 'pages/auth/reset';
 
 /* The code is exporting a default function that returns an array of route objects. Each route object
 represents a specific route in a web application. */
@@ -121,18 +124,28 @@ represents a specific route in a web application. */
       component: <SignUp />,
       useLayout: <AuthLayout/>,
     },
+    {
+      name: 'Login',
+      key: 'Login',
+      route: '/signin',
+      component: <SignIn />,
+      useLayout: <AuthLayout/>,
+    },
+    {
+      name: 'OTP-Verify',
+      key: 'OTP-Verify',
+      route: '/otp-verification',
+      component: <VerifyForm />,
+      useLayout: <AuthLayout/>,
+    },
+    {
+      name: 'Reset-Password',
+      key: 'Reset-Password',
+      route: '/reset-password',
+      component: <ResetPassword />,
+      useLayout: <AuthLayout/>,
+    },
   ];
-
-  // const nonAuthRoutes = [
-  //   {
-  //     name: 'Create-Account',
-  //     key: 'Create-Account',
-  //     route: '/signup',
-  //     component: <SignUp />,
-  //     useLayout: false
-  //   },
-    
-  // ]
 
   export {routes};
 // }
