@@ -8,7 +8,7 @@ describe("SignUp Component", () => {
     render(<SignUp />);
     expect(screen.getByText(/Create User Account/i)).toBeInTheDocument();
   });
-  
+
   it('displays an error when an invalid email is provided', () => {
     render(<SignUp />);
     const emailInput = screen.getByLabelText('Email');
@@ -19,7 +19,7 @@ describe("SignUp Component", () => {
 
     expect(screen.getByText('Invalid email address')).toBeInTheDocument();
   });
-  
+
   it("displays an error when an invalid password is provided", () => {
     render(<SignUp />);
     const passwordInput = screen.getByLabelText("Password");
@@ -41,6 +41,8 @@ describe("SignUp Component", () => {
     render(<SignUp />);
     const toggleButton = screen.getByText("Create User Account");
     fireEvent.click(toggleButton);
+    const spyScrollTo = jest.fn();
+    Object.defineProperty(global.window, 'scrollTo', { value: spyScrollTo });
     const creatorButton = screen.getByText("Become a Creator");
     expect(creatorButton).toBeInTheDocument();
   });
@@ -49,6 +51,8 @@ describe("SignUp Component", () => {
     render(<SignUp />);
     const toggleButton = screen.getByText("Create User Account");
     fireEvent.click(toggleButton);
+    const spyScrollTo = jest.fn();
+    Object.defineProperty(global.window, 'scrollTo', { value: spyScrollTo });
     fireEvent.click(screen.getByText("Become a Creator"));
     const userButton = screen.getByText("Create User Account");
     expect(userButton).toBeInTheDocument();

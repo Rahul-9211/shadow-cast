@@ -2,8 +2,8 @@
  * This file is part of FourthStar User Dashboard
  *(c) 2023 ShadowCast.Io <craig@shadowcast.io>
  *------------------------------------------------------
- *@module SingUp
- *@developer Sudhanshu <sudhanshut@instaacoders.com>
+ *@module SingIn
+ *@developer Sudhanshu <<sudhanshut@instaacoders.com>>
  */
 
 import { Box } from "@mui/material";
@@ -13,63 +13,60 @@ import GoogleLogin from "components/buttons/Google";
 import { isValidEmail, isStrongPassword } from "../ValidationUtils";
 import eyeOn from "assets/images/eye-on.svg";
 import eyeOff from "assets/images/eye-off.svg";
-/* This code is a React component for user registration with the option to switch between "User" and "Creator" accounts. It performs real-time validation for name, email, and password, including password strength checks. Users can toggle the visibility of the password, and the form is enabled for submission when all requirements are met.
+/* This code is a React component for user and creator login with the option to switch between "User" and "Creator" accounts. It performs real-time validation for  email, and password, including password strength checks. Users can toggle the visibility of the password, and the form is enabled for submission when all requirements are met.
  */
-const SignUp = () => {
+const SignIn = () => {
   const ref = useRef(null);
 
-  const [signUpType, setSignUpType] = useState("user");
+  const [signInType, setSignInType] = useState("user");
   const [passVisIcon, setPassVisIcon] = useState(eyeOff);
   const [formData, setFormData] = useState({
-    name: "",
     email: "",
     password: "",
   });
   const [formErrors, setFormErrors] = useState({
-    name: "",
     email: "",
     password: "",
   });
   const [isPasswordValid, setIsPasswordValid] = useState(true);
+  const [isEmailValid, setIsEmailValid] = useState(true);
 
   // Function to toggle between user and creator sign-up
-  const toggleSignUpType = () => {
-    setSignUpType((prevSignUpType) =>
-      prevSignUpType === "user" ? "creator" : "user"
+  const toggleSignInType = () => {
+    setSignInType((prevSignInType) =>
+      prevSignInType === "user" ? "creator" : "user"
     );
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
   };
+
+
 
   // Function to validate the form data
   const validateForm = () => {
     const errors = {};
     let isValid = true;
+    let validEmail = true;
 
-    if (!formData.name) {
-      errors.name = "Name is required";
-      isValid = false;
-    }
 
     if (!formData.email) {
       errors.email = "Email is required";
-      isValid = false;
+      validEmail = false;
     } else if (!isValidEmail(formData.email)) {
       errors.email = "Invalid email address";
-      isValid = false;
+      validEmail = false;
     }
 
     if (!formData.password) {
       errors.password = "Password is required";
       isValid = false;
     } else if (!isStrongPassword(formData.password)) {
-      errors.password = "Password must be strong.";
+
+      errors.password = "Invalid Password format.";
       isValid = false;
     }
 
     setFormErrors(errors);
+    setIsPasswordValid(isValid);
+    setIsEmailValid(validEmail)
     return isValid;
   };
 
@@ -81,59 +78,20 @@ const SignUp = () => {
       [name]: value,
     });
 
-    if (name === "password") {
-      const isValid = isStrongPassword(value);
-      setIsPasswordValid(isValid);
-
-      if (!isValid) {
-        setFormErrors({
-          ...formErrors,
-          password: "Password must be strong.",
-        });
-      } else {
-        setFormErrors({
-          ...formErrors,
-          password: "",
-        });
-      }
-    }
-    if (name === "email") {
-      const isValid = isValidEmail(value);
-
-      if (!isValid) {
-        setFormErrors({
-          ...formErrors,
-          email: "Invalid email address",
-        });
-      } else {
-        setFormErrors({
-          ...formErrors,
-          email: "",
-        });
-      }
-    }
   };
 
-  // Function to check if the form is valid
-  const isFormValid = () => {
-    return (
-      formData.name &&
-      formData.email &&
-      isValidEmail(formData.email) &&
-      formData.password.length >= 8 &&
-      isPasswordValid
-    );
-  };
+
 
   // Function to toggle password visibility
   const togglePasswordVisibility = (event) => {
-    const passwordInput = event.currentTarget.previousElementSibling;
-    if (passwordInput.tagName === "INPUT") {
-      if (passwordInput.getAttribute("type") === "password") {
-        passwordInput.setAttribute("type", "text");
+    event.preventDefault()
+    const previousSibling = event.currentTarget.previousElementSibling;
+    if (previousSibling.tagName === "INPUT") {
+      if (previousSibling.getAttribute("type") === "password") {
+        previousSibling.setAttribute("type", "text");
         setPassVisIcon(eyeOn);
       } else {
-        passwordInput.setAttribute("type", "password");
+        previousSibling.setAttribute("type", "password");
         setPassVisIcon(eyeOff);
       }
     }
@@ -143,51 +101,24 @@ const SignUp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm() && isPasswordValid) {
-      alert(JSON.stringify(formData))
-      setFormData({
-        name: "",
-        email: "",
-        password: "",
-      })
+      console.log("Form data submitted:", formData);
     }
-
   };
 
   return (
     <Box
       className="w-full max-w-[700px] rounded-lg border border-[#363636] p-[32px] md:p-[58px] signin-form"
+      ref={ref}
     >
       <Box className="text-white max-w-[500px] mx-auto">
         <h1 className="text-xl text-center font-heading mb-[36px]">
-          {signUpType === "creator"
-            ? "Become a Creator"
-            : "Create User Account"}
+          {signInType === "creator"
+            ? "Sign In as Creator"
+            : "Sign In as User"}
         </h1>
 
-        <form className="auth-form mb-5" onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label
-              htmlFor="name"
-              className="font-medium text-white/[.80] text-sm"
-            >
-              Name
-            </label>
-            <div className="mt-2">
-              <input
-                type="text"
-                name="name"
-                className={`rounded-lg w-full bg-transparent border border-white focus:border-[#51A2FF] font-normal py-3 px-5 leading-normal font-semibold outline-none ${formErrors.name ? '!border-error' : ''}`}
-                id="name"
-                value={formData.name}
-                onChange={handleInputChange}
-              />
-              {formErrors.name && (
-                <span className="text-error font-inter text-sm">
-                  {formErrors.name}
-                </span>
-              )}
-            </div>
-          </div>
+        <form className="auth-form mb-5" >
+
 
           <div className="mb-4">
             <label
@@ -200,7 +131,11 @@ const SignUp = () => {
               <input
                 type="email"
                 name="email"
-                className={`rounded-lg w-full bg-transparent border border-white focus:border-[#51A2FF] font-normal py-3 px-5 leading-normal font-semibold outline-none ${formErrors.email ? '!border-error' : ''}`}
+                className={
+                  isEmailValid
+                    ? "rounded-lg w-full bg-transparent border border-white focus.border-[#51A2FF] font-normal py-3 px-5 leading-normal font-semibold outline-none font-inter pr-[40px] border-error"
+                    : "rounded-lg w-full bg-transparent border border-red-500 focus.border-red-500 font-normal py-3 px-5 leading-normal font-semibold outline-none font-inter pr-[40px] border-error"
+                }
                 id="email"
                 value={formData.email}
                 onChange={handleInputChange}
@@ -213,7 +148,7 @@ const SignUp = () => {
             </div>
           </div>
 
-          <div className="mb-6">
+          <div className="mb-2">
             <label
               htmlFor="password"
               className="font-medium text-white/[.80] text-sm"
@@ -243,13 +178,18 @@ const SignUp = () => {
               </span>
             )}
           </div>
+          <span className="text-sm">
+            <a href="" className="clip-text font-medium">
+              Forgot Password ?
+            </a>
+          </span>
 
           <button
             type="submit"
-            className="font-bold rounded-lg btn-gradient w-full text-black py-3 px-5"
-            disabled={!isFormValid()}
+            className="font-bold rounded-lg btn-gradient w-full text-black py-3 px-5 mt-6"
+            onClick={handleSubmit}
           >
-            Create my account
+            Sign In
           </button>
         </form>
 
@@ -264,17 +204,17 @@ const SignUp = () => {
         />
 
         <p className="mb-5 text-sm text-center">
-          Already have an account?{" "}
-          <a href="/signin" className="clip-text font-medium">
-            Sign In
+          Don't have an account?{" "}
+          <a to={'/forgot'} className="clip-text font-medium">
+            Create account
           </a>
         </p>
 
         <p className="text-center text-sm font-inter clip-text font-bold">
-          <button onClick={toggleSignUpType}>
-            {signUpType === "creator"
-              ? "Create User Account"
-              : "Become a Creator"}
+          <button onClick={toggleSignInType}>
+            {signInType === "creator"
+              ? "Sign In as Creator"
+              : "Sign In as User"}
           </button>
         </p>
       </Box>
@@ -282,4 +222,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SignIn;

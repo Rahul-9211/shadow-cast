@@ -21,6 +21,7 @@ import SignIn from "pages/auth/signin";
 import VerifyForm from 'pages/auth/verify';
 import ResetPassword from 'pages/auth/reset';
 
+
 /* The code is exporting a default function that returns an array of route objects. Each route object
 represents a specific route in a web application. */
 // eslint-disable-next-line
@@ -143,7 +144,6 @@ represents a specific route in a web application. */
       key: 'Reset-Password',
       route: '/reset-password',
       component: <ResetPassword />,
-      useLayout: <AuthLayout/>,
     },
   ];
 
