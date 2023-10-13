@@ -24,7 +24,7 @@ describe('SignIn Component', () => {
   });
 
   it('toggles to "Sign In as Creator" when clicked', () => {
-    render(<SignUp />);
+    render(<SignIn />);
     const toggleButton = screen.getByText("Sign In as User");
     fireEvent.click(toggleButton);
     const spyScrollTo = jest.fn();
@@ -34,7 +34,7 @@ describe('SignIn Component', () => {
   });
 
   it('toggles back to "Sign In as User" when clicked again', () => {
-    render(<SignUp />);
+    render(<SignIn />);
     const toggleButton = screen.getByText("Sign In as Creator");
     fireEvent.click(toggleButton);
     const spyScrollTo = jest.fn();

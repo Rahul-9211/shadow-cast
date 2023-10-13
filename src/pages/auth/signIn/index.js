@@ -77,7 +77,6 @@ const SignIn = () => {
   return (
     <Box
       className="w-full max-w-[700px] rounded-lg border border-[#363636] p-[32px] md:p-[58px] signin-form"
-      ref={ref}
     >
       <Box className="text-white max-w-[500px] mx-auto">
         <h1 className="text-xl text-center font-heading mb-[36px]">
@@ -85,7 +84,7 @@ const SignIn = () => {
             ? "Sign in as Creator"
             : "Sign In as User"}
         </h1>
-        <form className="auth-form mb-5" onSubmit={handleSubmit}>
+        <form className="auth-form mb-5">
 
           <div className="mb-4">
             <label
@@ -128,6 +127,7 @@ const SignIn = () => {
                 onChange={handleInputChange}
               />
               <span
+                data-testid="PasswordVisibility"
                 className="vector absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-white"
                 onClick={(e) => togglePasswordVisibility(e)}
               >
@@ -149,7 +149,7 @@ const SignIn = () => {
           <button
             type="submit"
             className="font-bold rounded-lg btn-gradient w-full text-black py-3 px-5"
-            disabled={!isFormValid()}
+            onClick={handleSubmit}
           >
             Sign In
           </button>

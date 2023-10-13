@@ -7,14 +7,13 @@
  */
 
 
-import  { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Box } from "@mui/material";
-import {togglePasswordVisibility} from "../../utils/togglePasswordVisibilityBtn"
-
- /* This code is a React component for setting reset password with confirm functionality .
-  */
+import { togglePasswordVisibility } from "../../utils/togglePasswordVisibilityBtn"
+import eyeOff from "assets/images/eye-off.svg";
+/* This code is a React component for setting reset password with confirm functionality .
+ */
 const ConfirmPassword = () => {
-  const ref = useRef(null);
 
   const [formData, setFormData] = useState({
     password: "",
@@ -87,46 +86,19 @@ const ConfirmPassword = () => {
             <input
               type="password"
               name="password"
-              className={
-                isPasswordValid
-                  ? "rounded-lg w-full bg-transparent border border-white focus.border-[#51A2FF] font-normal py-3 px-5 leading-normal font-semibold outline-none font-inter pr-[40px] border-error"
-                  : "rounded-lg w-full bg-transparent border border-red-500 focus.border-red-500 font-normal py-3 px-5 leading-normal font-semibold outline-none font-inter pr-[40px] border-error"
-              }
+              className={`rounded-lg w-full bg-transparent border border-white focus:border-[#51A2FF] font-normal py-3 px-5 leading-normal font-semibold outline-none font-inter pr-[40px] ${!isPasswordValid ? '!border-error' : ''}`}             
               id="password"
               placeholder="Enter new password"
               value={formData.password}
               onChange={handleInputChange}
             />
-              <button
-  aria-label="Toggle Password Visibility"
-                 className="vector absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-white"
-                 onClick={(e) => togglePasswordVisibility(e)}
-               >
-                 {
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                  >
-                    <path
-                      d="M8.81999 8.82227C8.50748 9.13489 8.33195 9.55885 8.33203 10.0009C8.33211 10.4429 8.50778 10.8668 8.82041 11.1793C9.13303 11.4919 9.557 11.6674 9.99903 11.6673C10.4411 11.6672 10.865 11.4916 11.1775 11.1789"
-                      stroke="white"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M13.9008 13.8942C12.7319 14.6255 11.3789 15.0091 10 15C7 15 4.5 13.3333 2.5 10C3.56 8.23333 4.76 6.935 6.1 6.105M8.48333 5.15C8.98253 5.04894 9.49068 4.99869 10 5C13 5 15.5 6.66667 17.5 10C16.945 10.925 16.3508 11.7225 15.7183 12.3917M2.5 2.5L17.5 17.5"
-                      stroke="white"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                }
-               </button>
+            <span
+              aria-label="Toggle Password Visibility"
+              className="vector absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-white"
+              onClick={(e) => togglePasswordVisibility(e)}
+            >
+              <img src={eyeOff} alt="PasswordVisibility" />
+            </span>
           </div>
           {!isPasswordValid && formErrors.password && (
             <span className="text-error font-inter text-sm">
@@ -139,46 +111,19 @@ const ConfirmPassword = () => {
             <input
               type="password"
               name="confirmPassword"
-              className={
-                isConfirmPasswordValid
-                  ? "rounded-lg text-white-500 w-full bg-transparent border border-white focus.border-[#51A2FF] font-normal py-3 px-5 leading-normal font-semibold outline-none font-inter pr-[40px] border-error"
-                  : "rounded-lg text-white-500 w-full bg-transparent border border-red-500 focus.border-red-500 font-normal py-3 px-5 leading-normal font-semibold outline-none font-inter pr-[40px] border-error"
-              }
+              className={`rounded-lg w-full bg-transparent border border-white focus:border-[#51A2FF] font-normal py-3 px-5 leading-normal font-semibold outline-none font-inter pr-[40px] ${!isConfirmPasswordValid ? '!border-error' : ''}`}                           
               id="confirmPassword"
               value={formData.confirmPassword}
               placeholder="Confirm new password"
               onChange={handleInputChange}
             />
             <button
-  aria-label="Toggle Password Visibility"
-                 className="vector absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-white"
-                 onClick={(e) => togglePasswordVisibility(e)}
-               >
-                 {
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                  >
-                    <path
-                      d="M8.81999 8.82227C8.50748 9.13489 8.33195 9.55885 8.33203 10.0009C8.33211 10.4429 8.50778 10.8668 8.82041 11.1793C9.13303 11.4919 9.557 11.6674 9.99903 11.6673C10.4411 11.6672 10.865 11.4916 11.1775 11.1789"
-                      stroke="white"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M13.9008 13.8942C12.7319 14.6255 11.3789 15.0091 10 15C7 15 4.5 13.3333 2.5 10C3.56 8.23333 4.76 6.935 6.1 6.105M8.48333 5.15C8.98253 5.04894 9.49068 4.99869 10 5C13 5 15.5 6.66667 17.5 10C16.945 10.925 16.3508 11.7225 15.7183 12.3917M2.5 2.5L17.5 17.5"
-                      stroke="white"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                }
-               </button>
+              aria-label="Toggle Password Visibility"
+              className="vector absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-white"
+              onClick={(e) => togglePasswordVisibility(e)}
+            >
+              <img src={eyeOff} alt="PasswordVisibility" />
+            </button>
           </div>
           {passwordMatchError && (
             <span className="text-error font-inter text-sm">{passwordMatchError}</span>
@@ -194,7 +139,7 @@ const ConfirmPassword = () => {
         </button>
       </form>
 
-      
+
     </Box>
   );
 };
