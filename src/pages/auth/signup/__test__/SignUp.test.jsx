@@ -58,6 +58,20 @@ describe("SignUp Component", () => {
     expect(userButton).toBeInTheDocument();
   });
 
+  it('toggles password visibility', () => {
+    render(<SignUp />);
+    const passwordInput = screen.getByLabelText('Password');
+    const toggleButton = screen.getByTestId('PasswordVisibility');
+
+    expect(passwordInput.getAttribute('type')).toBe('password');
+
+    fireEvent.click(toggleButton);
+    expect(passwordInput.getAttribute('type')).toBe('text');
+
+    fireEvent.click(toggleButton);
+    expect(passwordInput.getAttribute('type')).toBe('password');
+  });
+
   // this will be run iF we will not create disable button , if data is not entered --->
   //   it('displays errors when the form is submitted with empty fields', () => {
   //     render(<SignUp />);

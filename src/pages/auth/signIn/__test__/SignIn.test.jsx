@@ -12,7 +12,7 @@ describe('SignIn Component', () => {
   it('toggles password visibility', () => {
     render(<SignIn />);
     const passwordInput = screen.getByLabelText('Password');
-    const toggleButton = screen.getByRole('button', { name: 'Toggle Password Visibility' });
+    const toggleButton = screen.getByTestId('PasswordVisibility');
   
     expect(passwordInput.getAttribute('type')).toBe('password');
   

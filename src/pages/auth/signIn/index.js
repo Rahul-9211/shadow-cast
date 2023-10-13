@@ -165,7 +165,7 @@ const SignIn = () => {
                 onChange={handleInputChange}
               />
               <span
-                aria-label="Toggle Password Visibility"
+                data-testid="PasswordVisibility"
                 className="vector absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-white"
                 onClick={(e) => togglePasswordVisibility(e)}
               >
