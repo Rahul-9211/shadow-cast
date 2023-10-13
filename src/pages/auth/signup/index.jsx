@@ -9,17 +9,16 @@
 import { Box } from "@mui/material";
 import { useRef, useState } from "react";
 import GoogleLogin from "components/buttons/Google";
-
-import { isValidEmail, isStrongPassword } from "../ValidationUtils";
-import eyeOn from "assets/images/eye-on.svg";
+import { isValidEmail, isStrongPassword } from "../utils/ValidationUtils";
+import {togglePasswordVisibility} from "../utils/togglePasswordVisibilityBtn"
 import eyeOff from "assets/images/eye-off.svg";
+
 /* This code is a React component for user registration with the option to switch between "User" and "Creator" accounts. It performs real-time validation for name, email, and password, including password strength checks. Users can toggle the visibility of the password, and the form is enabled for submission when all requirements are met.
  */
 const SignUp = () => {
   const ref = useRef(null);
 
   const [signUpType, setSignUpType] = useState("user");
-  const [passVisIcon, setPassVisIcon] = useState(eyeOff);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -125,19 +124,6 @@ const SignUp = () => {
     );
   };
 
-  // Function to toggle password visibility
-  const togglePasswordVisibility = (event) => {
-    const passwordInput = event.currentTarget.previousElementSibling;
-    if (passwordInput.tagName === "INPUT") {
-      if (passwordInput.getAttribute("type") === "password") {
-        passwordInput.setAttribute("type", "text");
-        setPassVisIcon(eyeOn);
-      } else {
-        passwordInput.setAttribute("type", "password");
-        setPassVisIcon(eyeOff);
-      }
-    }
-  };
 
   // Function to handle form submission
   const handleSubmit = (e) => {
@@ -234,7 +220,7 @@ const SignUp = () => {
                 className="vector absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-white"
                 onClick={(e) => togglePasswordVisibility(e)}
               >
-                <img src={passVisIcon} alt="PasswordVisibility" />
+                <img src={eyeOff} alt="PasswordVisibility" />
               </span>
             </div>
             {!isPasswordValid && formErrors.password && (

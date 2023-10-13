@@ -49,11 +49,10 @@ describe("SignUp Component", () => {
 
   it('toggles back to "Create User Account" when clicked again', () => {
     render(<SignUp />);
-    const toggleButton = screen.getByText("Create User Account");
+    const toggleButton = screen.getByText("Become a Creator");
     fireEvent.click(toggleButton);
     const spyScrollTo = jest.fn();
     Object.defineProperty(global.window, 'scrollTo', { value: spyScrollTo });
-    fireEvent.click(screen.getByText("Become a Creator"));
     const userButton = screen.getByText("Create User Account");
     expect(userButton).toBeInTheDocument();
   });

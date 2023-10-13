@@ -22,5 +22,25 @@ describe('SignIn Component', () => {
     fireEvent.click(toggleButton);
     expect(passwordInput.getAttribute('type')).toBe('password');
   });
+
+  it('toggles to "Sign In as Creator" when clicked', () => {
+    render(<SignUp />);
+    const toggleButton = screen.getByText("Sign In as User");
+    fireEvent.click(toggleButton);
+    const spyScrollTo = jest.fn();
+    Object.defineProperty(global.window, 'scrollTo', { value: spyScrollTo });
+    const creatorButton = screen.getByText("Sign In as Creator");
+    expect(creatorButton).toBeInTheDocument();
+  });
+
+  it('toggles back to "Sign In as User" when clicked again', () => {
+    render(<SignUp />);
+    const toggleButton = screen.getByText("Sign In as Creator");
+    fireEvent.click(toggleButton);
+    const spyScrollTo = jest.fn();
+    Object.defineProperty(global.window, 'scrollTo', { value: spyScrollTo });
+    const userButton = screen.getByText("Sign In as User");
+    expect(userButton).toBeInTheDocument();
+  });
   
 });
