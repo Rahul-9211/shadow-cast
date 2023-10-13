@@ -11,7 +11,6 @@
  import GoogleLogin from "components/buttons/Google";
  
  import { isValidEmail, isStrongPassword } from "../ValidationUtils";
-import { Link } from "react-router-dom";
  
  /* This code is a React component for user and creator login with the option to switch between "User" and "Creator" accounts. It performs real-time validation for  email, and password, including password strength checks. Users can toggle the visibility of the password, and the form is enabled for submission when all requirements are met.
   */
@@ -83,6 +82,7 @@ import { Link } from "react-router-dom";
  
    // Function to toggle password visibility
    const togglePasswordVisibility = (event) => {
+    event.preventDefault()
     const previousSibling = event.currentTarget.previousElementSibling;
     if (previousSibling.tagName === "INPUT") {
       if (previousSibling.getAttribute("type") === "password") {
@@ -121,7 +121,7 @@ import { Link } from "react-router-dom";
              : "Sign In as User"}
          </h1>
  
-         <form className="auth-form mb-5" onSubmit={handleSubmit}>
+         <form className="auth-form mb-5" >
           
  
            <div className="mb-4">
@@ -172,7 +172,8 @@ import { Link } from "react-router-dom";
                  value={formData.password}
                  onChange={handleInputChange}
                />
-               <span
+               <button
+  aria-label="Toggle Password Visibility"
                  className="vector absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-white"
                  onClick={(e) => togglePasswordVisibility(e)}
                >
@@ -200,7 +201,7 @@ import { Link } from "react-router-dom";
                     />
                   </svg>
                 }
-               </span>
+               </button>
              </div>
              {!isPasswordValid && formErrors.password && (
                <span className="text-error font-inter text-sm">
@@ -217,6 +218,7 @@ import { Link } from "react-router-dom";
            <button
              type="submit"
              className="font-bold rounded-lg btn-gradient w-full text-black py-3 px-5 mt-6"
+             onClick={handleSubmit}
            >
              Sign In
            </button>
@@ -234,9 +236,9 @@ import { Link } from "react-router-dom";
  
          <p className="mb-5 text-sm text-center">
          Don’t have an account?{" "}
-           <Link to={'/forgot'} className="clip-text font-medium">
+           <a to={'/forgot'} className="clip-text font-medium">
            Create account
-           </Link>
+           </a>
          </p>
  
          <p className="text-center text-sm font-inter clip-text font-bold">

@@ -18,6 +18,7 @@ import SignUp from 'pages/auth/signup';
 import Layout from 'layout/Index.jsx';
 import AuthLayout from 'AuthLayout/index';
 import SignIn from 'pages/auth/signIn';
+import ForgotPassword from 'pages/auth/forgot-password';
 
 /* The code is exporting a default function that returns an array of route objects. Each route object
 represents a specific route in a web application. */
@@ -127,6 +128,14 @@ represents a specific route in a web application. */
       key: 'Login-Account',
       route: '/signin',
       component: <SignIn />,
+      useLayout: <AuthLayout/>,
+    },
+
+    {
+      name: 'Forgot-Password',
+      key: 'Forgot-Password',
+      route: '/forgot-password',
+      component: <ForgotPassword />,
       useLayout: <AuthLayout/>,
     },
   ];
