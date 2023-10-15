@@ -195,13 +195,16 @@ img {
 .card-hover_parent:hover {
   background: -webkit-linear-gradient(rgba(251, 188, 94, 0.2),
       rgba(243, 161, 81, 0.2));
-  border: 1px solid #f3a151;
+  /* border: 1px solid #f3a151; */
+  transform: scale(1.1);
 }
 
 .card-hover_parent:hover .card-hover_img {
-  height: 270px;
-  width: 270px;
-  margin-top: -66px;
+  /* height: 270px;
+
+  width: 270px; */
+  transform: scale(1.2);
+  /* margin-top: -66px; */
 }
 
 .marketplace_tabs .MuiTabs-root {

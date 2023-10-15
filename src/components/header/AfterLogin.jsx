@@ -120,7 +120,7 @@ const AfterLogin = () => {
                       onChange={handleInputChange}
                     />
                     {showDropdown && (
-                      <div className="absolute z-[2] top-12 left-0 w-80 rounded-b-lg shadow-lg rounded-md border border-solid border-1 border-gray-700 bg-black">
+                      <div className="absolute z-[12] top-12 left-0 w-80 rounded-b-lg shadow-lg rounded-md border border-solid border-1 border-gray-700 bg-black">
                         <p className="pt-4 pl-3 text-xs text-gray-600">Results</p>
                         <ul className="py-2">
                           {searchResults.map((result, index) => (

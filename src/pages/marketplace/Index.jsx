@@ -24,7 +24,7 @@ const Index = (props) => {
     { label: 'Apartment', coming: false },
     { label: 'Ships', coming: false },
     { label: 'Entertainment', coming: false },
-    { label: 'Clothing', coming: false },
+    { label: 'Clothing', coming: true },
     { label: 'Games', coming: true },
     { label: 'Companion', coming: true },
   ]);
@@ -54,8 +54,9 @@ const Index = (props) => {
   }, [props]);
   return (
     <>
-      <Grid container item xs={12} className="fs24px">
-        <Grid
+    <Box className="wrapper-container">
+      <Box >
+        <Box
           container
           item
           xs={12}
@@ -63,13 +64,14 @@ const Index = (props) => {
           className="marketplace_tabs"
         >
           <Box sx={{ width: '100%', zIndex: 5 }}>
-            <Box sx={{ borderBottom: 20, borderColor: 'divider', zIndex: 5 }}>
+            <Box sx={{ borderColor: 'divider', zIndex: 5 }}>
               <Tabs
                 value={value}
                 onChange={handleChange}
                 aria-label="scrollable auto basic tabs example"
                 allowScrollButtonsMobile={true}
                 scrollButtons="auto"
+                className='mb-8'
               >
                 {allCategory?.map((category, i) => (
                   <Tab
@@ -77,23 +79,23 @@ const Index = (props) => {
                       !category?.coming ? (
                         category?.label
                       ) : (
-                        <Typography className="fs14px">
+                        <p className="font-normal text-sm ">
                           {category?.label}
                           <span
                             style={{
                               marginLeft: '5px',
                             }}
-                            className="fs10px rounded-md d_color"
+                            className=" rounded-md d_color text-xs"
                           >
                             Coming soon
                           </span>
-                        </Typography>
+                        </p>
                       )
                     }
                     {...a11yProps(i)}
-                    className="fs14px "
+                    className="text-lg  font-normal mr-10"
                     key={i}
-                    sx={{ zIndex: 5 }}
+                    sx={{ zIndex: 1 }}
                   />
                 ))}
               </Tabs>
@@ -108,8 +110,10 @@ const Index = (props) => {
               <Entertainments />
             </TabPanel>
           </Box>
-        </Grid>
-      </Grid>
+        </Box>
+      </Box>
+
+    </Box>
     </>
   );
 };

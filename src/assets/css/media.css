@@ -168,3 +168,31 @@
 }
 
 
+.appartment-card-left-shadow {
+  width: 600px;
+  height: 600px;
+  flex-shrink: 0;
+  border-radius: 600px;
+  opacity: 0.5;
+  background: rgba(255, 233, 201, 0.7);
+  filter: blur(166px);
+  position: absolute;
+  top: -24%;
+  left: -13%;
+}
+
+
+.appartment-card-right-shadow {
+  width: 700px;
+  height: 700px;
+  flex-shrink: 0;
+  border-radius: 600px;
+  opacity: 0.4;
+  background: rgba(255, 233, 201, 0.7);
+  filter: blur(166px);
+  position: absolute;
+  top: 480%;
+  right: -13%;
+}
+
+
