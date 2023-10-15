@@ -69,6 +69,10 @@
 
  
    return (
+        <Box
+          className="w-full max-w-[700px] rounded-lg border border-[#363636] p-[32px] md:p-[58px] signin-form"
+          ref={ref}
+        >
     <Box className="text-white max-w-[500px] mx-auto">
          <h1 className="text-xl text-center font-heading mb-[28px]">
            OTP Verification
@@ -114,6 +118,7 @@
              Resend Code
            </button>
          </form>
+       </Box>
        </Box>
    );
  };

@@ -118,3 +118,53 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+.landingPage-leftShadow{
+
+  width: 600px;
+  height: 600px;
+  flex-shrink: 0;
+  border-radius: 600px;
+  opacity: 0.5;
+  background: rgba(255, 233, 201, 0.7);
+  filter: blur(166px);
+  position: absolute;
+  top: -36%;
+  left: -14%;
+}
+
+.landingPage-rightShadow{
+
+  width: 600px;
+  height: 600px;
+  flex-shrink: 0;
+  border-radius: 600px;
+  opacity: 0.5;
+  background: rgba(255, 233, 201, 0.7);
+  filter: blur(166px);
+  position: absolute;
+  top: -24%;
+  right: -13%;
+}
+
+.shadow-top {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 75%;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.shadow-bottom {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 75%; 
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
+}
+
+

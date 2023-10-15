@@ -2,31 +2,43 @@
  * This file is part of FourthStar User Dashboard
  *(c) 2023 ShadowCast.Io <craig@shadowcast.io>
  *------------------------------------------------------
- *@module user
- *@developer Sameer <sameer@shadowcast.io>
+ *@module Header
+ *@developer Sudhanshu <<sudhanshut@instaacoders.com>>
  */
 
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Avatar, Badge, Button, Grid, Container } from '@mui/material';
-import { LightSpeed } from 'react-reveal';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { Avatar, Badge, Button, Grid, Container, Box } from "@mui/material";
+import { LightSpeed } from "react-reveal";
 
-import SearchIcon from '@mui/icons-material/Search';
+import SearchIcon from "@mui/icons-material/Search";
 // import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
+import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import logo from "assets/images/logo.png";
+import AfterLogin from "./AfterLogin";
+import BeforeLogin from "./BeforeLogin";
 /* nav bar */
 const Index = () => {
   const navigate = useNavigate();
   return (
-    <Grid container>
-      <img
-        src={logo}
-        className="cursor-pointer w-auto h-auto"
-        alt="Network problem"
-      />
-    </Grid>
-  )
+    // header before login 
+    // <BeforeLogin/>
+
+
+// headerżafter login 
+<AfterLogin/>
+
+
+
+    // <Grid container>
+    //   <img
+    //     src={logo}
+    //     className="cursor-pointer w-auto h-auto"
+    //     alt="Network problem"
+    //   />
+    //   This is me
+    // </Grid>
+  );
   // return (
   //   <Grid
   //     container

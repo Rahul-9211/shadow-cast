@@ -15,6 +15,8 @@ import eyeOff from "assets/images/eye-off.svg";
  */
 const ConfirmPassword = () => {
 
+  const ref = useRef(null);
+
   const [formData, setFormData] = useState({
     password: "",
     confirmPassword: "",
@@ -77,6 +79,10 @@ const ConfirmPassword = () => {
 
 
   return (
+    <Box
+      className="w-full max-w-[700px] rounded-lg border border-[#363636] p-[32px] md:p-[58px] signin-form"
+      ref={ref}
+    >
     <Box className="text-white max-w-[500px] mx-auto">
       <h1 className="text-xl text-center font-heading mb-[36px]">Reset Password</h1>
 
@@ -140,6 +146,7 @@ const ConfirmPassword = () => {
       </form>
 
 
+    </Box>
     </Box>
   );
 };
