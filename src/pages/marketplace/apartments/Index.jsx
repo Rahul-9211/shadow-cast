@@ -106,7 +106,7 @@ const Index = () => {
 
   return (
     <>
-      <Box container item xs={12} className="overflow-hidden">
+      <Box container item xs={12} className="">
         <Box
           container
           item

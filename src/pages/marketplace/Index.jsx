@@ -71,7 +71,7 @@ const Index = (props) => {
                 aria-label="scrollable auto basic tabs example"
                 allowScrollButtonsMobile={true}
                 scrollButtons="auto"
-                className='mb-8'
+                className='mb-8 '
               >
                 {allCategory?.map((category, i) => (
                   <Tab

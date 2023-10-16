@@ -108,13 +108,13 @@ const AfterLogin = () => {
             <ul className="flex justify-between items-center text-sm">
               <li className="mx-4">
                 <div ref={searchRef} className="relative w-70 mx-auto p-4">
-                  <div className="relative rounded-full bg-black shadow rounded-md border border-solid border-1 border-gray-700">
+                  <div className="relative rounded-full bg-black shadow rounded-full border border-solid border-1 border-gray-700">
                     <div className="absolute top-0 left-2 flex items-center h-full pl-1">
                       <SearchIcon className="text-gray-500" />
                     </div>
                     <input
                       type="text"
-                      className="w-full py-2 pl-12 pr-3 text-white-700 rounded-full outline-none bg-white bg-opacity-5"
+                      className="w-full py-2 pl-12 pr-3 text-white-700 outline-none bg-white bg-opacity-5"
                       placeholder="Search..."
                       value={searchTerm}
                       onChange={handleInputChange}
