@@ -8,12 +8,14 @@
 import { Box } from "@mui/material";
 import { useState } from "react";
 import GoogleLogin from "components/buttons/Google";
+import {
+  isValidEmail,
+  isStrongPassword,
+  togglePasswordVisibility,
+} from "utils/index";
 import eyeOff from "assets/images/eye-off.svg";
-import { isValidEmail, isStrongPassword } from "../utils/ValidationUtils";
-import { togglePasswordVisibility } from "../utils/togglePasswordVisibilityBtn";
 /* This code is a React component for user sign-in with the option to switch between "User" and "Creator" accounts. It performs real-time validation for email, and password, including password strength checks. Users can toggle the visibility of the password, and the form is enabled for submission when all requirements are met.
  */
-
 
 const SignIn = () => {
   const [signInType, setSignInType] = useState("user");
@@ -27,13 +29,14 @@ const SignIn = () => {
   });
   const [isPasswordValid, setIsPasswordValid] = useState(true);
   const [isEmailValid, setIsEmailValid] = useState(true);
-  // Function to toggle between user and creator sign-up
+  const [isEmailFocused, setIsEmailFocused] = useState(false);
+
   const toggleSignInType = () => {
     setSignInType((prevSignInType) =>
       prevSignInType === "user" ? "creator" : "user"
     );
   };
-  // Function to validate the form data
+
   const validateForm = () => {
     const errors = {};
     let isValid = true;
@@ -54,11 +57,10 @@ const SignIn = () => {
     }
     setFormErrors(errors);
     setIsPasswordValid(isValid);
-    setIsEmailValid(validEmail)
+    setIsEmailValid(validEmail);
     return isValid;
   };
 
-  // Function to handle input changes
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -66,26 +68,32 @@ const SignIn = () => {
       [name]: value,
     });
 
+    if (name === "email") {
+      setIsEmailFocused(true);
+      if (value.includes("@")) {
+        setIsEmailValid(isValidEmail(value));
+      }
+    }
   };
-  // Function to handle form submission
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm() && isPasswordValid) {
       console.log("Form data submitted:", formData);
     }
   };
+  const handleEmailBlur = () => {
+    setIsEmailFocused(false);
+    setIsEmailValid(isValidEmail(formData.email));
+  };
+
   return (
-    <Box
-      className="w-full max-w-[700px] rounded-lg border border-[#363636] p-[32px] md:p-[58px] signin-form"
-    >
+    <Box className="w-full max-w-[700px] rounded-lg border border-[#363636] p-[32px] md:p-[58px] signin-form">
       <Box className="text-white max-w-[500px] mx-auto">
         <h1 className="text-xl text-center font-heading mb-[36px]">
-          {signInType === "creator"
-            ? "Sign in as Creator"
-            : "Sign In as User"}
+          {signInType === "creator" ? "Sign in as Creator" : "Sign In as User"}
         </h1>
         <form className="auth-form mb-5">
-
           <div className="mb-4">
             <label
               htmlFor="email"
@@ -97,12 +105,16 @@ const SignIn = () => {
               <input
                 type="email"
                 name="email"
-                className={`rounded-lg w-full bg-transparent border border-white focus:border-[#51A2FF] font-normal py-3 px-5 leading-normal font-semibold outline-none ${!isEmailValid ? '!border-error' : ''}`}
+                className={`rounded-lg w-full bg-transparent border border-white focus:border-[#51A2FF] font-normal py-3 px-5 leading-normal font-semibold outline-none ${
+                  !isEmailValid ? "!border-error" : ""
+                }`}
                 id="email"
                 value={formData.email}
                 onChange={handleInputChange}
+                onFocus={() => setIsEmailFocused(true)}
+                onBlur={handleEmailBlur}
               />
-              {!isEmailValid && formErrors.email && (
+              {!isEmailValid && formErrors.email && isEmailFocused && (
                 <span className="text-error font-inter text-sm">
                   {formErrors.email}
                 </span>
@@ -121,7 +133,9 @@ const SignIn = () => {
               <input
                 type="password"
                 name="password"
-                className={`rounded-lg w-full bg-transparent border border-white focus:border-[#51A2FF] font-normal py-3 px-5 leading-normal font-semibold outline-none font-inter pr-[40px] ${!isPasswordValid ? '!border-error' : ''}`}
+                className={`rounded-lg w-full bg-transparent border border-white focus.border-[#51A2FF] font-normal py-3 px-5 leading-normal font-semibold outline-none font-inter pr-[40px] ${
+                  !isPasswordValid ? "!border-error" : ""
+                }`}
                 id="password"
                 value={formData.password}
                 onChange={handleInputChange}
@@ -142,9 +156,13 @@ const SignIn = () => {
           </div>
 
           <div className="mb-6">
-            <a href="/otp-verification" className="clip-text font-semibold text-sm">Forgot Password?</a>
+            <a
+              href="/otp-verification"
+              className="clip-text font-semibold text-sm"
+            >
+              Forgot Password?
+            </a>
           </div>
-
 
           <button
             type="submit"
@@ -181,7 +199,7 @@ const SignIn = () => {
         </p>
       </Box>
     </Box>
-  )
-}
+  );
+};
 
 export default SignIn;

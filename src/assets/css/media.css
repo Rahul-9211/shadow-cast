@@ -196,4 +196,17 @@
   right: -13%;
 }
 
+.menu-bar-after{
+  display: none;
+}
+@media only screen and (max-width: 580px) {
+
+  
+  .menu-bar-before{
+    display: none;
+  }
+  .menu-bar-after{
+    display: flex;
+  }
+}
 

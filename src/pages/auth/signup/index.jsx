@@ -7,17 +7,17 @@
  */
 
 import { Box } from "@mui/material";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import GoogleLogin from "components/buttons/Google";
-import { isValidEmail, isStrongPassword } from "../utils/ValidationUtils";
-import {togglePasswordVisibility} from "../utils/togglePasswordVisibilityBtn"
+import {
+  isValidEmail,
+  isStrongPassword,
+  togglePasswordVisibility,
+} from "utils/index";
 import eyeOff from "assets/images/eye-off.svg";
-
 /* This code is a React component for user registration with the option to switch between "User" and "Creator" accounts. It performs real-time validation for name, email, and password, including password strength checks. Users can toggle the visibility of the password, and the form is enabled for submission when all requirements are met.
  */
 const SignUp = () => {
-  const ref = useRef(null);
-
   const [signUpType, setSignUpType] = useState("user");
   const [formData, setFormData] = useState({
     name: "",
@@ -30,6 +30,8 @@ const SignUp = () => {
     password: "",
   });
   const [isPasswordValid, setIsPasswordValid] = useState(true);
+  const [isEmailValid, setIsEmailValid] = useState(true);
+  const [isEmailFocused, setIsEmailFocused] = useState(false);
 
   // Function to toggle between user and creator sign-up
   const toggleSignUpType = () => {
@@ -38,9 +40,11 @@ const SignUp = () => {
     );
     window.scrollTo({
       top: 0,
-      behavior: "smooth"
+      behavior: "smooth",
     });
   };
+
+
 
   // Function to validate the form data
   const validateForm = () => {
@@ -79,6 +83,14 @@ const SignUp = () => {
       ...formData,
       [name]: value,
     });
+    if (name === "email") {
+
+      setIsEmailFocused(true);
+      if (value.includes("@")) {
+        console.log("i aasd");
+        setIsEmailValid(isValidEmail(value));
+      }
+    }
 
     if (name === "password") {
       const isValid = isStrongPassword(value);
@@ -96,21 +108,6 @@ const SignUp = () => {
         });
       }
     }
-    if (name === "email") {
-      const isValid = isValidEmail(value);
-
-      if (!isValid) {
-        setFormErrors({
-          ...formErrors,
-          email: "Invalid email address",
-        });
-      } else {
-        setFormErrors({
-          ...formErrors,
-          email: "",
-        });
-      }
-    }
   };
 
   // Function to check if the form is valid
@@ -124,32 +121,31 @@ const SignUp = () => {
     );
   };
 
-
   // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm() && isPasswordValid) {
-      alert(JSON.stringify(formData))
+      alert(JSON.stringify(formData));
       setFormData({
         name: "",
         email: "",
         password: "",
-      })
+      });
     }
-
+  };
+  const handleEmailBlur = () => {
+    setIsEmailFocused(false);
+    setIsEmailValid(isValidEmail(formData.email));
   };
 
   return (
-    <Box
-      className="w-full max-w-[700px] rounded-lg border border-[#363636] p-[32px] md:p-[58px] signin-form"
-    >
+    <Box className="w-full max-w-[700px] rounded-lg border border-[#363636] p-[32px] md:p-[58px] signin-form">
       <Box className="text-white max-w-[500px] mx-auto">
         <h1 className="text-xl text-center font-heading mb-[36px]">
           {signUpType === "creator"
             ? "Become a Creator"
             : "Create User Account"}
         </h1>
-
         <form className="auth-form mb-5" onSubmit={handleSubmit}>
           <div className="mb-4">
             <label
@@ -162,7 +158,9 @@ const SignUp = () => {
               <input
                 type="text"
                 name="name"
-                className={`rounded-lg w-full bg-transparent border border-white focus:border-[#51A2FF] font-normal py-3 px-5 leading-normal font-semibold outline-none ${formErrors.name ? '!border-error' : ''}`}
+                className={`rounded-lg w-full bg-transparent border border-white focus:border-[#51A2FF] font-normal py-3 px-5 leading-normal font-semibold outline-none ${
+                  formErrors.name ? "!border-error" : ""
+                }`}
                 id="name"
                 value={formData.name}
                 onChange={handleInputChange}
@@ -186,12 +184,17 @@ const SignUp = () => {
               <input
                 type="email"
                 name="email"
-                className={`rounded-lg w-full bg-transparent border border-white focus:border-[#51A2FF] font-normal py-3 px-5 leading-normal font-semibold outline-none ${formErrors.email ? '!border-error' : ''}`}
+                className={`rounded-lg w-full bg-transparent border border-white focus:border-[#51A2FF] font-normal py-3 px-5 leading-normal font-semibold outline-none ${
+                  !isEmailValid ? "!border-error" : ""
+                }`}
                 id="email"
                 value={formData.email}
                 onChange={handleInputChange}
+                onFocus={() => setIsEmailFocused(true)}
+                onBlur={handleEmailBlur}
               />
-              {formErrors.email && (
+             
+                {!isEmailValid && formErrors.email && isEmailFocused && (
                 <span className="text-error font-inter text-sm">
                   {formErrors.email}
                 </span>
@@ -210,7 +213,9 @@ const SignUp = () => {
               <input
                 type="password"
                 name="password"
-                className={`rounded-lg w-full bg-transparent border border-white focus:border-[#51A2FF] font-normal py-3 px-5 leading-normal font-semibold outline-none font-inter pr-[40px] ${!isPasswordValid ? '!border-error' : ''}`}
+                className={`rounded-lg w-full bg-transparent border border-white focus:border-[#51A2FF] font-normal py-3 px-5 leading-normal font-semibold outline-none font-inter pr-[40px] ${
+                  !isPasswordValid ? "!border-error" : ""
+                }`}
                 id="password"
                 value={formData.password}
                 onChange={handleInputChange}
