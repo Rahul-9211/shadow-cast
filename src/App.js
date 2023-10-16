@@ -8,13 +8,13 @@
 
 import { useEffect } from 'react';
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
-import { createTheme } from '@mui/material';
+// import { createTheme } from '@mui/material';
 
 import { routes } from './routes';
-import Header from 'components/header/Index.jsx';
-import SideBar from 'components/sidebar/Index.jsx';
-import Layout from 'layout/Index.jsx';
-import Footer from 'components/footer/Index.jsx';
+// import Header from 'components/header/Index.jsx';
+// import SideBar from 'components/sidebar/Index.jsx';
+// import Layout from 'layout/Index.jsx';
+// import Footer from 'components/footer/Index.jsx';
 
 /**
  * The App function is a React component that renders a sidebar and routes based on the current

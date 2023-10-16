@@ -26,4 +26,26 @@ describe("ConfirmPassword Component", () => {
     expect(heading).toBeInTheDocument();
   });
 
+  it('toggles password visibility', () => {
+    render(<ConfirmPassword />);
+    const passwordInput = screen.getByPlaceholderText('Enter new password');
+    const toggleButton = screen.getByTestId('PasswordVisibility');
+    expect(passwordInput.getAttribute('type')).toBe('password');
+    fireEvent.click(toggleButton);
+    expect(passwordInput.getAttribute('type')).toBe('text');
+    fireEvent.click(toggleButton);
+    expect(passwordInput.getAttribute('type')).toBe('password');
+  });
+
+  it('toggles confirm password visibility', () => {
+    render(<ConfirmPassword />);
+    const passwordInput = screen.getByPlaceholderText('Confirm new password');
+    const toggleButton = screen.getByTestId('ConfPasswordVisibility');
+    expect(passwordInput.getAttribute('type')).toBe('password');
+    fireEvent.click(toggleButton);
+    expect(passwordInput.getAttribute('type')).toBe('text');
+    fireEvent.click(toggleButton);
+    expect(passwordInput.getAttribute('type')).toBe('password');
+  });
+
 });

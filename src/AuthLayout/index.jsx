@@ -6,21 +6,15 @@
  *@developer Sudhanshu 
  */
 
-import React, { useEffect, useState } from 'react';
-import { useNavigate, useLocation, Outlet } from 'react-router-dom';
+// import React, { useEffect, useState } from 'react';
+import { Outlet } from 'react-router-dom';
 import { Box, Grid, Container } from '@mui/material';
 import logo from "assets/images/logo.png";
-import StorefrontIcon from '@mui/icons-material/Storefront';
-
+// import StorefrontIcon from '@mui/icons-material/Storefront';
 import Footer from 'components/footer/Index.jsx';
-import ImgTest from 'assets/images/test_bg.png';
 
-/* The code defines a functional component called `Index` that takes in a prop called `children`. */
+/* The code defines a functional component called `Index` that render children using outlet */
 const Index = () => {
-    const navigate = useNavigate();
-    const { pathname } = useLocation();
-
-
     return (<div className='relative overflow-hidden'>
         <Box className="leftShadow"></Box>
         <Box className="rightShadow"></Box>

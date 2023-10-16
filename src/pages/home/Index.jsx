@@ -28,7 +28,7 @@ const Index = () => {
             alt="Network problem"
           />
 
-  <div className="shadow-bottom" />
+          <div className="shadow-bottom" />
         </Box>
 
         <Box className="h-100 flex justify-between pl-48 pr-32 pt-40 pb-32 relative">

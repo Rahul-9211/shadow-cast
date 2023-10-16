@@ -2,14 +2,12 @@
  * This file is part of FourthStar User Dashboard
  *(c) 2023 ShadowCast.Io <craig@shadowcast.io>
  *------------------------------------------------------
- *@module user
- *@developer Sameer <sameer@shadowcast.io>
+ *@module Footer Component
+ *@developer Sudhanshu <sudhanshut@instaacoders.com>
  */
 
 import React from 'react';
 import { Grid } from '@mui/material';
-// import InstagramIcon from '@mui/icons-material/Instagram';
-
 // footer
 const Index = () => {
   return (
@@ -19,10 +17,6 @@ const Index = () => {
       xs={12}
       className="bg-dark"
     >
-      {/* <Container
-        // maxWidth={'xl'}
-        className="h-full"
-      > */}
       <Grid container item xs={12} className="h-full flex justify-center">
         <Grid item className="text-xs flex flex-wrap items-center py-[34px] md:py-[68px]" columnGap={{xs:"16px",md: "32px"}}>
           <a href="#" className='text-white leading-relaxed'>Privacy Policy</a>
@@ -53,31 +47,9 @@ const Index = () => {
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
               <path d="M15.3493 5.55011C14.5894 5.54998 13.8599 5.84809 13.3176 6.38032C12.7752 6.91256 12.4635 7.63638 12.4493 8.39611L12.4213 9.97111C12.4198 10.0558 12.4004 10.1391 12.3644 10.2158C12.3284 10.2924 12.2765 10.3605 12.2123 10.4157C12.1481 10.4708 12.0729 10.5118 11.9917 10.5358C11.9106 10.5598 11.8252 10.5664 11.7413 10.5551L10.1793 10.3421C8.12631 10.0621 6.15831 9.11711 4.26931 7.54411C3.67231 10.8541 4.83931 13.1471 7.65231 14.9161L9.39931 16.0141C9.48217 16.0662 9.55103 16.1378 9.59986 16.2227C9.6487 16.3075 9.67604 16.403 9.67949 16.5008C9.68294 16.5987 9.6624 16.6959 9.61967 16.7839C9.57693 16.872 9.5133 16.9483 9.43431 17.0061L7.84231 18.1701C8.78931 18.2301 9.68831 18.1881 10.4343 18.0401C15.1523 17.0981 18.2893 13.5481 18.2893 7.69211C18.2893 7.21411 17.2763 5.55011 15.3493 5.55011ZM10.4493 8.36011C10.4668 7.39616 10.7682 6.45878 11.3159 5.66534C11.8635 4.87189 12.6331 4.25763 13.5282 3.89948C14.4233 3.54133 15.4042 3.45519 16.3481 3.65186C17.2919 3.84853 18.1567 4.31926 18.8343 5.00511C19.5453 5.00011 20.1503 5.18011 21.5023 4.35911C21.1683 5.99911 21.0023 6.71211 20.2893 7.69111C20.2893 15.3321 15.5923 19.0491 10.8253 20.0001C7.55831 20.6521 2.80531 19.5811 1.44531 18.1581C2.13831 18.1051 4.95831 17.8021 6.58831 16.6081C5.20831 15.6981 -0.279688 12.4681 3.32731 3.78611C5.02031 5.76311 6.73731 7.10811 8.47731 7.82311C9.63431 8.29811 9.91931 8.28811 10.4503 8.36111L10.4493 8.36011Z" fill="currentColor" />
             </svg>
-          </a>
-          {/* <Button className="capitalize footer_btn">
-            <InstagramIcon className="fs24px footer_btn" />
-          </Button>
-          <Button className=" fs16px capitalize footer_btn">
-            <img
-              src="https://fourthstar-userdashboard.s3.amazonaws.com/facebook_icon.png"
-              className="footer_btn_img"
-            />
-          </Button>
-          <Button className=" fs16px capitalize footer_btn">
-            <img
-              src="https://fourthstar-userdashboard.s3.amazonaws.com/twitter_Icon.png"
-              className="footer_btn_img"
-            />
-          </Button>
-          <Button className=" fs16px capitalize footer_c_gray">
-            <img
-              src="https://fourthstar-userdashboard.s3.amazonaws.com/youtube_icon.png"
-              className="footer_btn_img"
-            />
-          </Button> */}
+          </a>          
         </Grid>
       </Grid>
-      {/* </Container> */}
     </Grid>
   );
 };

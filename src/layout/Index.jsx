@@ -35,8 +35,8 @@ const Index = () => {
 
     {/* {console.log('cleideren',children)} */}
       <Header />
-      <Outlet/>
-      {/* <Grid 
+
+      <Grid 
         container
         item
         xs={12}
@@ -55,10 +55,10 @@ const Index = () => {
           className=""
           sx={{ width: '100vw', overflow: 'hidden' }}
         >
-          {children} // chooose one either child or Outlet
+          {/* {children} */}
           <Outlet/>
         </Grid>
-      </Grid> */}
+      </Grid>
       {/* </div> */}
       {/* </Container> */}
       {/* </Grid> */}
