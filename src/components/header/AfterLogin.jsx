@@ -9,11 +9,12 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { Box } from "@mui/material";
+import { Box, Menu } from "@mui/material";
 import logo from "assets/images/logo.png";
 import SearchIcon from "@mui/icons-material/Search";
 
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import MenuIcon from '@mui/icons-material/Menu';
 
 const SearchResultItem = ({ text, searchTerm, onClick }) => {
     const highlightedText = text.replace(
@@ -152,23 +153,15 @@ const [handleToggleHamburger , sethandleToggleHamburger] = useState(false);
 
 
         <Box className="menu-bar-after flex justify-between items-center w-full">
-          <Box>
-            {/* <ul className="flex justify-between items-center text-sm">
-              <li className="mx-7 ml-12">Hanbvurger</li>
-              <li className="mx-7">Assets</li>
-              <li className="mx-7">Friends</li>
-            </ul> */}
-          </Box>
-          <Box>
-            {/* <ul className="flex justify-between items-center text-sm">
-              <li className="mx-4"> 
-              <ShoppingCartIcon data-testid="shopping-cart-icon" className="text-white" /></li>
-              <li className="mx-4"><div className="p-3 text-white-700 rounded-full text-base font-semibold" style={{backgroundColor:"#40351A"}} >SN</div></li>
-            </ul> */}
-
-            <ul className="flex justify-between items-center text-sm">
+          <Box></Box>
+          {handleToggleHamburger ? 
+          <Box className="absolute hamburger-list">
+            <ul className=" justify-between items-center text-sm">
+              <li className="mx-7 pb-2">Marketplace</li>
+              <li className="mx-7 pb-2">Assets</li>
+              <li className="mx-7 pb-2">Friends</li>
               <li className="mx-4">
-                <div ref={searchRef} className="relative w-80 mx-auto p-4">
+                <div ref={searchRef} className="relative w-full mx-auto p-4">
                   <div className="relative rounded-full bg-black shadow rounded-full border border-solid border-1 border-gray-700">
                     <div className="absolute top-0 left-2 flex items-center h-full pl-1 ">
                       <SearchIcon className="text-gray-500" />
@@ -198,9 +191,22 @@ const [handleToggleHamburger , sethandleToggleHamburger] = useState(false);
                   </div>
                 </div>
               </li>
+            </ul>
+          </Box> : <></>}
+          <Box>
+            {/* <ul className="flex justify-between items-center text-sm">
+              <li className="mx-4"> 
+              <ShoppingCartIcon data-testid="shopping-cart-icon" className="text-white" /></li>
+              <li className="mx-4"><div className="p-3 text-white-700 rounded-full text-base font-semibold" style={{backgroundColor:"#40351A"}} >SN</div></li>
+            </ul> */}
+
+            <ul className="flex justify-between items-center text-sm">
+              
               <li className="mx-4"> 
               <ShoppingCartIcon data-testid="shopping-cart-icon" className="text-white"  /></li>
-              <li className="mx-4"><div className="p-3 text-white-700 rounded-full text-base font-semibold" style={{backgroundColor:"#40351A"}} onclick={handleHamburger}>SN</div></li>
+              <li className="mx-4"><div className="p-3 text-white-700 rounded-full text-base font-semibold" style={{backgroundColor:"#40351A"}} >SN</div></li>
+              <li className="mx-4 cursor-pointer" > 
+             <MenuIcon  onClick={handleHamburger} data-testid="menu-icon" className="text-white" /></li>
             </ul>
 
           </Box>

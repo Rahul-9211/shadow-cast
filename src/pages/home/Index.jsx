@@ -30,12 +30,12 @@ const Index = () => {
           <div className="shadow-bottom" />
         </Box>
 
-        <Box className="h-100 flex justify-between pl-48 pr-32 pt-40 pb-32 relative">
-          <Box className="flex-1 flex flex-col items-center justify-center">
-            <h1 className="text-4xl font-heading mb-[28px]">
+        <Box className="h-100 flex justify-between pl-16 pr-16 pt-16 pb-12 sm:pl-48 sm:pr-32 sm:pt-40 sm:pb-32 relative ">
+          <Box className="flex-1 flex flex-col justify-center">
+            <h1 className=" text-xl sm:text-4xl font-heading mb-[10px] sm:mb-[28px]">
               Experience Marketplace
             </h1>
-            <p className="text-base pr-20 font-thin">
+            <p className="text-sm sm:text-base pr-20 font-thin">
               Customize your Avatar, own your own Luxury Apartment and Space
               Ship, Access Games and Virtual Concerts or just meet with your
               friends. Discover unique and immersive virtual experiences that
@@ -54,11 +54,12 @@ const Index = () => {
           </Box>
         </Box>
 
-        <Box className="h-100  flex justify-between pl-48 pr-32 pt-40 pb-32 ">
+   
+        <Box className="h-100  flex justify-between pl-16 pr-16 pt-16 pb-12 sm:pl-48 sm:pr-32 sm:pt-40 sm:pb-32 ">
           <Box className="flex-1 relative">
             <Box className="landingPage-leftShadow"></Box>
 
-            <div className="flex justify-center items-center h-full">
+            <div className="flex justify-center items-center h-full ">
               <img
                 src={landingPage_2}
                 className="cursor-pointer w-auto h-auto relative"
@@ -67,25 +68,24 @@ const Index = () => {
             </div>
           </Box>
           <Box className="flex-1 flex flex-col items-start justify-center">
-            <h1 className="text-4xl pr-4  font-heading mb-[28px]  pl-20">
-              Collectible Assets
+            <h1 className="text-xl sm:text-4xl pr-4  font-heading mb-[10px] sm:mb-[28px]  pl-20">
+            Collectible Assets
             </h1>
-            <p className="text-base pr-4 font-thin  pl-20">
-              Organize and manage your Metaverse Assets effortlessly with our
+            <p className="text-sm sm:text-base pr-4 font-thin  pl-20">
+            Organize and manage your Metaverse Assets effortlessly with our
               intuitive interface. Easily browse through your avatar collection,
               swap outfits, and mix and match accessories to create a unique
               digital persona that represents you.
             </p>
           </Box>
         </Box>
-
-        <Box className=" flex justify-between pl-48 pr-32 pt-40 pb-32 relative">
-          <Box className="flex-1 flex flex-col items-start justify-center">
-            <h1 className="text-4xl font-heading mb-[28px] pr-20">
-              Ultimate Gaming
+        <Box className="h-100 flex justify-between pl-16 pr-16 pt-16 pb-12 sm:pl-48 sm:pr-32 sm:pt-40 sm:pb-32 relative ">
+          <Box className="flex-1 flex flex-col justify-center">
+            <h1 className=" text-xl sm:text-4xl font-heading mb-[10px] sm:mb-[28px]">
+            Ultimate Gaming
             </h1>
-            <p className="text-base pr-20 font-thin">
-              Dive into a dynamic and interconnected digital universe where you
+            <p className="text-sm sm:text-base pr-20 font-thin">
+            Dive into a dynamic and interconnected digital universe where you
               can embark on thrilling adventures, engage in epic quests, and
               participate in unforgettable multiplayer battles. Get ready to
               level up your gaming journey like never before!
@@ -93,30 +93,34 @@ const Index = () => {
           </Box>
           <Box className="flex-1 relative">
             <div className="landingPage-rightShadow"></div>{" "}
-            <img
-              src={landingPage_2}
-              className="cursor-pointer w-auto h-auto relative"
-              alt="Network problem"
-            />
+            <div className="flex justify-center items-center h-full">
+              <img
+                src={landingPage_2}
+                className="cursor-pointer w-auto h-auto relative"
+                alt="Network problem"
+              />
+            </div>
           </Box>
         </Box>
 
-        <Box className="h-100  flex justify-between pl-48 pr-32 pt-40 pb-32 ">
+        <Box className="h-100  flex justify-between pl-16 pr-16 pt-16 pb-12 sm:pl-48 sm:pr-32 sm:pt-40 sm:pb-32 ">
           <Box className="flex-1 relative">
             <Box className="landingPage-leftShadow"></Box>
 
-            <img
-              src={landingPage_2}
-              className="cursor-pointer w-auto h-auto relative"
-              alt="Network problem"
-            />
+            <div className="flex justify-center items-center h-full ">
+              <img
+                src={landingPage_2}
+                className="cursor-pointer w-auto h-auto relative"
+                alt="Network problem"
+              />
+            </div>
           </Box>
           <Box className="flex-1 flex flex-col items-start justify-center">
-            <h1 className="text-4xl pr-4 font-heading mb-[28px]  pl-20">
-              Connect Friends
+            <h1 className="text-xl sm:text-4xl pr-4  font-heading mb-[10px] sm:mb-[28px]  pl-20">
+            Connect Friends
             </h1>
-            <p className="text-base pr-4 font-thin  pl-20">
-              Connect, explore, and create unforgettable memories with friends
+            <p className="text-sm sm:text-base pr-4 font-thin  pl-20">
+            Connect, explore, and create unforgettable memories with friends
               in our immersive metaverse. Join forces, embark on epic
               adventures, and forge unbreakable bonds as you navigate a world
               beyond imagination. Together, the possibilities are limitless!
