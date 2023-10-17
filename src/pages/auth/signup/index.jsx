@@ -134,8 +134,13 @@ const SignUp = () => {
     }
   };
   const handleEmailBlur = () => {
-    setIsEmailFocused(false);
+    const errors = {};
+    errors.email = "Invalid Email Address";
+    setIsEmailFocused(true);
     setIsEmailValid(isValidEmail(formData.email));
+    if(!isValidEmail(formData.email)){
+      setFormErrors(errors)
+    }
   };
 
   return (
