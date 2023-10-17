@@ -17,7 +17,7 @@ import EntertainmentChannel from 'pages/marketplace/entertainments/channel/Index
 import SignUp from 'pages/auth/signup';
 import Layout from 'layout/Index.jsx';
 import AuthLayout from 'AuthLayout/index';
-import SignIn from "pages/auth/signin";
+import SignIn from "pages/auth/signin/index";
 import OtpVerification from 'pages/auth/forgot-password/otp-verification';
 import ConfirmPassword from 'pages/auth/forgot-password/confirm-password';
 import { MyAssets } from 'pages/myassets';

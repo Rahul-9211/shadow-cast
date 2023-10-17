@@ -19,8 +19,7 @@ showcase different features and aspects of the Fourth Star platform, such as the
 marketplace, collectible assets, ultimate gaming, and connecting with friends in the metaverse. */
 const Index = () => {
   return (
-    <>
-      <Box className="wrapper-container overflow-hidden">
+      <Box className="wrapper-container">
         <Box className="bg-gradient-to-b from-black via-transparent to-[#1F1E21] relative">
           <img
             src={landingHero_1}
@@ -124,7 +123,6 @@ const Index = () => {
             </p>
           </Box>
         </Box>
-      </Box>
 
       {/* <Grid
         container
@@ -395,7 +393,7 @@ const Index = () => {
           </Grid>
         </Container>
       </Grid> */}
-    </>
+      </Box>
   );
 };
 
