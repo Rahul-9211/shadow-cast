@@ -207,14 +207,19 @@
   left: 0;
   width: 100%;
 }
-@media only screen and (max-width: 580px) {
 
-  
+.marketplace_tabs{
+
+}
+@media only screen and (max-width: 580px) {  
   .menu-bar-before{
     display: none;
   }
   .menu-bar-after{
     display: flex;
+  }
+  .marketplace_tabs{
+margin: 2px 5px  !important;
   }
 }
 

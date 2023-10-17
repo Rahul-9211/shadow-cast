@@ -21,6 +21,7 @@ import SignIn from "pages/auth/signIn/index";
 import OtpVerification from 'pages/auth/forgot-password/otp-verification';
 import ConfirmPassword from 'pages/auth/forgot-password/confirm-password';
 import { MyAssets } from 'pages/myassets';
+import DetailPage from 'pages/marketplace/detailTab/DetailTab';
 
 /* The code is exporting a default function that returns an array of route objects. Each route object
 represents a specific route in a web application. */
@@ -52,7 +53,8 @@ const routes = [
     name: 'Marketplace-Apartments-Details',
     key: 'marketplace-apartments-details',
     route: '/marketplace/apartments/:apartment_name',
-    component: <ApartmentDetail />,
+    // component: <ApartmentDetail />,
+    component: <DetailPage value="0" />,
     useLayout: <Layout />,
   },
   {
@@ -66,7 +68,8 @@ const routes = [
     name: 'Marketplace-Ships-Details',
     key: 'marketplace-ships-details',
     route: '/marketplace/ships/:ship_name',
-    component: <ShipsDetail />,
+    // component: <ShipsDetail />,
+    component: <DetailPage value="1" />,
     useLayout: <Layout />,
   },
   {

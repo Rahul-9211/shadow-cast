@@ -16,9 +16,11 @@
  import Ships from 'pages/marketplace/ships/Index';
  import Entertainments from 'pages/marketplace/entertainments/Index';
  import ImgTest from 'assets/images/test_bg.png';
+import ApartmentDetail from '../apartments/detail/Index.jsx';
+
  
  /* The code defines a functional component called `Index` that serves as a marketplace page with tabs. */
- const Index = (props) => {
+ const DetailPage = (props) => {
    const navigate = useNavigate();
    const [allCategory] = useState([
      { label: 'Apartment', coming: false },
@@ -36,7 +38,7 @@
    const handleChange = (event, newValue) => {
      switch (newValue) {
        case 0:
-         navigate('/marketplace/apartments');
+         navigate('/marketplace/apartments/:asdas');
          break;
        case 1:
          navigate('/marketplace/ships');
@@ -51,6 +53,8 @@
  
    useEffect(() => {
      if (props?.value) setValue(+props?.value);
+
+     console.log("props",+props?.value )
    }, [props]);
    return (
      <>
@@ -79,7 +83,7 @@
                        !category?.coming ? (
                          category?.label
                        ) : (
-                         <p className="font-normal text-sm">
+                         <p className="font-normal text-sm ">
                            {category?.label}
                            <span
                              style={{
@@ -101,7 +105,7 @@
                </Tabs>
              </Box>
              <TabPanel value={value} index={0}>
-               <Apartments />
+               <ApartmentDetail/>
              </TabPanel>
              <TabPanel value={value} index={1}>
                <Ships />
@@ -118,4 +122,4 @@
    );
  };
  
- export default Index;
+ export default DetailPage;
