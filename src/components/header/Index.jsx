@@ -8,12 +8,11 @@
 
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Avatar, Badge, Button, Grid, Container, Box } from "@mui/material";
-import { LightSpeed } from "react-reveal";
-
-import SearchIcon from "@mui/icons-material/Search";
+// import { Avatar, Badge, Button, Grid, Container, Box } from "@mui/material";
+// import { LightSpeed } from "react-reveal";
+// import SearchIcon from "@mui/icons-material/Search";
 // import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
+// import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import logo from "assets/images/logo.png";
 import AfterLogin from "./AfterLogin";
 import BeforeLogin from "./BeforeLogin";
@@ -23,21 +22,8 @@ const Index = () => {
   return (
     // header before login 
     // <BeforeLogin/>
-
-
-// headerżafter login 
-<AfterLogin/>
-
-
-
-    // <Grid container>
-    //   <img
-    //     src={logo}
-    //     className="cursor-pointer w-auto h-auto"
-    //     alt="Network problem"
-    //   />
-    //   This is me
-    // </Grid>
+    // headerżafter login 
+    <AfterLogin />
   );
   // return (
   //   <Grid
