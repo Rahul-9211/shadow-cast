@@ -93,7 +93,7 @@
                        )
                      }
                      {...a11yProps(i)}
-                     className="text-lg  font-normal mr-10"
+                     className="text-lg  font-normal "
                      key={i}
                      sx={{ zIndex: 1 }}
                    />

@@ -275,7 +275,7 @@ const Index = () => {
                 // container
                 // item
                 // xs={12}
-                className="rounded-xl "
+                className="rounded-xl explore-apparment-card"
                 key={i}
                 sx={{
                   padding: "15px",
@@ -353,6 +353,7 @@ const Index = () => {
                   />
                 </Box>
                 <Box
+                className=""
                   item
                   xs={12}
                   sx={{
@@ -369,17 +370,18 @@ const Index = () => {
                   >
                     {item?.title}
                   </h1>
-                  <Box className="flex justify-between items-start c_white">
+                  <Box className="flex justify-between items-start c_white explore-apparment-card-content">
                     <p
                       className="text-sm max-w-3xl text-white text-opacity-70"
                       sx={{ width: "70%" }}
                     >
                       {item?.desc}
                     </p>
-                    <Button
+                    <button
                       className="c_white capitalize  rounded-3xl   btn_hover_effect text-white font-inter font-medium text-base p-8 "
-                      sx={{
+                      style={{
                         border: "1px solid #FBBC5E",
+                        maxWidth:"180px",
                         padding: "5px 16px",
                       }}
                       onClick={() =>
@@ -387,7 +389,7 @@ const Index = () => {
                       }
                     >
                       See Apartment
-                    </Button>
+                    </button>
                   </Box>
                 </Box>
               </Box>
