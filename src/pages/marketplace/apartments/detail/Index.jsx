@@ -38,7 +38,8 @@ import IndexC from "components/carousel/Index";
 import PremAptImg from "../../../../assets/images/premium_apt.png";
 import { ShoppingCart } from "@mui/icons-material";
 import GredientImg from "../../../../assets/images/gredient_bg.png";
-
+import SuggestedCard from "components/card/marketplace/apartment/SuggestedCard";
+import SuggestedCardSkeleton from "components/card/marketplace/apartment/SuggestedCardSkeleton";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -86,7 +87,7 @@ const Index = () => {
     <>
       <Box
         // sx={{ padding: '1.5rem 3rem' }}
-        className=""
+        className=" px-4"
       >
         <Box
           xs={12}
@@ -108,7 +109,7 @@ const Index = () => {
             Back
           </Typography>
         </Box>
-        <Box className="relative rounded" sx={{ height: "400px" }}>
+        <Box className="relative rounded" >
           <Zoom>
             <img
               src={PremAptImg}
@@ -123,10 +124,10 @@ const Index = () => {
         <Box>
           <Box
             // sx={{ margin: '20px 0 30px 0' }}
-            className="justify-between gap-x-5 flex mt-5 mb-8 relative"
+            className="justify-between gap-x-5 sm:flex mt-5 mb-8 relative"
           >
             <div className="appartment-card-left-shadow "></div>
-            <Grid item sm={12} md={5.5} className="flex flex-col pt-3">
+            <Grid item sm={12} md={5.5} className="flex flex-col pt-3 pb-8 sm:pb-0">
               <p className="text-sm  c_gray clip-text pb-3">About Apartment</p>
               <p className="font-heading text-md pb-3">
                 Luminary Luxury - The Nebula
@@ -204,7 +205,7 @@ const Index = () => {
               >
                 <img
                   src="https://fourthstar-userdashboard.s3.amazonaws.com/apt_2.png"
-                  className="h-full w-full rounded-xl mb-3 border border-solid border-amber-500 border-2"
+                  className="h-full w-full rounded-xl mb-3 border border-solid border-amber-500 border-2 apartment-theme-card-img"
                   style={{
                     objectFit: "cover",
                     height: "149px",
@@ -224,7 +225,7 @@ const Index = () => {
               >
                 <img
                   src="https://fourthstar-userdashboard.s3.amazonaws.com/apt_d_3.png"
-                  className="h-full w-full rounded-xl mb-3"
+                  className="h-full w-full rounded-xl mb-3 apartment-theme-card-img"
                   style={{
                     objectFit: "cover",
                     height: "149px",
@@ -235,7 +236,7 @@ const Index = () => {
                 />
                 <p className=" text-md ">Experience Marketplace</p>
                 <p
-                  className="absolute text-md font-normal text-amber-500"
+                  className="absolute text-md font-normal text-amber-500 apartment-theme-card-soon"
                   style={{ top: "73px", left: "70px" }}
                 >
                   Comming Soon
@@ -297,10 +298,10 @@ const Index = () => {
                 technology and a vast selection of games and entertainment,
               </p>
             </Box>
-            <Grid container item xs={12} className="gap-7">
-              {["", ""].map((item, i) => (
+            <Box container item xs={12} key="2" className="flex flex-wrap justify-center sm:justify-start">
+              {[""].map((item, i) => (
                 <Box
-                  className=" flex flex-col rounded"
+                  className=" flex flex-col rounded mr-8 wrap mb-8 apartment-gaming-card"
                   sx={{
                     height: "230px",
                     width: "400px",
@@ -317,23 +318,24 @@ const Index = () => {
                   />
                 </Box>
               ))}
-              <Grid
-                container
-                item
-                xs={12}
-                sm={3.5}
-                md={3}
-                lg={2.8}
-                className="rounded-xl"
+              <Box
+              key="9"
+                // container
+                // item
+                // xs={12}
+                // sm={3.5}
+                // md={3}
+                // lg={2.8}
+                className="rounded-xl mr-8 wrap mb-8"
               >
-                   <Box
-                  className=" flex flex-col rounded"
-                  sx={{
-                    height: "230px",
-                    width: "400px",
-                  }}
+                <Box
+                  className=" flex flex-col rounded apartment-gaming-card"
+                  // sx={{
+                  //   height: "230px",
+                  //   width: "400px",
+                  // }}
                 >
-                   <Skeleton
+                  <Skeleton
                     variant="rectangular"
                     width="400px"
                     height="230px"
@@ -341,12 +343,11 @@ const Index = () => {
                       bgcolor: "#1A2237",
                       width: "100%",
                     }}
-                    className="rounded-xl"
+                    className="rounded-xl apartment-gaming-card"
                   />
                 </Box>
-               
-              </Grid>
-            </Grid>
+              </Box>
+            </Box>
             {/* <Grid item xs={12} sx={{ marginTop: "3rem" }}>
               <Typography className="font-bold fs20px">Streaming</Typography>
             </Grid>
@@ -417,339 +418,29 @@ const Index = () => {
             </Grid> */}
           </Box>
         </Box>
-        <div style={{ height: "1px", background: "rgba(90, 90, 90, 0.20)" }} className="bg-red-500 mt-24 w-full"></div>
+        <div
+          style={{ height: "1px", background: "rgba(90, 90, 90, 0.20)" }}
+          className="bg-red-500 mt-24 w-full"
+        ></div>
         <Box>
-          <Box
-            className=" mt-20"
-          >
-            <Box className="font-heading mb-16">
-              <p className="text-2xl">
-                Suggested Apartment
-              </p>
+          <Box className=" mt-20">
+            <Box className="font-heading mb-16" key="3">
+              <p className="text-2xl">Suggested Apartment</p>
             </Box>
 
-            <Box container item xs={12} className="justify-between flex">
+            <Box container item xs={12} className="justify-between md:flex ">
               {[""].map((item, i) => (
-                 <Box
-                 // container
-                 // item
-                 // xs={12}
-                 className="rounded-xl "
-                 key={i}
-                 sx={{
-                   padding: "15px",
-                   backgroundColor: "#32302D",
-                   marginBottom: "70px",
-                   zIndex: 5,
-                   // boxShadow: 'inset 26px 0px 138px 4px rgba(255,233,201,.3)',
-                   position: "relative",
-                   overflow: "hidden",
-                 }}
-                 gap={3}
-               >
-                 <Grid
-                   sx={{
-                     position: "absolute",
-                     // backgroundImage: `url()`,
-                     // border: '2px solid red',
-                     top: "-57%",
-                     // right: '-58%',
-                     left: "-25%",
-                     // bottom: 0,
-                     height: "875px",
-                     width: "875px",
-                     zIndex: 0,
-                   }}
-                 >
-                   <img
-                     src={GredientImg}
-                     style={{
-                       objectFit: "cover",
-                       height: "100%",
-                       width: "100%",
-                       // border: '3px solid red',
-                     }}
-                   />
-                 </Grid>
-                 <Grid
-                   sx={{
-                     position: "absolute",
-                     // backgroundImage: `url()`,
-                     // border: '2px solid red',
-                     top: "-57%",
-                     // right: '-58%',
-                     right: "-25%",
-                     // bottom: 0,
-                     height: "875px",
-                     width: "875px",
-                     zIndex: 0,
-                   }}
-                 >
-                   <img
-                     src={GredientImg}
-                     style={{
-                       objectFit: "cover",
-                       height: "100%",
-                       width: "100%",
-                       // border: '3px solid red',
-                     }}
-                   />
-                 </Grid>
-                 <Box
-                   item
-                   xs={12}
-                   // sx={{
-                   //   height: '310px',
-                   //   background: '#2D2D2D',
-                   //   borderRadius: '10px 10px 0 0 ',
-                   //   zIndex: 5,
-                   // }}
-                 >
-                   <img
-                     src="https://fourthstar-userdashboard.s3.amazonaws.com/apt_d_15.png"
-                     className="h-full w-full relative"
-                     style={{ objectFit: "fill" }}
-                   />
-                 </Box>
-                 <Box
-                   item
-                   xs={12}
-                   sx={{
-                     // backgroundColor: '#1A2237',
-                     // padding: '22px 15px ',
-                     padding: "5px 10px 15px 10px",
- 
-                     // borderRadius: '0px 0px 10px 10px ',
-                   }}
-                 >
-                   <h1
-                     className="text-xl font-bold c_white mt-4 mb-4 font-bold font-heading"
-                     // sx={{ marginBottom: '10px' }}
-                   >
-                     Luminary Luxury - The Nebula
-                   </h1>
-                   <Box className="flex justify-between items-start c_white">
-                     <p
-                       className="text-sm max-w-xl text-white text-opacity-70"
-                     >
-                        Indulge in the opulence of these towering apartments
-                         that capture the essence of a radiant galaxy, offering a
-                         sophisticated and cosmopolitan living experience.{" "}
-                     </p>
-                   </Box>
-                 </Box>
-               </Box>
-                // <Grid
-                //   container
-                //   item
-                //   xs={12}
-                //   sm={5.5}
-                //   sx={{
-                //     height: "400px",
-                //     padding: "15px ",
-                //     backgroundColor: "#1A2237",
-                //   }}
-                //   className="rounded-xl"
-                //   key={i}
-                // >
-                //   <Grid
-                //     item
-                //     xs={12}
-                //     sx={{
-                //       height: "270px",
-                //       background: "#2D2D2D",
-                //       borderRadius: "8px",
-                //       overflow: "hidden",
-                //     }}
-                //   >
-                //     <img
-                //       src="https://fourthstar-userdashboard.s3.amazonaws.com/apt_d_15.png"
-                //       className="h-full w-full"
-                //       style={{ objectFit: "cover" }}
-                //     />
-                //   </Grid>
-                //   <Grid
-                //     item
-                //     xs={12}
-                //     sx={{
-                //       borderRadius: "0px 0px 10px 10px ",
-                //     }}
-                //   >
-                //     <Typography
-                //       className="fs16px font-bold"
-                //       sx={{ marginBottom: "10px" }}
-                //     >
-                //       Luminary Luxury - The Nebula
-                //     </Typography>
-                //     <Grid className="flex justify-between items-start">
-                //       <Typography className="fs14px" sx={{ width: "100%" }}>
-                //         Indulge in the opulence of these towering apartments
-                //         that capture the essence of a radiant galaxy, offering a
-                //         sophisticated and cosmopolitan living experience.{" "}
-                //       </Typography>
-                //     </Grid>
-                //   </Grid>
-                // </Grid>
+                <SuggestedCard
+                  imgSrc="https://fourthstar-userdashboard.s3.amazonaws.com/apt_d_15.png"
+                  gradientSrc={GredientImg}
+                  heading="Luminary Luxury - The Nebula"
+                  content=" Indulge in the opulence of these towering apartments
+                 that capture the essence of a radiant galaxy, offering a
+                 sophisticated and cosmopolitan living experience."
+                  index={i}
+                />
               ))}
-
-<Box
-                 // container
-                 // item
-                 // xs={12}
-                 className="rounded-xl "
-                 sx={{
-                   padding: "15px",
-                   backgroundColor: "#32302D",
-                   marginBottom: "70px",
-                   zIndex: 5,
-                   // boxShadow: 'inset 26px 0px 138px 4px rgba(255,233,201,.3)',
-                   position: "relative",
-                   overflow: "hidden",
-                 }}
-                 gap={3}
-               >
-                 <Grid
-                   sx={{
-                     position: "absolute",
-                     // backgroundImage: `url()`,
-                     // border: '2px solid red',
-                     top: "-57%",
-                     // right: '-58%',
-                     left: "-25%",
-                     // bottom: 0,
-                     height: "875px",
-                     width: "875px",
-                     zIndex: 0,
-                   }}
-                 >
-                   <img
-                     src={GredientImg}
-                     style={{
-                       objectFit: "cover",
-                       height: "100%",
-                       width: "100%",
-                       // border: '3px solid red',
-                     }}
-                   />
-                 </Grid>
-                 <Grid
-                   sx={{
-                     position: "absolute",
-                     // backgroundImage: `url()`,
-                     // border: '2px solid red',
-                     top: "-57%",
-                     // right: '-58%',
-                     right: "-25%",
-                     // bottom: 0,
-                     height: "875px",
-                     width: "875px",
-                     zIndex: 0,
-                   }}
-                 >
-                   <img
-                     src={GredientImg}
-                     style={{
-                       objectFit: "cover",
-                       height: "100%",
-                       width: "100%",
-                       // border: '3px solid red',
-                     }}
-                   />
-                 </Grid>
-                 <Box
-                   item
-                   xs={12}
-                   // sx={{
-                   //   height: '310px',
-                   //   background: '#2D2D2D',
-                   //   borderRadius: '10px 10px 0 0 ',
-                   //   zIndex: 5,
-                   // }}
-                 >
-                   {/* <img
-                     src="https://fourthstar-userdashboard.s3.amazonaws.com/apt_d_15.png"
-                     className="h-full w-full relative"
-                     style={{ objectFit: "fill" }}
-                   /> */}
-                    <Skeleton
-                    className="h-full w-full relative"
-                    style={{ objectFit: "fill" }}
-                    variant="rectangular"
-                    width="100%"
-                    height="100%"
-                    sx={{
-                      objectFit:"fill",
-                      bgcolor: "#1A2237",
-                      width: "100%",
-                      borderRadius: "10px 10px 0 0 ",
-                    }}
-                  />
-                 </Box>
-                 <Box
-                   item
-                   xs={12}
-                   sx={{
-                     // backgroundColor: '#1A2237',
-                     // padding: '22px 15px ',
-                     padding: "5px 10px 15px 10px",
- 
-                     // borderRadius: '0px 0px 10px 10px ',
-                   }}
-                 >
-                   <Skeleton width="40%" sx={{ bgcolor: "grey.600" }} />
-                   <Box className="flex justify-between items-start c_white">
-                   <Skeleton sx={{ bgcolor: "grey.600" }} width="100%" />
-                   </Box>
-                 </Box>
-               </Box>
-
-              {/* <Grid
-                container
-                item
-                xs={12}
-                sm={5.5}
-                className="rounded-xl"
-                sx={{
-                  height: "400px",
-                  padding: "15px ",
-                  backgroundColor: "#1A2237",
-                }}
-              >
-                <Grid
-                  item
-                  xs={12}
-                  sx={{
-                    height: "270px",
-                    background: "#2D2D2D",
-                    borderRadius: "8px",
-                  }}
-                >
-                  <Skeleton
-                    variant="rectangular"
-                    width="100%"
-                    height="100%"
-                    sx={{
-                      bgcolor: "#1A2237",
-                      width: "100%",
-                      borderRadius: "10px 10px 0 0 ",
-                    }}
-                  />
-                </Grid>
-                <Grid
-                  item
-                  xs={12}
-                  sx={{
-                    backgroundColor: "#1A2237",
-                    borderRadius: "0px 0px 10px 10px ",
-                  }}
-                >
-                  <Skeleton width="40%" sx={{ bgcolor: "grey.600" }} />
-
-                  <Grid className="flex justify-between items-start">
-                    <Skeleton sx={{ bgcolor: "grey.600" }} width="100%" />
-                  </Grid>
-                </Grid>
-              </Grid> */}
+              <SuggestedCardSkeleton gradientSrc={GredientImg} />
             </Box>
           </Box>
         </Box>

@@ -106,9 +106,9 @@ img {
   flex-direction: column !important;
 }
 
-.justify-center {
+/* .justify-center {
   justify-content: center !important;
-}
+} */
 
 .items-center {
   align-items: center !important;
