@@ -214,4 +214,8 @@
   .menu-bar-after {
     display: flex;
   }
+
+  .marketplace_tabs {
+    margin: 2px 5px !important;
+  }
 }
