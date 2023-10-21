@@ -18,7 +18,12 @@
  import ImgTest from 'assets/images/test_bg.png';
 import ApartmentDetail from '../apartments/detail/Index.jsx';
 
- 
+const customTabsStyle = {
+  '& .MuiTabs-indicator': {
+    backgroundColor: 'transparent',
+    border: 'none',
+  },
+};
  /* The code defines a functional component called `Index` that serves as a marketplace page with tabs. */
  const DetailPage = (props) => {
    const navigate = useNavigate();
@@ -75,21 +80,21 @@ import ApartmentDetail from '../apartments/detail/Index.jsx';
                  aria-label="scrollable auto basic tabs example"
                  allowScrollButtonsMobile={true}
                  scrollButtons="auto"
-                 className='mb-8 '
+                //  className='mb-8'
+                 style={customTabsStyle}
+                 className="custom-tabs px-1 mb-4"
                >
                  {allCategory?.map((category, i) => (
                    <Tab
                      label={
-                       !category?.coming ? (
-                         category?.label
-                       ) : (
-                         <p className="font-normal text-sm ">
+                       !category?.coming ?   <p className='font-normal text-sm font-text'>{category?.label}</p>  : (
+                         <p className="font-normal text-sm font-text">
                            {category?.label}
                            <span
                              style={{
                                marginLeft: '5px',
                              }}
-                             className=" rounded-md d_color text-xs"
+                             className=" rounded-md d_color text-xs font-text"
                            >
                              Coming soon
                            </span>

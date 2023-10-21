@@ -370,7 +370,7 @@ const Index = () => {
                   >
                     {item?.title}
                   </h1>
-                  <Box className="flex justify-between items-start c_white explore-apparment-card-content">
+                  <Box className="flex justify-between relative items-start c_white explore-apparment-card-content">
                     <p
                       className="text-sm max-w-3xl text-white text-opacity-70"
                       sx={{ width: "70%" }}
@@ -378,7 +378,7 @@ const Index = () => {
                       {item?.desc}
                     </p>
                     <button
-                      className="c_white capitalize  rounded-3xl   btn_hover_effect text-white font-inter font-medium text-base p-8 "
+                      className="c_white capitalize z-[13] rounded-3xl   btn_hover_effect text-white font-text font-medium text-base p-8 "
                       style={{
                         border: "1px solid #FBBC5E",
                         maxWidth:"180px",
@@ -386,6 +386,7 @@ const Index = () => {
                       }}
                       onClick={() =>
                         navigate(`/marketplace/apartments/${item?.title}`)
+
                       }
                     >
                       See Apartment

@@ -17,6 +17,13 @@
  import Entertainments from 'pages/marketplace/entertainments/Index';
  import ImgTest from 'assets/images/test_bg.png';
  
+ const customTabsStyle = {
+  '& .MuiTabs-indicator': {
+    backgroundColor: 'transparent',
+    border: 'none',
+  },
+};
+
  /* The code defines a functional component called `Index` that serves as a marketplace page with tabs. */
  const Index = (props) => {
    const navigate = useNavigate();
@@ -61,7 +68,7 @@
            item
            xs={12}
            sx={{ margin: '20px 35px' }}
-           className="marketplace_tabs"
+           className="marketplace_tabs font-text"
          >
            <Box sx={{ width: '100%', zIndex: 5 }}>
              <Box sx={{ borderColor: 'divider', zIndex: 5 }}>
@@ -71,21 +78,19 @@
                  aria-label="scrollable auto basic tabs example"
                  allowScrollButtonsMobile={true}
                  scrollButtons="auto"
-                 className='mb-8 '
+                 style={customTabsStyle}
+                 className="custom-tabs mb-8 font-text px-1"
                >
                  {allCategory?.map((category, i) => (
                    <Tab
-                     label={
-                       !category?.coming ? (
-                         category?.label
-                       ) : (
-                         <p className="font-normal text-sm">
+                     label={ !category?.coming ?   <p className='font-normal text-sm font-text'>{category?.label}</p>  : (
+                         <p className="font-normal text-sm font-text">
                            {category?.label}
                            <span
                              style={{
                                marginLeft: '5px',
                              }}
-                             className=" rounded-md d_color text-xs"
+                             className=" rounded-md d_color text-xs font-text"
                            >
                              Coming soon
                            </span>
