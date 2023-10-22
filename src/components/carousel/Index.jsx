@@ -45,6 +45,7 @@ const MainCarousel = () => {
           time={3000}
           width="100%"
           height="500px"
+          maxHeight="496px"
           captionStyle={captionStyle}
           radius="10px"
           slideNumber={false}
@@ -68,8 +69,8 @@ const MainCarousel = () => {
         />
       ) : (
         <Skeleton
-          variant="rectangular"
-          sx={{ width: '100%', height: '500px', borderRadius: '10px' }}
+          // variant="rectangular"
+          sx={{ width: '100%', borderRadius: '10px'  , maxWidth:"883px"}}
         />
       )}
     </div>

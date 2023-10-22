@@ -17,6 +17,7 @@ module.exports = {
       fontFamily: {       
         'inter' : ['Inter', 'sans-serif'],
         'heading': ['Krona One', 'sans-serif'],
+        "text": ['Montserrat', 'sans-serif'],
         body: ['Montserrat', 'sans-serif']
       },
       backgroundOpacity : {

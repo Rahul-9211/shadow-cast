@@ -106,9 +106,9 @@ img {
   flex-direction: column !important;
 }
 
-.justify-center {
+/* .justify-center {
   justify-content: center !important;
-}
+} */
 
 .items-center {
   align-items: center !important;
@@ -297,12 +297,14 @@ img {
 
 .btn_hover_effect:hover {
   background-color: #6768ff !important;
-  border: 1px solid #6768ff;
+  /* border: 1px solid #6768ff; */
+  border: 1px solid #FBBC5E;
 }
 
 .btn_hover_effect_opposite:hover {
   background-color: transparent !important;
-  border: 1px solid #6768ff;
+  /* border: 1px solid #6768ff; */
+  border: 1px solid #FBBC5E;
   /* color: white !important; */
 }
 
@@ -315,8 +317,9 @@ img {
 }
 
 .thumbnail {
-  height: 150px;
-  width: 150px;
+  height:67px ;
+  width:  120px;
+  margin-top: 24px;
 }
 
 .MuiBadge-badge {
@@ -331,4 +334,8 @@ img {
 .slick-track {
   display: flex !important;
   column-gap: 15px !important;
+}
+
+.active-thumbnail{
+  border: 1px solid #FBBC5E;
 }
