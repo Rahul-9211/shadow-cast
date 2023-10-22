@@ -5,6 +5,10 @@
  *@module user
  *@developer Sameer <sameer@shadowcast.io>
  */
+import Rodal from 'rodal';
+
+// include styles
+import 'rodal/lib/rodal.css';
 
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -32,6 +36,7 @@ import {
 import { Fade, Zoom } from "react-reveal";
 
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import CloseIcon from "@mui/icons-material/Close";
 import IndexC from "components/carousel/Index";
@@ -41,9 +46,9 @@ import GredientImg from "../../../../assets/images/gredient_bg.png";
 import SuggestedCard from "components/card/marketplace/apartment/SuggestedCard";
 import SuggestedCardSkeleton from "components/card/marketplace/apartment/SuggestedCardSkeleton";
 
-const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
+// const Transition = React.forwardRef(function Transition(props, ref) {
+//   return <Slide direction="up" ref={ref} {...props} />;
+// });
 /**
  * The Model function returns a primitive object with props that represents a 3D model loaded from a
  * GLB file.
@@ -83,33 +88,49 @@ const Index = () => {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const handleAddToCart = () => {
+    console.log("handle add to cart ");
+  };
+  const handleBuyNow = () => {
+    console.log("handle buy now ");
+  };
+
+const [visibilityState , setVisibilityState] = useState(false)
+  const show = () => {
+    setVisibilityState(true)
+  }
+
+  const hide = () => {
+    setVisibilityState(false)
+  }
+
   return (
     <>
       <Box
         // sx={{ padding: '1.5rem 3rem' }}
-        className=" px-4"
+        className=""
       >
         <Box
           xs={12}
-          sx={{ padding: "0 0 10px 0px" }}
-          className="relative z-[2] bg-red"
+          // sx={{ padding: "0 0 10px 0px" }}
+          className="relative z-[2] back-button"
         >
-          <Typography
-            className=" flex items-center cursor-pointer absolute font-inter text-xs  rounded-3xl"
-            sx={{
+          <p
+            className=" flex items-center cursor-pointer absolute font-text text-sm font-semibold rounded-3xl font-text"
+            style={{
               bottom: `-50px`,
               left: "12px",
-              fontFamily: "Inter",
               padding: "5px 12px 6px 8px",
-              background: "rgba(255, 255, 255, 0.10);",
+              background: "rgba(255, 255, 255, 0.10)",
             }}
             onClick={() => navigate(-1)}
           >
-            <ArrowBackIcon fontSize="small" className="mr-2" />
+            <ChevronLeftIcon fontSize="medium" className="mr-1 font-text" />
             Back
-          </Typography>
+          </p>
         </Box>
-        <Box className="relative rounded" >
+        <Box className="relative rounded">
           <Zoom>
             <img
               src={PremAptImg}
@@ -124,10 +145,17 @@ const Index = () => {
         <Box>
           <Box
             // sx={{ margin: '20px 0 30px 0' }}
-            className="justify-between gap-x-5 sm:flex mt-5 mb-8 relative"
+            className="justify-between gap-x-5 sm:flex mt-10 mb-8 relative"
           >
             <div className="appartment-card-left-shadow "></div>
-            <Grid item sm={12} md={5.5} className="flex flex-col pt-3 pb-8 sm:pb-0">
+            <div className="appartment-card-right-shadow-apartment-detail"></div>
+
+            <Grid
+              item
+              sm={12}
+              md={5.5}
+              className="flex flex-col pt-3 pb-8 sm:pb-0"
+            >
               <p className="text-sm  c_gray clip-text pb-3">About Apartment</p>
               <h1 className="font-heading text-md pb-3">
                 Luminary Luxury - The Nebula
@@ -166,11 +194,17 @@ const Index = () => {
                   <p className="font-bold text-md">2.4 XFS ($245.89)</p>
                 </Grid>
               </Grid>
-              <Grid>
-                <button className="capitalize font-bold rounded-lg btn-gradient w-full text-black py-3 px-5  rounded text-md">
+              <Grid className='relative'>
+                <button
+                  className="capitalize font-bold rounded-lg btn-gradient w-full text-black py-3 px-5  rounded text-md z-[13]"
+                  onClick={handleBuyNow}
+                >
                   Buy Now
                 </button>
-                <button className="capitalize font-bold rounded-lg   bg-opacity-100 border border-solid border-amber-500 border-1.5 w-full text-white py-3 px-5 mt-6 rounded text-md">
+                <button
+                  className="capitalize font-bold rounded-lg z-[13] bg-opacity-100 border border-solid border-amber-500 border-1.5 w-full text-white py-3 px-5 mt-6 rounded text-md"
+                  onClick={handleAddToCart}
+                >
                   <ShoppingCart
                     data-testid="shopping-cart-icon"
                     className="text-white text-md "
@@ -255,17 +289,17 @@ const Index = () => {
             <Box className="mb-5">
               <p className="text-2xl font-heading">Sneaky Peak</p>
             </Box>
-            <Box className="mb-12" style={{ maxWidth: "883px" }}>
+            <Box className="mb-12 relative" style={{ maxWidth: "883px" }}>
               <IndexC />
             </Box>
-            <Box item xs={12}>
+            <Box item xs={12} className="relative">
               <button
                 style={{
                   background:
                     "linear-gradient(90deg, rgba(251, 188, 94, 0.10) 0.13%, rgba(243, 161, 81, 0.10) 99.89%)",
                 }}
-                onClick={handleClickOpen}
-                className="capitalize max-w-xs font-bold rounded-lg   bg-opacity-100 border border-solid border-amber-500 border-1.5 w-full text-white py-3 px-5  rounded text-md"
+                onClick={show}
+                className="capitalize max-w-xs font-bold rounded-lg z-[13]  bg-opacity-100 border border-solid border-amber-500 border-1.5 w-full text-white py-3 px-5  rounded text-md"
               >
                 Preview in Market Suit
               </button>
@@ -291,14 +325,20 @@ const Index = () => {
               <p className="font-heading text-2xl">Gaming</p>
             </Box>
             <Box className="max-w-3xl mb-12">
-              <p className=" text-md font-inter text-white text-opacity-60">
+              <p className=" text-md font-text text-white text-opacity-60">
                 Experience next-level gaming and streaming. Dive into immersive
                 worlds, challenge friends in multiplayer battles, or simply
                 relax and enjoy your favorite content. With cutting-edge
                 technology and a vast selection of games and entertainment,
               </p>
             </Box>
-            <Box container item xs={12} key="2" className="flex flex-wrap justify-center sm:justify-start">
+            <Box
+              container
+              item
+              xs={12}
+              key="2"
+              className="flex flex-wrap justify-center sm:justify-start"
+            >
               {[""].map((item, i) => (
                 <Box
                   className=" flex flex-col rounded mr-8 wrap mb-8 apartment-gaming-card"
@@ -319,7 +359,7 @@ const Index = () => {
                 </Box>
               ))}
               <Box
-              key="9"
+                key="9"
                 // container
                 // item
                 // xs={12}
@@ -445,7 +485,30 @@ const Index = () => {
           </Box>
         </Box>
       </Box>
+      
+      {/* Modal  */}
+      <Box>
 
+        <Rodal visible={visibilityState} onClose={hide} className=''>
+        <Box className="text-center font-text">
+        <p className="mb-6 text-2xl font-bold font-heading">Preview in Market Suite</p>
+        <p className="mb-12 text-md max-w-lg font-light m-auto font-text">
+          To preview the apartment, login to Oculus to have full apartment view
+          inside Marketing Suite.
+        </p>
+        <button
+          className="capitalize font-bold rounded-lg btn-gradient w-1/3 text-black py-3 px-5  rounded text-md font-text"
+          onClick={hide}
+        >
+          Got it!
+        </button>
+      </Box>
+        </Rodal>
+      </Box>
+
+
+    
+{/* 
       <Dialog
         fullScreen
         open={open}
@@ -495,7 +558,7 @@ const Index = () => {
             </PresentationControls>
           </Canvas>
         </Grid>
-      </Dialog>
+      </Dialog> */}
     </>
   );
 };

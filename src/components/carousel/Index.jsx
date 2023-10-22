@@ -38,7 +38,7 @@ const MainCarousel = () => {
   };
 
   return (
-    <div className="slideCarousel ">
+    <div className="slideCarousel z-[13]">
       {image?.length > 0 ? (
         <Carousel
           data={data}

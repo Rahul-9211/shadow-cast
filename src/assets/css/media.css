@@ -180,7 +180,18 @@
   left: -13%;
 }
 
-
+.appartment-card-right-shadow-apartment-detail {
+  width: 796px;
+  height: 700px;
+  flex-shrink: 0;
+  border-radius: 600px;
+  opacity: 0.4;
+  background: rgba(255, 233, 201, 0.7);
+  filter: blur(200px);
+  position: absolute;
+  top: 223%;
+  right: -20%;
+}
 .appartment-card-right-shadow {
   width: 700px;
   height: 700px;
@@ -206,8 +217,36 @@
   width: 100%;
 }
 
-@media only screen and (max-width: 580px) {
-  .menu-bar-before {
+.marketplace_tabs{
+
+}
+.rodal-dialog{
+  padding: 0px;
+  background-color: #2C2C2C  !important;
+  max-width: 900px;
+  display: flex;
+  width: 80% !important;
+  justify-content: center;
+  align-items: center;
+}
+
+.rodal-close{
+  display: none;
+}
+
+.custom-tabs .MuiTabs-indicator {
+  background-color: transparent;
+  border: none;
+}
+
+
+@media only screen and (max-width: 900px) {
+  .back-button p{
+    bottom: -35px !important;
+  }
+}  
+@media only screen and (max-width: 580px) {  
+  .menu-bar-before{
     display: none;
   }
 
