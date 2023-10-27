@@ -36,6 +36,7 @@ import TrendingChannelCard from "components/card/marketplace/entertainment/chann
   displaying information about Fourth Star Apartments. */
 const Index = () => {
   const navigate = useNavigate();
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
 
   useEffect(() => {
@@ -44,7 +45,22 @@ const Index = () => {
     const parts = url.split("/");
     const valueAfterApartments = parts[parts.indexOf("apartments") + 1];
     console.log(valueAfterApartments);
+    
   });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    // Attach the event listener
+    window.addEventListener('resize', handleResize);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const settings = {
     className: "slider variable-width",
@@ -54,6 +70,16 @@ const Index = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     variableWidth: true,
+  };
+  const customCarouselStyle = {
+    width:
+    windowWidth < 1350 && windowWidth > 900
+      ? `${windowWidth - 75}px`
+      : windowWidth < 900 && windowWidth > 580
+      ? `${windowWidth - 75}px`
+      : `${windowWidth - 45}px`,
+    maxWidth : '1350px'
+    // Add more conditions as needed
   };
   return (
     <>
@@ -65,6 +91,7 @@ const Index = () => {
           className="relative rounded"
           sx={{ maxHeight: "400px", zIndex: 5 }}
         >
+          <p className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-3xl">Welcome to Fourth  Start Apartment</p>
           <Zoom>
             <img
               src={PremAptImg}
@@ -78,25 +105,12 @@ const Index = () => {
         </Box>
         <Box>
           <Box
-            container
-            item
-            xs={12}
-            sx={
-              {
-                // margin: '8rem 0 30px 0',
-                // border: '2px solid red',
-                // position: '',
-              }
-            }
-            className="justify-center check_gg relative"
+            className="relative"
           >
             <div className="appartment-card-left-shadow "></div>
-
+            <div>
+    </div>
             <Box
-              item
-              sm={12}
-              md={10}
-              lg={10}
               className="flex flex-col  mt-24 mb-8"
             >
               <h1 className="text-2xl font-heading  c_white mb-3">
@@ -107,73 +121,85 @@ const Index = () => {
               </p>
             </Box>
             <Box className="flex mb-20">
-              <button className="explore-category-btn-active">
+              <a href="#" className="explore-category-btn z-[3] font-heading rounded-lg px-3 py-2 mr-2 text-xs text-center sm:px-6 sm:py-4 sm:text-sm font-normal sm:mr-5">
                 Volumetric video
-              </button>
+              </a>
 
-              <button className="explore-category-btn">360 Video</button>
-              <button className="explore-category-btn">180 Video</button>
-              <button className="explore-category-btn">2D Video</button>
-              <button className="explore-category-btn">Music</button>
-              <button className="explore-category-btn">Channel</button>
+              <a href="#" className="explore-category-btn z-[3] font-heading rounded-lg px-3 py-2 mr-2 text-xs text-center sm:px-6 sm:py-4 sm:text-sm font-normal sm:mr-5">360 Video</a>
+              <a href="#" className="explore-category-btn z-[3] font-heading rounded-lg px-3 py-2 mr-2 text-xs text-center sm:px-6 sm:py-4 sm:text-sm font-normal sm:mr-5">180 Video</a>
+              <a href="#" className="explore-category-btn z-[3] font-heading rounded-lg px-3 py-2 mr-2 text-xs text-center sm:px-6 sm:py-4 sm:text-sm font-normal sm:mr-5">2D Video</a>
+              <a href="#" className="explore-category-btn z-[3] font-heading rounded-lg px-3 py-2 mr-2 text-xs text-center sm:px-6 sm:py-4 sm:text-sm font-normal sm:mr-5">Music</a>
+              <a href="#" className="explore-category-btn z-[3] font-heading rounded-lg px-3 py-2 mr-2 text-xs text-center sm:px-6 sm:py-4 sm:text-sm font-normal sm:mr-5">Channel</a>
             </Box>
 
-            <Box className="most-trending-carousel">
+            <Box className="most-trending-carousel" >
               <h1 className="text-2xl font-heading  c_white mb-5">
                 Most trending
               </h1>
-              <Box>
+              <Box style={customCarouselStyle} >
                 {/* <h2>Variable width</h2> */}
                 <Slider {...settings}>
-                  <Box className="flex">
+                  <div className="flex">
                     <TrendingCard
                       title="StellarVerse Spectacle: Cosmic Symphony"
                       labelStatus={true}
                       label="Free"
                       videoURL=""
+                      VolcapStatus={false}
+
                     />
-                  </Box>
-                  <Box>
+                  </div>
+                  <div>
                     <TrendingCard
                       title="StellarVerse Spectacle: Cosmic Symphony"
                       labelStatus={true}
                       label="Free"
                       videoURL=""
+                      VolcapStatus={true}
+
                     />
-                  </Box>
-                  <Box>
+                  </div>
+                  <div>
                     <TrendingCard
                       title="StellarVerse Spectacle: Cosmic Symphony"
                       labelStatus={true}
                       label="Free"
                       videoURL=""
+                      VolcapStatus={false}
+
                     />
-                  </Box>{" "}
-                  <Box>
+                  </div>{" "}
+                  <div>
                     <TrendingCard
                       title="StellarVerse Spectacle: Cosmic Symphony"
                       labelStatus={true}
                       label="Free"
                       videoURL=""
+                      VolcapStatus={false}
+
                     />
-                  </Box>{" "}
-                  <Box>
+                  </div>{" "}
+                  <div>
                     <TrendingCard
                       title="StellarVerse Spectacle: Cosmic Symphony"
                       labelStatus={true}
                       label="Free"
                       videoURL=""
+                      VolcapStatus={false}
+
                     />
-                  </Box>
+                  </div>
                 </Slider>
               </Box>
             </Box>
 
-            <Box className="premium-content-carousel mt-24 ">
+            <Box className="premium-content-carousel mt-24 relative ">
               <h1 className="text-2xl font-heading  c_white mb-5">
                 Premium Content: top picks for you
               </h1>
-              <Box className="">
+            <div className="entertainment-card-left-shadow "></div>
+
+              <Box className="" style={customCarouselStyle}>
                 <Slider {...settings}>
                   <Box className="flex">
                     <TrendingCard
@@ -181,6 +207,8 @@ const Index = () => {
                       labelStatus={true}
                       label="Unlock Premium"
                       videoURL=""
+                      VolcapStatus={true}
+
                     />
                   </Box>
                   <Box>
@@ -189,6 +217,8 @@ const Index = () => {
                       labelStatus={true}
                       label="Unlock Premium"
                       videoURL=""
+                      VolcapStatus={true}
+
                     />
                   </Box>
                   <Box>
@@ -197,6 +227,8 @@ const Index = () => {
                       labelStatus={true}
                       label="Unlock Premium"
                       videoURL=""
+                      VolcapStatus={false}
+
                     />
                   </Box>{" "}
                   <Box>
@@ -205,6 +237,8 @@ const Index = () => {
                       labelStatus={true}
                       label="Unlock Premium"
                       videoURL=""
+                      VolcapStatus={false}
+
                     />
                   </Box>{" "}
                   <Box>
@@ -213,6 +247,8 @@ const Index = () => {
                       labelStatus={true}
                       label="Unlock Premium"
                       videoURL=""
+                      VolcapStatus={false}
+
                     />
                   </Box>
                 </Slider>
@@ -220,19 +256,19 @@ const Index = () => {
             </Box>
 
             <Box className="premium-content-carousel mt-24 ">
-              <Box className="mb-5 flex justify-between">
+              <Box className="mb-8 flex justify-between">
                 <h1 className="text-2xl font-heading  c_white ">
                   Trending Channels
                 </h1>
                 <a
                   href="#"
-                  className="font-semibold text-md  bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 via-orange-300 to-opacity-30 pr-4"
+                  className="font-semibold text-md  bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 via-orange-300 to-opacity-60 pr-4 text-amber-500"
                 >
                   See more
                 </a>
               </Box>
 
-              <Box className="">
+              <Box className="" style={customCarouselStyle}>
                 <Slider {...settings}>
                   <Box className="flex">
                     <TrendingChannelCard title="Nureal" />
@@ -284,7 +320,7 @@ const Index = () => {
             </Box>
 
             <Box className="premium-content-carousel mt-24 mb-60">
-              <Box className="mb-5 flex justify-between">
+              <Box className="mb-6 flex justify-between">
                 <h1 className="text-2xl font-heading  c_white ">
                   Discover Music
                 </h1>
@@ -295,7 +331,7 @@ const Index = () => {
                   See more
                 </a>
               </Box>
-              <Box className="">
+              <Box className="" style={customCarouselStyle}>
                 <Slider {...settings}>
                   <Box className="flex">
                     <MusicCard
@@ -341,7 +377,6 @@ const Index = () => {
               </Box>
             </Box>
 
-            <div className="appartment-card-right-shadow "></div>
           </Box>
         </Box>
       </Box>
