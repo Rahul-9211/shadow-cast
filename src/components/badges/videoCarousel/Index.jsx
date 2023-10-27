@@ -5,7 +5,7 @@ const Index = ({label}) => {
     <Box className=" max-w-md">
         {(()=>{
       if(label == "Unlock Premium"){
-        return (  <button className="label-backgroud text-md font-semibold px-3 py-1 item-center"> <LockOpenIcon className="mr-4" sx={{width:"24px" , height:"24px"}} /> 
+        return (  <button className="label-backgroud text-md font-semibold px-3 py-1 item-center flex item-center"> <LockOpenIcon className="mr-3 text-md"  /> 
         {label}</button>)
       }
       else return <button className="label-backgroud text-md font-semibold px-3 py-1">

@@ -212,6 +212,19 @@
   right: -13%;
 }
 
+.entertainment-card-left-shadow {
+  width: 400px;
+  height: 400px;
+  flex-shrink: 0;
+  border-radius: 600px;
+  opacity: 0.5;
+  background: rgba(255, 233, 201, 0.7);
+  filter: blur(166px);
+  position: absolute;
+  top: 14%;
+  right: -6%;
+}
+
 .menu-bar-after {
   display: none;
 }
@@ -270,24 +283,18 @@ margin-right: 20px;
 
 
 .explore-category-btn {
-  display: flex;
-  padding: 16px 24px;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
-  border-radius: 8px;
   border: 1px solid rgba(99, 99, 99, 0.50);
   background: linear-gradient(90deg, rgba(251, 188, 94, 0.10) 0.13%, rgba(243, 161, 81, 0.10) 99.89%);
-  color: #FFF;
-text-align: center;
-font-family: Krona One;
-font-size: 14px;
-font-style: normal;
-font-weight: 400;
-line-height: 150%; /* 21px */
-margin-right: 20px;
 }
 
+.explore-category-btn:hover {
+  background: linear-gradient(
+    90deg,
+    rgba(251, 188, 94, 0.3) 0.13%,
+    rgba(243, 161, 81, 0.3) 99.89%
+  );
+  transition:all 1s ease-in-out ;
+}
 .label-backgroud{
   border-radius: 8px;
   background: linear-gradient(90deg, rgba(251, 188, 94, 0.10) 0.13%, rgba(243, 161, 81, 0.10) 99.89%);
@@ -301,10 +308,8 @@ background: linear-gradient(90deg, rgba(177, 160, 234, 0.10) 0%, rgba(107, 254, 
 
 .music-icon-background{
   border-radius: 200px;
-  height: 60px;
-  width: 60px;
   padding: 18px;
-background: rgba(255, 255, 255, 0.10);
+/* background: rgba(255, 255, 255, 0.10); */
 }
 
 .most-trending-carousel .slick-prev::before , .premium-content-carousel .slick-prev::before{
@@ -373,5 +378,8 @@ background: rgba(255, 255, 255, 0.10);
   .marketplace_tabs .MuiTab-root {
     margin-right: 3px !important;
     font-size: 7.7px;
+  }
+  .slick-track {
+    column-gap: 5px !important;
   }
 }
