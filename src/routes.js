@@ -72,10 +72,18 @@ const routes = [
     component: <DetailPage value="1" />,
     useLayout: <Layout />,
   },
+
+  {
+    name: 'Marketplace-Ships',
+    key: 'marketplace-ships',
+    route: '/marketplace/ships',
+    component: <Marketplace value="2" />,
+    useLayout: <Layout />,
+  },
   {
     name: 'Marketplace-Entertainment',
     key: 'marketplace-entertainment',
-    route: `/marketplace/entertainments/:type`,
+    route: `/marketplace/entertainments`,
     component: <Marketplace value="2" />,
     useLayout: <Layout />,
   },

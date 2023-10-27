@@ -49,7 +49,7 @@
          navigate('/marketplace/ships');
          break;
        case 2:
-         navigate('/marketplace/entertainments/volumetric');
+         navigate('/marketplace/entertainments');
          break;
        default:
          break;
