@@ -5,38 +5,65 @@ import Footer from '../Index';
 import { BrowserRouter } from 'react-router-dom';
 
 describe('Test case for footer', () => {
-  it('privacy policy', () => {
+  it('Privacy Policy', () => {
     render(
       <BrowserRouter>
         <Footer />
       </BrowserRouter>
     );
 
-    const elementBtn = screen.getByRole('button', {
-      name: /privacy policy/i,
-    });
+    const elementBtn = screen.getByTestId('link-privacy', { name: 'Privacy Policy' });
+    
     expect(elementBtn).toBeInTheDocument();
   });
-  it('terms & condition', () => {
+  it('Terms &amp; Condition', () => {
     render(
       <BrowserRouter>
         <Footer />
       </BrowserRouter>
     );
 
-    const elementBtn = screen.getByRole('button', {
-      name: /terms & condition/i,
-    });
+    const elementBtn = screen.getByTestId('link-terms', { name: 'Terms &amp; Condition' });
     expect(elementBtn).toBeInTheDocument();
   });
-  it('instagram', () => {
+  it('Instagram', () => {
     render(
       <BrowserRouter>
         <Footer />
       </BrowserRouter>
     );
 
-    const elementId = screen.getByTestId('InstagramIcon');
+    const elementId = screen.getByTestId('Instagram');
+    expect(elementId).toBeInTheDocument();
+  });
+  it('Facebook', () => {
+    render(
+      <BrowserRouter>
+        <Footer />
+      </BrowserRouter>
+    );
+
+    const elementId = screen.getByTestId('Facebook');
+    expect(elementId).toBeInTheDocument();
+  });
+  it('youtube', () => {
+    render(
+      <BrowserRouter>
+        <Footer />
+      </BrowserRouter>
+    );
+
+    const elementId = screen.getByTestId('youtube');
+    expect(elementId).toBeInTheDocument();
+  });
+  it('twitter', () => {
+    render(
+      <BrowserRouter>
+        <Footer />
+      </BrowserRouter>
+    );
+
+    const elementId = screen.getByTestId('twitter');
     expect(elementId).toBeInTheDocument();
   });
 });

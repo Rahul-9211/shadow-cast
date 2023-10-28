@@ -39,12 +39,32 @@ const ConfirmPassword = () => {
       if (!isValid) {
         setFormErrors({
           ...formErrors,
-          password: "Password must be strong.",
+          password: "Password is not strong enough.",
         });
       } else {
         setFormErrors({
           ...formErrors,
           password: "",
+        });
+      }
+    }
+    if (name === "confirmPassword") {
+      const isValid = isStrongPassword(value);
+      setIsPasswordValid(isValid);
+      if (!isValid) {
+        setFormErrors({
+          ...formErrors,
+          confirmPassword: "Password is not strong enough.",
+        });
+      } else if (formData.password !== value) {
+        setFormErrors({
+          ...formErrors,
+          confirmPassword: "Passwords do not match.",
+        });
+      } else {
+        setFormErrors({
+          ...formErrors,
+          confirmPassword: "",
         });
       }
     }
@@ -72,10 +92,10 @@ const ConfirmPassword = () => {
 
   return (
     <Box
-      className="w-full max-w-[700px] rounded-lg border border-[#363636] p-[32px] md:p-[58px] signin-form"
+      className="w-full max-w-[700px] rounded-lg border border-[#363636] p-5 md:p-[32px] lg:p-[58px] signin-form"
     >
       <Box className="text-white max-w-[500px] mx-auto">
-        <h1 className="text-xl text-center font-heading mb-[36px]">Reset Password</h1>
+        <h1 className="text-lg lg:text-xl text-center font-heading mb-[36px]">Reset Password</h1>
 
         <form className="auth-form mb-5" onSubmit={handleSubmit}>
           <div className="mb-6">
@@ -83,7 +103,7 @@ const ConfirmPassword = () => {
               <input
                 type="password"
                 name="password"
-                className={`rounded-lg w-full bg-transparent border border-white focus:border-[#51A2FF] font-normal py-3 px-5 leading-normal font-semibold outline-none font-inter pr-[40px] placeholder-normal ${!isPasswordValid ? '!border-error' : ''}`}
+                className={`rounded-lg w-full bg-transparent border border-white focus:border-[#51A2FF] autofill:bg-transparent font-normal py-3 px-5 leading-normal font-semibold outline-none pr-[40px] placeholder-normal ${!isPasswordValid ? '!border-error' : ''}`}
                 id="password"
                 placeholder="Enter new password"
                 value={formData.password}
@@ -94,7 +114,7 @@ const ConfirmPassword = () => {
               </span>
             </div>
             {!isPasswordValid && formErrors.password && (
-              <span className="text-error font-inter text-sm">
+              <span className="text-error text-sm">
                 {formErrors.password}
               </span>
             )}
@@ -104,7 +124,7 @@ const ConfirmPassword = () => {
               <input
                 type="password"
                 name="confirmPassword"
-                className={`rounded-lg w-full bg-transparent border border-white focus:border-[#51A2FF] font-normal py-3 px-5 leading-normal font-semibold outline-none font-inter pr-[40px] placeholder-normal ${!isConfirmPasswordValid ? '!border-error' : ''}`}
+                className={`rounded-lg w-full bg-transparent border border-white focus:border-[#51A2FF] autofill:bg-transparent font-normal py-3 px-5 leading-normal font-semibold outline-none pr-[40px] placeholder-normal ${!isConfirmPasswordValid ? '!border-error' : ''}`}
                 id="confirmPassword"
                 value={formData.confirmPassword}
                 placeholder="Confirm new password"
@@ -114,7 +134,8 @@ const ConfirmPassword = () => {
                 <img src={eyeOff} alt="PasswordVisibility" />
               </button>
             </div>
-            {passwordMatchError && (<span className="text-error font-inter text-sm">{passwordMatchError}</span>)}
+            
+            {formErrors.confirmPassword && (<span className="text-error text-sm">{formErrors.confirmPassword}</span>)}
           </div>
 
           <button type="submit" className="font-bold rounded-lg btn-gradient w-full text-black py-3 px-5" disabled={!isFormValid()}>Change Password</button>

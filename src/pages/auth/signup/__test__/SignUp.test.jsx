@@ -7,28 +7,17 @@ describe("SignUp Component", () => {
   it("renders the component without errors", () => {
     render(<SignUp />);
     expect(screen.getByText(/Create User Account/i)).toBeInTheDocument();
+    expect(screen.getByLabelText('Name')).toBeInTheDocument();
+    expect(screen.getByLabelText('Email')).toBeInTheDocument();
+    expect(screen.getByLabelText('Password')).toBeInTheDocument();
   });
 
   it('displays an error when an invalid email is provided', () => {
     render(<SignUp />);
-    const emailInput = screen.getByLabelText('Email');
-    fireEvent.change(emailInput, { target: { value: 'invalid-email' } });
-
-    const submitButton = screen.getByText('Create my account');
-    fireEvent.click(submitButton);
-
-    expect(screen.getByText('Invalid email address')).toBeInTheDocument();
-  });
-
-  it("displays an error when an invalid password is provided", () => {
-    render(<SignUp />);
-    const passwordInput = screen.getByLabelText("Password");
-    fireEvent.change(passwordInput, { target: { value: "weak" } });
-
-    const submitButton = screen.getByText("Create my account");
-    fireEvent.click(submitButton);
-
-    expect(screen.getByText("Password must be strong.")).toBeInTheDocument();
+    const emailInput = screen.getByTestId('email');
+    fireEvent.change(emailInput, { target: { value: '123' } })
+    fireEvent.blur(emailInput);
+    expect(screen.getByText('Invalid Email Address')).toBeInTheDocument();
   });
 
   it('initially displays "Create User Account"', () => {

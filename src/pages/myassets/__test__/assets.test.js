@@ -6,20 +6,16 @@
  *@developer Aditya P
  */
 
- import { render} from "@testing-library/react";
- import MyAssets from "../MyAssets";
- import { MyAssetsHome } from "components/assets/myassets";
+import { screen, render } from "@testing-library/react";
+import MyAssets from "../MyAssets";
 
+it("should render the main container with two ShadowFrame components and a parentTabs section", () => {
+  render(<MyAssets />);
+  const mainContainer = screen.getByTestId("my-assets-main");
+  const shadowFrames = screen.getByTestId("shadow-frame");
+  const parentTabs = screen.getByTestId("parent-tabs");
 
- describe('Render Parent Assets', () => {
-    it('It should be able to switch correctly between parent tabs', () => {
-        render(<MyAssets/>)
-    })
- })
-
- describe('Render Parent Tabs', () => {
-    it('It should be able to switch correctly between parent tabs', () => {
-        render(<MyAssetsHome/>)
-    })
- })
-
+  expect(mainContainer).toBeInTheDocument();
+  expect(shadowFrames.length).toBe(2);
+  expect(parentTabs).toBeInTheDocument();
+});

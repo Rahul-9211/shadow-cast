@@ -4,3 +4,10 @@
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom';
 global.ResizeObserver = require('resize-observer-polyfill');
+window.matchMedia = window.matchMedia || function () {
+    return {
+        matches: false,
+        addListener: function () { },
+        removeListener: function () { }
+    };
+};

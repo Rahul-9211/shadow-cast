@@ -20,13 +20,13 @@ const Ships = () => {
 
   {IsDataAvailable ? (
     <div className="__ships_assets_main pl-[15px] max-[768px]:p-0">
-      <div className="__ships_assets_heading mb-[10px]">
-        <h4 className="font-medium text-[18px] tracking-[1px] px-[28px] max-[768px]:p-0 max-[768px]:text-[15px] max-[1280px]:px-[20px]">
+      <div className="__ships_assets_heading mb-[10px] pl-[20px] max-[768px]:pl-0">
+        <h4 className="font-medium font-heading text-[18px] tracking-[1px] px-[28px] max-[768px]:p-0 max-[768px]:text-[15px] max-[1280px]:px-[20px]">
           Ships
         </h4>
       </div>
 
-      <div className="_assets_container flex flex-wrap justify-around max-[768px]:flex-col">
+      <div className="_ships_container flex flex-wrap justify-around gap-[10px] max-[768px]:flex-col pl-[40px] max-[768px]:pl-0">
         <AssetCardClose
           key=""
           name=""

@@ -38,14 +38,13 @@ const MainCarousel = () => {
   };
 
   return (
-    <div className="slideCarousel z-[13]">
+    <div className="slideCarousel ">
       {image?.length > 0 ? (
         <Carousel
           data={data}
           time={3000}
           width="100%"
           height="500px"
-          maxHeight="496px"
           captionStyle={captionStyle}
           radius="10px"
           slideNumber={false}
@@ -69,8 +68,8 @@ const MainCarousel = () => {
         />
       ) : (
         <Skeleton
-          // variant="rectangular"
-          sx={{ width: '100%', borderRadius: '10px'  , maxWidth:"883px"}}
+          variant="rectangular"
+          sx={{ width: '100%', height: '500px', borderRadius: '10px' }}
         />
       )}
     </div>

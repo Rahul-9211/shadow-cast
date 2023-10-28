@@ -24,6 +24,59 @@
     @apply font-body;
     @apply text-white/[0.5];
   }
+
+  .link-item {
+    @apply font-heading;
+    @apply text-sm;
+    @apply px-6 py-4;
+    @apply rounded-lg;
+    @apply inline-block;
+    @apply whitespace-nowrap;
+    transition: all 0.3s ease-in-out;
+    border: 1px solid rgba(99, 99, 99, 0.50);
+    background: linear-gradient(90deg, rgba(251, 188, 94, 0.10) 0.13%, rgba(243, 161, 81, 0.10) 99.89%);
+  }
+
+  @media screen and (max-width: 991px) {
+    .link-item {
+      @apply px-3 py-2.5;
+    }
+  }
+
+  .tag-item {
+    @apply px-3 py-1;
+    @apply rounded-lg;
+    @apply font-semibold;
+    transition: all 0.3s ease-in-out;
+    border: 1px solid rgba(99, 99, 99, 0.50);
+    background: linear-gradient(90deg, rgba(251, 188, 94, 0.05) 0.13%, rgba(243, 161, 81, 0.05) 99.89%);
+  }
+
+  .link-item:hover {
+    background: linear-gradient(90deg, rgba(251, 188, 94, 0.30) 0.13%, rgba(243, 161, 81, 0.30) 99.89%);
+  }
+
+  .tags {
+    @apply rounded;
+    @apply px-2;
+    @apply text-sm;
+    @apply absolute;
+    @apply right-[14px];
+    @apply top-[12px];
+    @apply leading-relaxed;
+    background: linear-gradient(90deg, rgba(177, 160, 234, 0.10) 0%, rgba(107, 254, 246, 0.10) 100%);
+  }
+
+  .music-icon {
+    @apply -translate-x-1/2 -translate-y-1/2;
+    @apply absolute;
+    @apply top-1/2;
+    @apply left-1/2;
+    @apply p-4;
+    @apply bg-white/[0.10];
+    @apply rounded-full;
+    @apply z-10;
+  }
 }
 
 * {
@@ -32,6 +85,22 @@
   box-sizing: border-box;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 1px solid rgb(255 255 255);
+  -webkit-text-fill-color: white;
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+  box-shadow: 0 0 0px 1000px transparent inset;
+  transition: background-color 5000s ease-in-out 0s;
+  color: white;
+}
 
 img {
   object-fit: contain;
@@ -102,17 +171,17 @@ img {
 }
 
 /* ----------------------flex related start*/
-.flex-col {
+/* .flex-col {
   flex-direction: column !important;
 }
 
-/* .justify-center {
+.justify-center {
   justify-content: center !important;
-} */
+}
 
 .items-center {
   align-items: center !important;
-}
+} */
 
 /* flex related end*/
 /* ------------------------color start */
@@ -177,25 +246,24 @@ img {
 .card-hover_parent {
   transition: all 0.4s;
   border: none;
+  border: 1px solid transparent;
 }
 
 .card-hover_img {
-  height: 200px;
-  width: 200px;
+  height: 146px;
+  width: 146px;
   border: none;
-  transition: all 0.4s;
+  transition: all 0.3s ease-out;
+  margin: auto;
 }
 
 .card-hover_parent:hover {
-  background: -webkit-linear-gradient(rgba(251, 188, 94, 0.2),
-      rgba(243, 161, 81, 0.2));
-  border: 1px solid #f3a151;
+  border: 1px solid #F3A051;
+  background: linear-gradient(90deg, rgba(243, 160, 81, 0.10) 0%, rgba(255, 202, 100, 0.10) 100%);
 }
 
 .card-hover_parent:hover .card-hover_img {
-  height: 270px;
-  width: 270px;
-  margin-top: -66px;
+  transform: scale(1.5) translateY(-30px);
 }
 
 .marketplace_tabs .MuiTabs-root {
@@ -289,22 +357,20 @@ img {
 
 @media screen and (max-width: 400px) {}
 
-@media (max-width: 56.25em) {
+/* @media (max-width: 56.25em) {
   html {
     font-size: 55% !important;
   }
-}
+} */
 
 .btn_hover_effect:hover {
   background-color: #6768ff !important;
-  /* border: 1px solid #6768ff; */
-  border: 1px solid #FBBC5E;
+  border: 1px solid #6768ff;
 }
 
 .btn_hover_effect_opposite:hover {
   background-color: transparent !important;
-  /* border: 1px solid #6768ff; */
-  border: 1px solid #FBBC5E;
+  border: 1px solid #6768ff;
   /* color: white !important; */
 }
 
@@ -317,9 +383,8 @@ img {
 }
 
 .thumbnail {
-  height:67px ;
-  width:  120px;
-  margin-top: 24px;
+  height: 150px;
+  width: 150px;
 }
 
 .MuiBadge-badge {
@@ -331,11 +396,12 @@ img {
   border-color: transparent !important;
 }
 
-.slick-track {
-  display: flex !important;
-  column-gap: 10px !important;
+.active {
+  background-color: transparent;
+  border-color: #FBBC5E !important;
 }
 
-.active-thumbnail{
-  border: 1px solid #FBBC5E;
-}
+/* .slick-track {
+  display: flex !important;
+  column-gap: 15px !important;
+} */

@@ -1,19 +1,16 @@
 import React from 'react';
 import '@testing-library/jest-dom';
 import { render, screen, within } from '@testing-library/react';
-import Header from '../Index';
 import { BrowserRouter } from 'react-router-dom';
-import userEvent from '@testing-library/user-event'; 
-
+import userEvent from '@testing-library/user-event';
 import BeforeLogin from '../BeforeLogin';
 import AfterLogin from '../AfterLogin';
 
 
 describe('Test case for Navbar', () => {
-// Before login Test Cases ---------------------------------------------------------------->>>
+  // Before login Test Cases ---------------------------------------------------------------->>>
   it('renders the logo', () => {
     render(<BeforeLogin />);
-    
     // Check if the logo image is rendered
     const logoImage = screen.getByAltText('Network problem');
     expect(logoImage).toBeInTheDocument();
@@ -21,27 +18,25 @@ describe('Test case for Navbar', () => {
 
   it('renders "Marketplace" link', () => {
     render(<BeforeLogin />);
-    
     // Check if the "Marketplace" link is rendered
     const marketplaceLink = screen.getByText(/Marketplace/i);
     expect(marketplaceLink).toBeInTheDocument();
   });
 
-  // it('renders "Signin" link', () => {
-  //   render(<BeforeLogin />);
-    
-  //   // Check if the "Signin" link is rendered
-  //   const signinLink = screen.getByText(/Sign in/i);
-  //   expect(signinLink).toBeInTheDocument();
-  // });
+  it('renders "Signin" link', () => {
+    render(<BeforeLogin />);
 
-  // it('renders "Create Account" button', () => {
-  //   render(<BeforeLogin />);
-    
-  //   // Check if the "Create Account" button is rendered
-  //   const createAccountButton = screen.getByText(/Create Account/i);
-  //   expect(createAccountButton).toBeInTheDocument();
-  // });
+    // Check if the "Signin" link is rendered
+    const signinLink = screen.getByText(/Sign in/i);
+    expect(signinLink).toBeInTheDocument();
+  });
+
+  it('renders "Create Account" button', () => {
+    render(<BeforeLogin />);
+    // Check if the "Create Account" button is rendered
+    const createAccountButton = screen.getByText(/Create Account/i);
+    expect(createAccountButton).toBeInTheDocument();
+  });
 
   // After  login Test cases ---------------------------------------------------------------->
 
@@ -51,7 +46,6 @@ describe('Test case for Navbar', () => {
         <AfterLogin />
       </BrowserRouter>
     );
-
     // Check if the logo image is rendered
     const logoImage = screen.getByAltText('Network problem');
     expect(logoImage).toBeInTheDocument();
@@ -68,10 +62,8 @@ describe('Test case for Navbar', () => {
 
     const marketplaceItem = screen.getByText(/Marketplace/i);
     expect(marketplaceItem).toBeInTheDocument();
-
     const assetsItem = screen.getByText(/Assets/i);
     expect(assetsItem).toBeInTheDocument();
-
     const friendsItem = screen.getByText(/Friends/i);
     expect(friendsItem).toBeInTheDocument();
   });
@@ -83,10 +75,8 @@ describe('Test case for Navbar', () => {
         <AfterLogin />
       </BrowserRouter>
     );
-
     const searchInput = screen.getByPlaceholderText('Search...');
     expect(searchInput).toBeInTheDocument();
-
     const searchDropdown = screen.queryByText('Results');
     expect(searchDropdown).not.toBeInTheDocument();
   });
@@ -97,9 +87,9 @@ describe('Test case for Navbar', () => {
       </BrowserRouter>
     );
 
-    const shoppingCartIcon = screen.getByTestId('shopping-cart-icon');
-    expect(shoppingCartIcon).toBeInTheDocument();
-
+    const shoppingCartIcon = screen.getAllByTestId('shopping-cart-icon');
+    expect(shoppingCartIcon[0]).toBeInTheDocument();
+    expect(shoppingCartIcon[1]).toBeInTheDocument();
   });
 
 

@@ -68,10 +68,10 @@ const OtpVerification = () => {
 
   return (
     <Box
-      className="w-full max-w-[700px] rounded-lg border border-[#363636] p-[32px] md:p-[58px] signin-form"
+      className="w-full max-w-[700px] rounded-lg border border-[#363636] p-5 md:p-[32px] lg:p-[58px] signin-form"
     >
       <Box className="text-white max-w-[500px] mx-auto">
-        <h1 className="text-xl text-center font-heading mb-[28px]">OTP Verification</h1>
+        <h1 className="text-lg lg:text-xl text-center font-heading mb-[28px]">OTP Verification</h1>
         <p className="text-center mb-[50px]">
           Please Enter the verification code we sent to your Email.{" "}
         </p>
@@ -81,14 +81,14 @@ const OtpVerification = () => {
               <input
                 type="text"
                 name="verificationCode"
-                className={`rounded-lg w-full bg-transparent border border-white focus:border-[#51A2FF] ${!isOTPexist ? '!border-error' : ''} font-normal py-3 px-5 leading-normal font-semibold outline-none font-inter pr-[40px] placeholder-normal`}
+                className={`rounded-lg w-full bg-transparent border border-white focus:border-[#51A2FF] autofill:bg-transparent ${!isOTPexist ? '!border-error' : ''} font-normal py-3 px-5 leading-normal font-semibold outline-none pr-[40px] placeholder-normal`}
                 id="verificationCode"
                 placeholder="Enter Verification Code"
                 value={formData.verificationCode}
                 onChange={handleInputChange}
               />
               {formErrors.verificationCode && (
-                <span className="text-error font-inter text-sm">
+                <span className="text-error text-sm">
                   {formErrors.verificationCode}
                 </span>
               )}
@@ -97,7 +97,7 @@ const OtpVerification = () => {
 
           <button type="submit" className="font-bold rounded-lg btn-gradient w-full text-black py-3 px-5 mt-6">Verify</button>
 
-          <button type="button" className="text-center font-semibold clip-text w-full mt-[14px]">Resend Code</button>
+          <button type="button" className="text-center font-semibold text-sec hover:text-secDark w-full mt-[14px]">Resend Code</button>
         </form>
       </Box>
     </Box>
