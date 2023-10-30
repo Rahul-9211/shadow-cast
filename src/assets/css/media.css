@@ -194,6 +194,30 @@
   right: -13%;
 }
 
+.volumetric-card-left-shadow{
+  width: 600px;
+  height: 600px;
+  flex-shrink: 0;
+  border-radius: 600px;
+  opacity: 0.5;
+  background: rgb(149 137 120 / 70%);
+  filter: blur(189px);
+  position: absolute;
+  top: 28%;
+  left: -8%;
+}
+.volumetric-card-right-shadow{
+  width: 700px;
+  height: 700px;
+  flex-shrink: 0;
+  border-radius: 600px;
+  opacity: 0.4;
+  background: rgba(255, 233, 201, 0.7);
+  filter: blur(166px);
+  position: absolute;
+  top: 100%;
+  right: -13%;
+}
 .menu-bar-after {
   display: none;
 }

@@ -48,7 +48,7 @@
     @apply rounded-lg;
     @apply font-semibold;
     transition: all 0.3s ease-in-out;
-    border: 1px solid rgba(99, 99, 99, 0.50);
+    /* border: 1px solid rgba(99, 99, 99, 0.50); */
     background: linear-gradient(90deg, rgba(251, 188, 94, 0.05) 0.13%, rgba(243, 161, 81, 0.05) 99.89%);
   }
 

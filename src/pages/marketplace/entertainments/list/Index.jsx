@@ -6,7 +6,7 @@ import Channels from "../components/channels";
 import Music from "../components/music";
 import Volumetric from "../components/volumetric";
 import { useState } from "react";
-import {useNavigate}  from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 /**
  * This file is part of FourthStar User Dashboard
@@ -15,8 +15,6 @@ import {useNavigate}  from "react-router-dom"
  *@module Assets-Home-Module
  *@developer Aditya P
  */
-
-
 
 const myAssetsTabs = [
   {
@@ -106,18 +104,20 @@ const Index = () => {
     component: <Volumetric />,
   });
 
-
   return (
     <>
       <hr className="border-[0.1px] border-[#5A5A5A80] mx-3" />
 
-      <div className="__myassets_container_main px-[15px] py-[35px] flex max-[768px]:flex-col max-[768px]:p-0 max-[1280px]:py-[25px]">
-        <div className="__assets_category_panel w-[20%]  max-[768px]:w-auto max-[768px]:p-0 max-[1280px]:p-0">
+      <div className="__myassets_container_main px-[15px] py-[35px] flex flex-col md:flex-row max-[768px]:flex-col max-[768px]:p-0 max-[1280px]:py-[25px]">
+        <div className="__assets_category_panel w-[100%] md:w-[20%]  max-[768px]:w-auto max-[768px]:p-0 max-[1280px]:p-0">
           <h5 className="text-[grey] font-body mb-[10px] font-bold tracking-[1px] max-[768px]:hidden text-sm">
             Category
           </h5>
+          <div className="volumetric-card-left-shadow "></div>
           <ul
+            data-testid="tablist"
             className="overflow-y-scroll
+            flex md:flex-col
                      px-[0px]
                      [&>li]:px-[12px] 
                      [&>li]:py-[10px] 
@@ -137,15 +137,16 @@ const Index = () => {
             {myAssetsTabs?.map((tabs, index) => {
               return (
                 <li
+                  role="tab"
                   key={tabs.key}
-                  className={`${
+                  className={`mr-8 md:mr-[0] whitespace-nowrap ${
                     activeTabs.key === tabs.key
                       ? "bg-[#FBBC5E4D] hover:bg-[#FBBC5E4D] rounded-[5px]"
                       : ""
                   }`}
                   onClick={() => {
-                    setActivetab(tabs)
-                    handleChange(tabs.key, index)
+                    setActivetab(tabs);
+                    handleChange(tabs.key, index);
                   }}
                 >
                   {tabs.name}
@@ -155,14 +156,15 @@ const Index = () => {
           </ul>
         </div>
 
-        <div className="__assets_tabs_container_panel w-[80%] p-[10px] pl-[96px] max-[768px]:w-auto max-[768px]:h-auto max-[768px]:mt-[18px]">
-        {activeTabs.key === "volumetric-video" && activeTabs.component}
-        {activeTabs.key === "180-video" && activeTabs.component}
-        {activeTabs.key === "360-video" && activeTabs.component}
-        {activeTabs.key === "2D-video" && activeTabs.component}
-        {activeTabs.key === "music" && activeTabs.component}
-        {activeTabs.key === "channels" && activeTabs.component}
-      </div>
+        <div className="__assets_tabs_container_panel  w-[100%] md:w-[80%] sm:p-[10px] md:pl-[56px] xl:pl-[96px] max-[768px]:w-auto max-[768px]:h-auto max-[768px]:mt-[18px]">
+          
+          {activeTabs.key === "volumetric-video" && activeTabs.component}
+          {activeTabs.key === "180-video" && activeTabs.component}
+          {activeTabs.key === "360-video" && activeTabs.component}
+          {activeTabs.key === "2D-video" && activeTabs.component}
+          {activeTabs.key === "music" && activeTabs.component}
+          {activeTabs.key === "channels" && activeTabs.component}
+        </div>
       </div>
     </>
   );

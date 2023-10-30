@@ -60,7 +60,7 @@ const Index = ({ value, element }) => {
     if (value) setValues(+value);
   }, [value]);
   return (
-    <div className='container app-container mx-auto px-2 md:px-3 xl:px-6 2xl:px-10 relative z-10'>
+    <div className='container app-container mx-auto px-2 md:px-3 xl:px-6 2xl:px-14 relative z-10'>
       <ul className="flex overflow-x-auto text-sm md:text-base font-semibold text-center py-5 px-2 md:py-8 md:px-4" data-testid="tablist">
         {allCategory?.map((category, i) => (
           <li className="mr-8" key={i} role='tab'>

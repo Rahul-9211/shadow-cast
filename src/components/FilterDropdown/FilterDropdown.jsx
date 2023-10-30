@@ -25,7 +25,7 @@ const FilterDropdown = ({ options, onChange }) => {
       </button>
       
       {isOpen && (
-        <div className="absolute top-full left-0 w-full rounded mt-[2px] py-1 bg-black text-white">
+        <div className="absolute top-full left-0 w-full rounded mt-[2px] py-1 bg-black text-white z-[2]">
           {options.map((item, index) => (
             <div
               key={index}
