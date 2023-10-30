@@ -49,7 +49,7 @@ const Index = () => {
         navigate('/marketplace/entertainments/volumetric');
         break;
       case 1:
-        navigate('/marketplace/entertainments/180');
+        navigate('/marketplace/entertainments/180-video');
         break;
       case 2:
         navigate('/marketplace/entertainments/360');
@@ -138,7 +138,7 @@ const Index = () => {
             <ul className='flex gap-5 overflow-x-auto'>
               {allCategory?.map((category, i) => (
                 <li key={i}>
-                  <NavLink to={category?.slug} className="link-item">{category?.name}</NavLink>
+                  <NavLink to={category?.slug}  onClick={e => handleChange(e, i)} className="link-item">{category?.name}</NavLink>
                 </li>
               ))}
             </ul>

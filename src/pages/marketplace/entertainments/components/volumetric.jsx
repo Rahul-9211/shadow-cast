@@ -1,57 +1,111 @@
-/**
- * This file is part of FourthStar User Dashboard
- *(c) 2023 ShadowCast.Io <craig@shadowcast.io>
- *------------------------------------------------------
- *@module user
- *@developer Sameer <sameer@shadowcast.io>
- */
+import React, { useState } from "react";
+import Explore from "components/Explore/Explore";
+import { EntertainmentCardClass } from "constant";
+import PremiumLockIcon from "assets/images/myassets/material-symbols_lock-outline.png";
+import AssetCardOpen from "components/card/assets/AssetCardOpen";
+import FilterDropdown from "./FilterDropdown";
 
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Grid, Typography } from '@mui/material';
-import { Fade, Zoom } from 'react-reveal';
-
-import Card from 'components/card/video/index';
-
-/*It defines a
-component called `Index` that renders a list of Volumetric Video cards. */
 const Index = () => {
-  const navigate = useNavigate();
+  const [selectedFilter, setSelectedFilter] = useState("All"); 
 
-  const [list, setList] = useState([
-    { name: 'StellarVerse Spectacle: Cosmic Symphony', price: 9.99 },
-    { name: 'StellarVerse Spectacle: Cosmic Symphony', price: '' },
-    { name: 'StellarVerse Spectacle: Cosmic Symphony', price: 99 },
-    { name: 'StellarVerse Spectacle: Cosmic Symphony', price: '' },
-    { name: 'StellarVerse Spectacle: Cosmic Symphony', price: 20.4 },
-    { name: 'StellarVerse Spectacle: Cosmic Symphony', price: '' },
-    { name: 'StellarVerse Spectacle: Cosmic Symphony', price: 9.99 },
-    { name: 'StellarVerse Spectacle: Cosmic Symphony', price: '' },
-    { name: 'StellarVerse Spectacle: Cosmic Symphony', price: 99 },
-    { name: 'StellarVerse Spectacle: Cosmic Symphony', price: '' },
-    { name: 'StellarVerse Spectacle: Cosmic Symphony', price: 20.4 },
-    { name: 'StellarVerse Spectacle: Cosmic Symphony', price: '' },
-  ]);
+  const handleFilterChange = (selectedValue) => {
+    setSelectedFilter(selectedValue);
+  };
+  const IsDataAvailable = true;
+
+  const filterOptions = ["All", "Free", "Premium", "Buy"];
+
+  const entertainmentData = [
+    {
+      title: "StellarVerse Spectacle: Cosmic Symphony",
+      subtitleButton: `<img src=${PremiumLockIcon} class="w-[24px] h-[24px] mr-4 " alt='lockIcon'/> Unlock Premium`,
+      cardClass: EntertainmentCardClass,
+    },
+    {
+      title: "StellarVerse Spectacle: Cosmic Symphony",
+      subtitleButton: "Free",
+      cardClass: EntertainmentCardClass,
+    },
+    {
+      title: "StellarVerse Spectacle: Cosmic Symphony",
+      subtitleButton: "US$ 9.99",
+      cardClass: EntertainmentCardClass,
+    },
+    {
+      title: "StellarVerse Spectacle: Cosmic Symphony",
+      subtitleButton: "Free",
+      cardClass: EntertainmentCardClass,
+    },
+    {
+      title: "StellarVerse Spectacle: Cosmic Symphony",
+      subtitleButton: "US$ 9.99",
+      cardClass: EntertainmentCardClass,
+    },
+    {
+      title: "StellarVerse Spectacle: Cosmic Symphony",
+      subtitleButton: "Free",
+      cardClass: EntertainmentCardClass,
+    },
+  ];
+
+  // Filter the entertainmentData based on the selected filter
+  const filteredData = entertainmentData.filter((item) => {
+    if (selectedFilter === "All") {
+      return true;
+    } else if (
+      selectedFilter === "Free" &&
+      item.subtitleButton.includes("Free")
+    ) {
+      return true;
+    } else if (
+      selectedFilter === "Premium" &&
+      item.subtitleButton.includes("Unlock Premium")
+    ) {
+      return true;
+    } else if (
+      selectedFilter === "Buy" &&
+      item.subtitleButton.includes("US$")
+    ) {
+      return true;
+    }
+    return false;
+  });
 
   return (
     <>
-      <Grid container item xs={12} className="fs24px justify-center">
-        <Grid container item xs={11} sm={11.5} md={12} className="gap-16">
-          <Grid item xs={12}>
-            <Typography className="fs20px font-bold">
-              Volumetric Video
-            </Typography>
-          </Grid>
-
-          {list?.map((item, i) => (
-            <Card
-              data={item}
-              key={i}
-              redirect={'/marketplace/entertainments/volumetric'}
+      {IsDataAvailable ? (
+        <div className="__entertainment_assets_main  pt-4 max-[768px]:p-0">
+          <div className="__entertainment_assets_heading mb-[39px] flex justify-between">
+            <h4 className="font-medium font-heading text-[28px] tracking-[1px]  max-[768px]:p-0 max-[768px]:text-[15px] max-[1280px]:px-[20px]">
+              Entertainments
+            </h4>
+           <div className="pt-3">
+           <FilterDropdown
+              options={filterOptions}
+              onChange={handleFilterChange}
             />
-          ))}
-        </Grid>
-      </Grid>
+           </div>
+          </div>
+
+          <div className="flex flex-wrap justify-between">
+            {filteredData.map((item, index) => (
+              <AssetCardOpen
+                key={index}
+                name=""
+                title={item.title}
+                subtitleButton={item.subtitleButton}
+                cardClass={item.cardClass}
+              />
+            ))}
+
+          </div>
+        </div>
+      ) : (
+        <div class="__explore_default_button flex justify-center items-center h-[50vh] max-[768px]:flex-none max-[1280px]:h-[100%]">
+          <Explore />
+          {/* <Loader/> */}
+        </div>
+      )}
     </>
   );
 };
