@@ -1,3 +1,11 @@
+/**
+ * This file is part of FourthStar User Dashboard
+ *(c) 2023 ShadowCast.Io <craig@shadowcast.io>
+ *------------------------------------------------------
+ *@module user
+ *@developer sudhanshu  <sameer@shadowcast.io>
+ */
+
 import React, { useState } from "react";
 import Explore from "components/Explore/Explore";
 import { EntertainmentCardClass } from "constant";
@@ -6,6 +14,10 @@ import AssetCardOpen from "components/card/assets/AssetCardOpen";
 import FilterDropdown from "../../../../components/FilterDropdown/FilterDropdown";
 import VolumetricCard from "components/card/marketplace/entertainment/VolumetricCard";
 
+
+
+/*It defines a
+component called `Index` that renders a list of volumetric cards. */
 const Index = () => {
   const [selectedFilter, setSelectedFilter] = useState("All");
 
