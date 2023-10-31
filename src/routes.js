@@ -27,6 +27,7 @@ import { MyAssets } from 'pages/myassets';
 import InviteHome from 'pages/friends/InviteHome';
 import MyProfile from 'pages/myprofile/MyProfile';
 import EntertainmentVideo  from 'pages/marketplace/entertainments/list/Index'
+import ChannelContent from 'pages/marketplace/entertainments/channel/Index';
 // import { Ships } from 'components/assets/myassets';
 
 /* The code is exporting a default function that returns an array of route objects. Each route object
@@ -95,7 +96,8 @@ const routes = [
     name: 'Marketplace-Entertainment',
     key: 'marketplace-entertainment',
     route: `/marketplace/entertainments/:type/:id`,
-    component: <EntertainmentDetail />,
+    component: <Marketplace value="2" element={<ChannelContent />} />,
+    // component: <ChannelContent />,
     useLayout: <Layout />,
   },
   {

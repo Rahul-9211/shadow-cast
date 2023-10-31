@@ -15,6 +15,11 @@ export const AssetsParentTab = [
   { id: 1, key: "my-avatar", name: "My Avatar" },
 ];
 
+export const ChannelContentTab = [
+  { id: 0, key: "all", name: "All" },
+  { id: 1, key: "premium", name: "Premium Content" },
+];
+
 export const MyAssetsDummy = [
   {
     id: 0,
