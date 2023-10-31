@@ -9,7 +9,7 @@
 import React from 'react';
 import Slider from "react-slick";
 import AssetCardOpen from "components/card/assets/AssetCardOpen";
-const LargeCarousel = ({ slider, type }) => {
+const LargeCarousel = ({ slider, type , SlideToShow }) => {
 
     // const CompanionCardClass = {
     //     cardMainclass: "w-full",
@@ -19,7 +19,7 @@ const LargeCarousel = ({ slider, type }) => {
     // };
 
     const settings = {
-        slidesToShow: 2.5,
+        slidesToShow: SlideToShow ? 2 : 2.5,
         slidesToScroll: 1,
         dots: false,
         swipeToSlide: true,
@@ -30,25 +30,25 @@ const LargeCarousel = ({ slider, type }) => {
             {
                 breakpoint: 1200,
                 settings: {
-                    slidesToShow: 2.5,
+                    slidesToShow:SlideToShow? 2 :  2.5,
                 },
             },
             {
                 breakpoint: 991,
                 settings: {
-                    slidesToShow: 2.15,
+                    slidesToShow: SlideToShow ? 2:  2.15,
                 },
             },
             {
                 breakpoint: 600,
                 settings: {
-                    slidesToShow: 1.5,
+                    slidesToShow:SlideToShow ? 2:  1.5,
                 },
             },
             {
                 breakpoint: 480,
                 settings: {
-                    slidesToShow: 1,
+                    slidesToShow: SlideToShow ? 1: 1,
                 },
             },
         ],
