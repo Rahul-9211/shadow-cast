@@ -86,7 +86,7 @@ const routes = [
   {
     name: 'Marketplace-Entertainment',
     key: 'marketplace-entertainment',
-    route: `/marketplace/entertainments/:type`,
+    route: `/marketplace/entertainments/:activeTab`,
     component: <Marketplace value="2" element={<EntertainmentVideo />} />,
     // component: <EntertainmentVideo value="2" />,
     useLayout: <Layout />,
