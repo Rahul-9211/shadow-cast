@@ -10,7 +10,7 @@ import React, { useState, useEffect } from 'react';
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import { Fade, Zoom } from 'react-reveal';
 import ShadowFrame from 'components/shadow-frame';
-import Content_volumetric from 'pages/marketplace/entertainments/components/volumetric';
+import Content_volumetric from 'pages/marketplace/entertainments/components/Volumetric';
 import Content_180 from 'pages/marketplace/entertainments/components/180';
 import Content_360 from 'pages/marketplace/entertainments/components/360';
 import Content_2d from 'pages/marketplace/entertainments/components/2d';

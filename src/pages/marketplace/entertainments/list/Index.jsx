@@ -4,7 +4,7 @@ import Video180 from "../components/180";
 import Video360 from "../components/360";
 import Channels from "../components/channels";
 import Music from "../components/music";
-import Volumetric from "../components/volumetric";
+import Volumetric from "../components/Volumetric";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 

@@ -1,10 +1,10 @@
 import React from "react";
-import Video2D from "../components/2d";
-import Video180 from "../components/180";
-import Video360 from "../components/360";
-import Channels from "../components/channels";
-import Music from "../components/music";
-import Volumetric from "../components/volumetric";
+import Video2D from "./components/2d";
+import Video180 from "./components/180";
+import Video360 from "./components/360";
+// import Channels from "./components/channels";
+import Music from "./components/music";
+import Volumetric from "./components/volumetric";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -77,22 +77,22 @@ const All = () => {
   const handleChange = (event, newValue) => {
     switch (newValue) {
       case 0:
-        navigate("/marketplace/entertainments/volumetric-video");
+        navigate("/marketplace/entertainments/channels/volumetric-video");
         break;
       case 1:
-        navigate("/marketplace/entertainments/180-video");
+        navigate("/marketplace/entertainments/channels/180-video");
         break;
       case 2:
-        navigate("/marketplace/entertainments/360-video");
+        navigate("/marketplace/entertainments/channels/360-video");
         break;
       case 3:
-        navigate("/marketplace/entertainments/2D");
+        navigate("/marketplace/entertainments/channels/2D");
         break;
       case 4:
-        navigate("/marketplace/entertainments/music");
+        navigate("/marketplace/entertainments/channels/music");
         break;
       case 5:
-        navigate("/marketplace/entertainments/channels");
+        navigate("/marketplace/entertainments/channels/channels");
         break;
       default:
         break;

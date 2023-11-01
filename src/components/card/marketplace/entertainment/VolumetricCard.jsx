@@ -18,7 +18,7 @@ const VolumetricCard = ({
   thumbnailIcon,
 }) => {
   return (
-    <div className="mb-12">
+    <div className="mb-12" data-testid="volumetric-card">
       <div className="aspect-[456/239] relative rounded-2xl bg-[#2B2B2B] mb-2.5 ">
         {tags && <span className="tags">{tags}</span>}
         {thumbnailIcon && (
@@ -44,6 +44,9 @@ const VolumetricCard = ({
       {tagType === "Free" && <button className="tag-item px-1  text-base md:text-xs lg:text-base">Free</button>}
       {tagType === "Paid" && (
         <button className="tag-item px-1  text-base md:text-xs lg:text-base">{subtitleButton}</button>
+      )}
+       {tagType === "Unlocked" && (
+        <button className="tag-item px-1  text-base md:text-xs lg:text-base text-[#6BFEF6]">{subtitleButton}</button>
       )}
       {tagType === "Premium" && (
         <button className="tag-item flex gap-4 items-center px-1 text-base md:text-xs lg:text-base">
