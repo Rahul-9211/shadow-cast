@@ -95,18 +95,18 @@ const routes = [
   {
     name: 'Marketplace-Entertainment',
     key: 'marketplace-entertainment',
-    route: `/marketplace/entertainments/:type/:id`,
+    route: `/marketplace/entertainments/:type/:channelId`,
     component: <Marketplace value="2" element={<ChannelContent />} />,
     // component: <ChannelContent />,
     useLayout: <Layout />,
   },
-  {
-    name: 'Marketplace-Channel',
-    key: 'marketplace-channel',
-    route: `/marketplace/entertainments/:type/:channelId`,
-    component: <EntertainmentChannel />,
-    useLayout: <Layout />,
-  },
+  // {
+  //   name: 'Marketplace-Channel',
+  //   key: 'marketplace-channel',
+  //   route: `/marketplace/entertainments/:type/:channelId`,
+  //   component: <EntertainmentChannel />,
+  //   useLayout: <Layout />,
+  // },
   {
     name: 'Marketplace-Channel',
     key: 'marketplace-channel',

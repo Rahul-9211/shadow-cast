@@ -31,7 +31,7 @@ const myAssetsTabs = [
   },
   {
     id: 1,
-    parentId: 0,
+    parentId: 1,
     key: "180-video",
     name: "180 Video",
     children: null,
@@ -39,7 +39,7 @@ const myAssetsTabs = [
   },
   {
     id: 2,
-    parentId: 0,
+    parentId: 2,
     key: "360-video",
     name: "360 Video",
     children: null,
@@ -47,7 +47,7 @@ const myAssetsTabs = [
   },
   {
     id: 3,
-    parentId: 0,
+    parentId: 3,
     key: "2D-video",
     name: "2D Video",
     children: null,
@@ -55,7 +55,7 @@ const myAssetsTabs = [
   },
   {
     id: 4,
-    parentId: 0,
+    parentId: 4,
     key: "music",
     name: "Music",
     children: null,
@@ -98,13 +98,16 @@ const All = () => {
         break;
     }
   };
-  const { activeTab } = useParams();
+  const { type , channelId } = useParams();
 
 
   const [activeTabs, setActivetab] = useState(()=>{
-    const tab = myAssetsTabs.find((tab) => tab.key === activeTab);
-    return tab ? tab : myAssetsTabs[0]; // Default to the first tab if activeTab is not found
-  });
+    if(type === 'channels'){
+      const tab = myAssetsTabs.find((tab) => tab.key === channelId);
+      return tab ? tab : myAssetsTabs[0]; // Default to the first tab if activeTab is not found  
+    }
+    window.location.href = "http://localhost:3000"
+   });
 
   
   const [parentActivetab, setParentActivetab] = useState({
@@ -168,7 +171,6 @@ const All = () => {
         </div>
 
         <div className="__assets_tabs_container_panel  w-[100%] md:w-[80%] sm:p-[10px] md:pl-[56px] xl:pl-[96px] max-[768px]:w-auto max-[768px]:h-auto max-[768px]:mt-[18px]">
-          
           {activeTabs.key === "volumetric-video" && activeTabs.component}
           {activeTabs.key === "180-video" && activeTabs.component}
           {activeTabs.key === "360-video" && activeTabs.component}

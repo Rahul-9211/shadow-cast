@@ -3,47 +3,54 @@
  *(c) 2023 ShadowCast.Io <craig@shadowcast.io>
  *------------------------------------------------------
  *@module user
- *@developer Sameer <sameer@shadowcast.io>
+ *@developer sudhanshu  <sameer@shadowcast.io>
  */
 
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Grid, Typography } from '@mui/material';
-import { Fade, Zoom } from 'react-reveal';
 
-import Card from 'components/card/video/index';
-
-/*It defines a
-component called `Index` that renders a list of 360 Video cards. */
-const Index = () => {
-  const navigate = useNavigate();
-
-  const [list, setList] = useState([
-    { name: 'StellarVerse Spectacle: Cosmic Symphony', price: '' },
-    { name: 'StellarVerse Spectacle: Cosmic Symphony', price: 9.99 },
-    { name: 'StellarVerse Spectacle: Cosmic Symphony', price: '' },
-    { name: 'StellarVerse Spectacle: Cosmic Symphony', price: 99 },
-  ]);
-
-  return (
-    <>
-      <Grid container item xs={12} className="fs24px justify-center">
-        <Grid container item xs={11} sm={12} className="gap-16">
-          <Grid item xs={12}>
-            <Typography className="fs20px font-bold">360 Video</Typography>
-          </Grid>
-
-          {list?.map((item, i) => (
-            <Card
-              data={item}
-              key={i}
-              redirect={'/marketplace/entertainments/360'}
-            />
-          ))}
-        </Grid>
-      </Grid>
-    </>
-  );
-};
-
-export default Index;
+ import { useState } from "react";
+ import Explore from "components/Explore/Explore";
+ import FilterDropdown from "components/FilterDropdown/FilterDropdown";
+ import NotDone from "components/notDone/Index";
+ 
+ 
+ /*It defines a
+ component called `Index` that renders a list of Music cards. */
+ 
+ const Index = () => {
+   const [selectedFilter, setSelectedFilter] = useState("All");
+ 
+   const handleFilterChange = (selectedValue) => {
+     setSelectedFilter(selectedValue);
+   };
+   const IsDataAvailable = true;
+ 
+   const filterOptions = ["All", "Free", "Premium", "Buy"];
+ 
+ 
+   return (
+     <>
+       {IsDataAvailable ? (
+         <div className="__entertainment_assets_main  pt-4 max-[768px]:p-0">
+           <div className="__entertainment_assets_heading mb-[29px] lg:mb-[39px] sm:flex justify-between">
+             <h4 className="font-medium font-heading text-[18px] px-[0] lg:px-[20px] lg:text-[28px] tracking-[1px]  max-[768px]:p-0 max-[768px]:text-[15px] mb-4 sm:mb-0">
+             360 Video
+             </h4>
+             <div className="pt-3">
+              
+             </div>
+           </div>
+          <NotDone/>
+           <div className="volumetric-card-right-shadow"></div>
+  
+         </div>
+       ) : (
+         <div class="__explore_default_button flex justify-center items-center h-[50vh] max-[768px]:flex-none max-[1280px]:h-[100%]">
+           <Explore />
+           {/* <Loader/> */}
+         </div>
+       )}
+     </>
+   );
+ };
+ 
+ export default Index;

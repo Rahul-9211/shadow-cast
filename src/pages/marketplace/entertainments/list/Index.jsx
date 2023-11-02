@@ -29,7 +29,7 @@ const myAssetsTabs = [
   },
   {
     id: 1,
-    parentId: 0,
+    parentId: 1,
     key: "180-video",
     name: "180 Video",
     children: null,
@@ -37,7 +37,7 @@ const myAssetsTabs = [
   },
   {
     id: 2,
-    parentId: 0,
+    parentId: 2,
     key: "360-video",
     name: "360 Video",
     children: null,
@@ -45,7 +45,7 @@ const myAssetsTabs = [
   },
   {
     id: 3,
-    parentId: 0,
+    parentId: 3,
     key: "2D-video",
     name: "2D Video",
     children: null,
@@ -53,7 +53,7 @@ const myAssetsTabs = [
   },
   {
     id: 4,
-    parentId: 0,
+    parentId: 4,
     key: "music",
     name: "Music",
     children: null,
@@ -61,7 +61,7 @@ const myAssetsTabs = [
   },
   {
     id: 5,
-    parentId: 0,
+    parentId: 5,
     key: "channels",
     name: "Channels",
     children: null,
@@ -104,7 +104,6 @@ const Index = () => {
     return tab ? tab : myAssetsTabs[0]; // Default to the first tab if activeTab is not found
   });
 
-  
 
   return (
     <>

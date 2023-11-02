@@ -79,7 +79,7 @@ const Index = () => {
               Fourth Star Entertainment
             </p>
             <NavLink
-              to=""
+              to="volumetric-video"
               className={`clip-text text-[12px] sm:text-[15px] font-semibold`}
             >
               See More
@@ -107,7 +107,7 @@ const Index = () => {
 
             </p>
             <NavLink
-              to=""
+              to="music"
               className={`clip-text text-[12px] sm:text-[15px] font-semibold`}
             >
               See More
@@ -123,7 +123,7 @@ const Index = () => {
         </div>
 
         <hr className="border-[0.1px] border-[#5A5A5A80] my-[35px] sm:mt-[40px] sm:mb-[56px]" />
-        <div className="">
+        <div className="mb-16">
           <div className="flex items-center mb-[17px]">
             <img
               className="w-[39px] h-[39px]  sm:w-[59px] sm:h-[59px] rounded-full mr-[20px] "
@@ -135,7 +135,7 @@ const Index = () => {
 
             </p>
             <NavLink
-              to=""
+              to="volumetric-video"
               className={`clip-text text-[12px] sm:text-[15px] font-semibold`}
             >
               See More

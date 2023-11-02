@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import AssetMusicIcon from "assets/images/myassets/ph_play-fill.png";
+import UnlockPremium from "components/popup/unlockPremium";
 
 /**
  * This file is part of FourthStar User Dashboard
@@ -17,6 +18,10 @@ const VolumetricCard = ({
   tags,
   thumbnailIcon,
 }) => {
+  const [premiumModalStatus , setpremiumModalStatus] = useState(false)
+  function handlePremiumModal(){
+    setpremiumModalStatus(!premiumModalStatus)
+  }  
   return (
     <div className="mb-12" data-testid="volumetric-card">
       <div className="aspect-[456/239] relative rounded-2xl bg-[#2B2B2B] mb-2.5 ">
@@ -49,7 +54,7 @@ const VolumetricCard = ({
         <button className="tag-item px-1  text-base md:text-xs lg:text-base text-[#6BFEF6]">{subtitleButton}</button>
       )}
       {tagType === "Premium" && (
-        <button className="tag-item flex gap-4 items-center px-1 text-base md:text-xs lg:text-base">
+        <button className="tag-item flex gap-4 items-center px-1 text-base md:text-xs lg:text-base" onClick={()=>{console.log("iclicked")}}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -65,7 +70,9 @@ const VolumetricCard = ({
           Unlock Premium
         </button>
       )}
+      {premiumModalStatus ? <UnlockPremium/> : <></>}
     </div>
+    
   );
 };
 

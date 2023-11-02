@@ -91,7 +91,6 @@ const Index = ({ value, element }) => {
             <p className='text-[#7A7A7A] font-semibold'>Try exploring other exciting contents in marketplace.</p>
             <NavLink to="/marketplace" className="border-[1.5px] border-sec text-sm mt-4 rounded-lg max-w-[250px] hover:bg-sec hover:text-dark font-bold text-center w-full py-3 px-4">Browse other content</NavLink>
           </div>}
-
       </div>
     </div>
   );
