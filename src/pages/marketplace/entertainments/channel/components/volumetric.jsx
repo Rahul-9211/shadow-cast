@@ -157,6 +157,10 @@ const Index = ({ labelStatus }) => {
       id: "5",
     },
   ];
+  
+  function handleUnlockPremiumClick(){
+    console.log("handleUnlockPremiumClick")
+  }
 
   return (
     <>
@@ -180,6 +184,7 @@ const Index = ({ labelStatus }) => {
                     tagType={item.tagType}
                     // tags ="vol"
                     thumbnailIcon={false}
+                    handleUnlockPremiumClick={handleUnlockPremiumClick()}
                   />
                 ))
               : filteredData.map((item, index) => (
@@ -193,6 +198,7 @@ const Index = ({ labelStatus }) => {
                     tagType={item.tagType}
                     // tags ="vol"
                     thumbnailIcon={false}
+                    handleUnlockPremiumClick={handleUnlockPremiumClick()}
                   />
                 ))}
           </div>

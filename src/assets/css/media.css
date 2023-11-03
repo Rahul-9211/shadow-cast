@@ -221,6 +221,37 @@
   z-index: -1;
 
 }
+
+
+.channelId-card-left-shadow{
+  width: 775px;
+  height: 775px;
+  flex-shrink: 0;
+  border-radius: 600px;
+  opacity: 0.5;
+  background: rgba(255, 233, 201, 0.60);
+  filter: blur(225px);
+  position: absolute;
+  top: 368px;
+  left: -100px;
+  z-index: -1;
+}
+
+
+.channelId-card-right-shadow{
+  width: 775px;
+  height: 775px;
+  flex-shrink: 0;
+  border-radius: 600px;
+  opacity: 0.5;
+  background: rgba(255, 233, 201, 0.60);
+  filter: blur(250px);
+  position: absolute;
+  top: 1000px;
+  right: -130px;
+  z-index: -1;
+
+}
 .menu-bar-after {
   display: none;
 }

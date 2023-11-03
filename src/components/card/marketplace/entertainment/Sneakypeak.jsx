@@ -10,7 +10,7 @@ import UnlockPremium from "components/popup/unlockPremium";
  *@developer Aditya P
  */
 
-const VolumetricCard = ({
+const SneakyPeak = ({
   slide,
   title,
   subtitleButton,
@@ -78,4 +78,4 @@ const VolumetricCard = ({
   );
 };
 
-export default VolumetricCard;
+export default SneakyPeak;

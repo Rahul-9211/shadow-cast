@@ -28,6 +28,7 @@ import InviteHome from 'pages/friends/InviteHome';
 import MyProfile from 'pages/myprofile/MyProfile';
 import EntertainmentVideo  from 'pages/marketplace/entertainments/list/Index'
 import ChannelContent from 'pages/marketplace/entertainments/channel/Index';
+import EntertainmentContent from "pages/marketplace/entertainments/content/Index"
 // import { Ships } from 'components/assets/myassets';
 
 /* The code is exporting a default function that returns an array of route objects. Each route object
@@ -82,6 +83,14 @@ const routes = [
     key: 'marketplace-entertainment',
     route: `/marketplace/entertainments/`,
     component: <Marketplace value="2" element={<EntertainmentPage />} />,
+    useLayout: <Layout />,
+  },
+  {
+    name: 'Marketplace-Entertainment',
+    key: 'marketplace-entertainment',
+    route: `/marketplace/entertainments/content`,
+    component: <Marketplace value="2" element={<EntertainmentContent/>} />,
+    // component: <EntertainmentVideo value="2" />,
     useLayout: <Layout />,
   },
   {

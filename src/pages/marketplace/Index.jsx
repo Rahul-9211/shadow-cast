@@ -84,6 +84,9 @@ const Index = ({ value, element }) => {
           </li>
         ))}
       </ul>
+
+      <div className="channelId-card-left-shadow "></div>
+      <div className="channelId-card-right-shadow "></div>
       <div className='marketplace_tabs'>
         {element ? element :
           <div className='flex h-screen flex-col gap-3 items-center justify-center'>

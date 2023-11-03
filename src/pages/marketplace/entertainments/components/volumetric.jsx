@@ -130,7 +130,7 @@ const Index = () => {
 
             
           </div>
-          <div className="volumetric-card-right-shadow"></div>
+          {/* <div className="volumetric-card-right-shadow"></div> */}
  
         </div>
       ) : (

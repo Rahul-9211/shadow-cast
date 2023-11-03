@@ -64,14 +64,6 @@ const Premium = ({loginStatus}) => {
       children: null,
       component: <Music labelStatus="premiumOnly"/>,
     },
-  //   {
-  //     id: 5,
-  //     parentId: 0,
-  //     key: "channels",
-  //     name: "Channels",
-  //     children: null,
-  //     component: <Channels />,
-  //   },
   ];
  
   const handleChange = (event, newValue) => {
@@ -122,7 +114,6 @@ const Premium = ({loginStatus}) => {
           <h5 className="text-[grey] font-body mb-[10px] font-bold tracking-[1px] max-[768px]:hidden text-sm">
             Category
           </h5>
-          <div className="volumetric-card-left-shadow "></div>
           <div className="overflow-hidden">
           <ul
             data-testid="tablist"
