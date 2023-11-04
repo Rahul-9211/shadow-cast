@@ -6,14 +6,14 @@
  *@developer Sudhanshu
  */
 
- import React from 'react';
- import CoinIcon from "assets/images/coin-icon.png"
- const AddToAssets = ({ title, price }) => {
+ const AddToAssets = ({ title, price , handleClick , btnText}) => {
      return (
          <>
              <h4 className='text-white/[0.5] text-base mb-2' dangerouslySetInnerHTML={{__html: title}}></h4>
-             <button type="button" className="font-bold rounded-lg border-[1.5px] border-sec justify-center w-full py-3 px-5 flex gap-2 mt-5 items-center">
-                 Added to your assets</button>
+             <button onClick={handleClick} type="button" className="font-bold rounded-lg border-[1.5px] border-sec justify-center w-full py-3 px-5 flex gap-2 mt-5 items-center">
+                {btnText}</button>
+
+                
          </>
      )
  }

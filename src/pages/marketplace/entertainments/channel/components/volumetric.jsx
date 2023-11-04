@@ -14,9 +14,12 @@ import AssetCardOpen from "components/card/assets/AssetCardOpen";
 import FilterDropdown from "components/FilterDropdown/FilterDropdown";
 import VolumetricCard from "components/card/marketplace/entertainment/VolumetricCard";
 
+import Popup from 'components/popup/index';
 /*It defines a
 component called `Index` that renders a list of volumetric cards. */
 const Index = ({ labelStatus }) => {
+  const [open, setOpen] = useState(false);
+
   const [selectedFilter, setSelectedFilter] = useState(
     labelStatus ? labelStatus : "All"
   );
@@ -159,18 +162,21 @@ const Index = ({ labelStatus }) => {
   ];
   
   function handleUnlockPremiumClick(){
-    console.log("handleUnlockPremiumClick")
+    setOpen(true)
   }
 
   return (
     <>
+          <Popup type="UnlockPremium" status={open} text={`<p class="opacity-70">Unlock the access exclusive content and early releases curated just for you. Subscribe for ,<b>$24.00/Month ( $288.00/year )</b>.</p>`}  btnText="Subscribe now @$24.00/Month" heading="Preview in Market Suite" handleData={() => setOpen(false)} />
+
       {IsDataAvailable ? (
         <div className="__entertainment_assets_main  pt-4 max-[768px]:p-0">
           <div className="__entertainment_assets_heading mb-[29px] lg:mb-[39px] sm:flex justify-between">
-            <h4 className="font-medium font-heading text-[18px] px-[0] lg:px-[20px] lg:text-[28px] tracking-[1px]  max-[768px]:p-0 max-[768px]:text-[15px] mb-4 sm:mb-0">
+            <h4  className="font-medium font-heading text-[18px] px-[0] lg:px-[20px] lg:text-[28px] tracking-[1px]  max-[768px]:p-0 max-[768px]:text-[15px] mb-4 sm:mb-0">
               Volumetric Video
             </h4>
           </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
             {premiumContent
               ? premiumData.map((item, index) => (
@@ -184,7 +190,7 @@ const Index = ({ labelStatus }) => {
                     tagType={item.tagType}
                     // tags ="vol"
                     thumbnailIcon={false}
-                    handleUnlockPremiumClick={handleUnlockPremiumClick()}
+                    handleUnlockPremiumClick={handleUnlockPremiumClick}
                   />
                 ))
               : filteredData.map((item, index) => (
@@ -198,7 +204,7 @@ const Index = ({ labelStatus }) => {
                     tagType={item.tagType}
                     // tags ="vol"
                     thumbnailIcon={false}
-                    handleUnlockPremiumClick={handleUnlockPremiumClick()}
+                    handleUnlockPremiumClick={handleUnlockPremiumClick}
                   />
                 ))}
           </div>

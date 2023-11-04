@@ -183,6 +183,10 @@ const Index = () => {
       id: "5",
     },
   ];
+  const [cardAdded, setcardAdded] = useState(false);
+  const handleClick = () => {
+    setcardAdded(true);
+  };
   return (
     <div className="relative px-4 mb-[140px]">
       <div className="lg:min-h-[350px] mb-6 md:mb-9 z-10 relative bg-[#333] rounded flex justify-center items-center">
@@ -237,12 +241,6 @@ const Index = () => {
                 <p className="text-sm sm:text-xl font-semibold mr-[10px] sm:mr-[20px]">
                   Fourth Star Entertainment
                 </p>
-                {/* <NavLink
-              to="volumetric-video"
-              className={`clip-text text-[12px] sm:text-[15px] font-semibold`}
-            >
-              See More
-            </NavLink> */}
               </div>
             </div>
             <p className="text-sm text-white text-opacity-90">
@@ -253,24 +251,33 @@ const Index = () => {
               entertainment, and boundless exploration.
             </p>
           </div>
-          <div className="flex-1 max-w-xl mt-10 lg:mt-0 min-h-180" >
+          <div className="flex-1 max-w-xl mt-10 lg:mt-0 min-h-180">
             {/* Type : BuyNow || Free || Premium || MyAsset */}
-            <BuyCards
-              type="addToAssets"
-            //   card="product"
-              title="This content is available for free. Add to your assets and enjoy."
-            //   price="$245.89"
-            />
+
+            {!cardAdded ? (
+              <BuyCards
+                type="addToAssets"
+                handleClick={handleClick}
+                btnText="Add to my Assets"
+                title="This content is available for free. Add to your assets and enjoy."
+              />
+            ) : (
+              <BuyCards
+                type="addedToAssets"
+                handleClick={handleClick}
+                btnText="Added to your assets"
+                title="This content is available for free. Add to your assets and enjoy."
+              />
+            )}
           </div>
         </div>
         <div className="  mb-7 md:mb-[21px] relative z-10 ">
-        <div className="__entertainment_assets_heading mb-[16px] lg:mb-[25px] sm:flex justify-between">
-              <h4 className="font-medium font-heading text-[16px] px-[0]  lg:text-[24px] tracking-[1px]  max-[768px]:p-0 max-[768px]:text-[15px] mb-4 sm:mb-0">
-                Highlights
-              </h4>
-            </div>
+          <div className="__entertainment_assets_heading mb-[16px] lg:mb-[25px] sm:flex justify-between">
+            <h4 className="font-medium font-heading text-[16px] px-[0]  lg:text-[24px] tracking-[1px]  max-[768px]:p-0 max-[768px]:text-[15px] mb-4 sm:mb-0">
+              Highlights
+            </h4>
+          </div>
           <div className="">
-         
             <p
               className={`clip-text text-[12px] sm:text-[16px] font-semibold mb-[13px]`}
             >
@@ -278,7 +285,9 @@ const Index = () => {
             </p>
 
             <p className="text-sm text-white text-opacity-90 max-w-2xl">
-            Celestial melodies by artist will take you on an interstellar journey. Experience her enchanting performance that transcends galaxies. Get ready to be captivated by her celestial talent.
+              Celestial melodies by artist will take you on an interstellar
+              journey. Experience her enchanting performance that transcends
+              galaxies. Get ready to be captivated by her celestial talent.
             </p>
           </div>
         </div>
@@ -288,11 +297,13 @@ const Index = () => {
             <p
               className={`clip-text text-[12px] sm:text-[16px] font-semibold mb-[13px]`}
             >
-             Galactic Soundscapes
+              Galactic Soundscapes
             </p>
 
             <p className="text-sm text-white text-opacity-90 max-w-2xl">
-            Celestial melodies by artist will take you on an interstellar journey. Experience her enchanting performance that transcends galaxies. Get ready to be captivated by her celestial talent.
+              Celestial melodies by artist will take you on an interstellar
+              journey. Experience her enchanting performance that transcends
+              galaxies. Get ready to be captivated by her celestial talent.
             </p>
           </div>
         </div>
@@ -302,11 +313,13 @@ const Index = () => {
             <p
               className={`clip-text text-[12px] sm:text-[16px] font-semibold mb-[13px]`}
             >
-           Dynamic Perspectives
+              Dynamic Perspectives
             </p>
 
             <p className="text-sm text-white text-opacity-90  max-w-2xl">
-            Experience a new level of storytelling with dynamic perspectives. As the viewer, you have control over where to look, allowing you to focus on the details that interest you the most.
+              Experience a new level of storytelling with dynamic perspectives.
+              As the viewer, you have control over where to look, allowing you
+              to focus on the details that interest you the most.
             </p>
           </div>
         </div>

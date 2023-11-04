@@ -558,6 +558,11 @@
   top: calc(50% - 20px);
 }
 
+.css-4pp0nb-MuiPaper-root-MuiDialog-paper{
+  border-radius: 8px !important;
+  background-color: transparent !important;
+}
+
 @keyframes fadeInRight {
   0% {
     opacity: 0;
