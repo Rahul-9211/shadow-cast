@@ -29,6 +29,7 @@ import MyProfile from 'pages/myprofile/MyProfile';
 import EntertainmentVideo  from 'pages/marketplace/entertainments/list/Index'
 import ChannelContent from 'pages/marketplace/entertainments/channel/Index';
 import EntertainmentContent from "pages/marketplace/entertainments/content/Index"
+import MusicContent from 'pages/marketplace/entertainments/content/Music';
 // import { Ships } from 'components/assets/myassets';
 
 /* The code is exporting a default function that returns an array of route objects. Each route object
@@ -109,6 +110,13 @@ const routes = [
     // component: <ChannelContent />,
     useLayout: <Layout />,
   },
+  {
+  name: 'Marketplace-Entertainment',
+  key: 'marketplace-entertainment',
+  route: `/marketplace/entertainments/music/content`,
+  component: <Marketplace value="2" element={<MusicContent/>} />,
+  useLayout: <Layout />,
+},
   // {
   //   name: 'Marketplace-Channel',
   //   key: 'marketplace-channel',
