@@ -269,11 +269,11 @@ const MusicContent = () => {
 
             {/* <div className="flex-1 max-w-xl mt-10 lg:mt-0 min-h-180"> */}
             {/* <Popup type="UnlockPremium" status={open} text={`<p class="opacity-70">Unlock the access exclusive content and early releases curated just for you. Subscribe for ,<b>$24.00/Month ( $288.00/year )</b>.</p>`}  btnText="Subscribe now @$24.00/Month" heading="Preview in Market Suite" handleData={() => setOpen(false)} /> */}
-            <div className="py-[24px] px-[33px] sm:py-[38px] sm:px-[59px] bg-[#2C2C2C] text-white rounded-lg  max-w-[520px]">
+            <div className="py-[24px] px-[33px] sm:py-[38px] sm:px-[59px] bg-gradient-card text-white rounded-lg  max-w-[520px]">
              
               <div className="text-left">
                 {/* <h2 className="font-heading text-2xl mb-[29px]">heading</h2> */}
-                <p className="leading-relaxed ">
+                <p className="leading-relaxed font-normal ">
                   This content is locked. To access this premium content, Buy{" "}
                   <b>Fourth Star</b> Premium Subscription.
                 </p>

@@ -563,6 +563,10 @@
   background-color: transparent !important;
 }
 
+.bg-gradient-card{
+background: linear-gradient(90deg, rgba(251, 188, 94, 0.20) 0.13%, rgba(243, 161, 81, 0.20) 99.89%);
+}
+
 @keyframes fadeInRight {
   0% {
     opacity: 0;
