@@ -15,16 +15,19 @@ import MarketPlaceCard from "components/card/marketplace";
 import ShadowFrame from "components/shadow-frame";
 import GameRoom1 from "assets/images/game-room-1.png";
 import GameRoom2 from "assets/images/game-room-2.png";
+import GameRoom3 from "assets/images/game-room-3.png";
 import PremiumApt from "assets/images/Premium-apartment.png";
+import ApartmentThumb from "assets/images/apartment-thumbnail.png";
 import PremiumApt2 from "assets/images/Premium-final-1.png";
 import StandredAppartment from "assets/images/StandredAppartment.png";
 import BuyCards from 'components/buy-cards';
 import Slider from "assets/images/slider-1.png";
+import Slider2 from "assets/images/slider-2.png";
 import Thumb1 from "assets/images/StandredAppartment-thum.png";
 import Thumb2 from "assets/images/StandredAppartment-thum2.png";
 import Thumb3 from "assets/images/StandredAppartment-thum3.png";
 import Thumb4 from "assets/images/StandredAppartment-thum4.png";
-import Popup from 'components/popup';
+import Preview from 'components/popup/Preview';
 /* The above code is a React component called "Index". It renders a webpage that displays information
 about an apartment, including its image, price, description, themes, gaming and streaming options,
 and suggested apartments. It also includes a dialog box that allows the user to preview the
@@ -43,6 +46,10 @@ const Index = () => {
       img: GameRoom2,
       title: "Ultimate Gaming Experience",
     },
+    {
+      img: GameRoom3,
+      title: "Ultimate Gaming Experience",
+    }
   ]);
 
   const [themes, setThemes] = useState([
@@ -67,7 +74,7 @@ const Index = () => {
 
     {
       id: 1,
-      largeImg: Slider,
+      largeImg: Slider2,
       thumbImg: Thumb2
     },
 
@@ -78,7 +85,7 @@ const Index = () => {
     },
     {
       id: 3,
-      largeImg: Slider,
+      largeImg: Slider2,
       thumbImg: Thumb4
     }
   ]
@@ -86,13 +93,13 @@ const Index = () => {
 
   const [apartments, setApartments] = useState([
     {
-      img: StandredAppartment,
+      img: ApartmentThumb,
       title: "Nebula Apartment",
       desc: `Find yourself enchanted by the mesmerizing allure of the aurora in these exclusive enclaves, where the ethereal beauty of the night sky is brought to life.`,
       slug: '/marketplace/apartments/nebula-apartment',
     },
     {
-      img: "https://fourthstar-userdashboard.s3.amazonaws.com/Apt_7",
+      img: StandredAppartment,
       title: "Astral Suite",
       desc: `Find yourself enchanted by the mesmerizing allure of the aurora in these exclusive enclaves, where the ethereal beauty of the night sky is brought to life.`,
       slug: '/marketplace/apartments/astral-suite',
@@ -154,16 +161,16 @@ const Index = () => {
         </div>
         <div className='streaming-section my-10 md:my-20 z-10 relative'>
           <h2 className="font-heading text-lg md:text-2xl mb-5">
-            Sneaky Peak
+            Sneaky Peek
           </h2>
-          <div className='max-w-4xl'>
+          <div className='max-w-full'>
             <SlickSlider slider={slider} />
           </div>
           <div className='mt-12'>
             <button type="button" onClick={() => setOpen(true)} className="rounded-lg font-medium bg-gradient-3 border border-sec justify-center py-3 px-5 md:px-10 flex gap-2 mt-4">
               Preview in Market Suite
             </button>
-            <Popup status={open} text="To preview the apartment, login to Oculus to have full apartment view inside Marketing Suite." heading="Preview in Market Suite" handleData={() => setOpen(false)} />
+            <Preview status={open} text="To preview the apartment, login to Oculus to have full apartment view inside Marketing Suite." heading="Preview in Market Suite" handleData={() => setOpen(false)} />
           </div>
         </div>
         <ShadowFrame className="w-[250px] md:w-[775px] h-[250px] md:h-[775px] rounded-[250px] md:rounded-[775px] -right-[80px] md:-right-[300px] -bottom-[80px] md:-bottom-[150px]" />

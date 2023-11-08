@@ -10,24 +10,22 @@ import React, { useState } from "react";
 import Explore from "components/Explore/Explore";
 import { EntertainmentCardClass } from "constant";
 import PremiumLockIcon from "assets/images/myassets/material-symbols_lock-outline.png";
-import AssetCardOpen from "components/card/assets/AssetCardOpen";
-import FilterDropdown from "components/FilterDropdown/FilterDropdown";
+// import AssetCardOpen from "components/card/assets/AssetCardOpen";
+// import FilterDropdown from "components/FilterDropdown/FilterDropdown";
 import VolumetricCard from "components/card/marketplace/entertainment/VolumetricCard";
-
-import Popup from 'components/popup/index';
+import UnlockPremium from "components/popup/unlockPremium";
 /*It defines a
 component called `Index` that renders a list of volumetric cards. */
 const Index = ({ labelStatus }) => {
-  const [open, setOpen] = useState(false);
-
   const [selectedFilter, setSelectedFilter] = useState(
     labelStatus ? labelStatus : "All"
   );
-  const premiumContent = false;
+  const [premiumContent, setPremiumContent] = useState(false);
 
   const handleFilterChange = (selectedValue) => {
     setSelectedFilter(selectedValue);
   };
+  const [open, setOpen] = useState(false);
   const IsDataAvailable = true;
 
   const filterOptions = ["All", "Free", "Premium", "Buy"];
@@ -160,23 +158,16 @@ const Index = ({ labelStatus }) => {
       id: "5",
     },
   ];
-  
-  function handleUnlockPremiumClick(){
-    setOpen(true)
-  }
 
   return (
     <>
-          <Popup type="UnlockPremium" status={open} text={`<p class="opacity-70">Unlock the access exclusive content and early releases curated just for you. Subscribe for ,<b>$24.00/Month ( $288.00/year )</b>.</p>`}  btnText="Subscribe now @$24.00/Month" heading="Preview in Market Suite" handleData={() => setOpen(false)} />
-
       {IsDataAvailable ? (
         <div className="__entertainment_assets_main  pt-4 max-[768px]:p-0">
           <div className="__entertainment_assets_heading mb-[29px] lg:mb-[39px] sm:flex justify-between">
-            <h4  className="font-medium font-heading text-[18px] px-[0] lg:px-[20px] lg:text-[28px] tracking-[1px]  max-[768px]:p-0 max-[768px]:text-[15px] mb-4 sm:mb-0">
+            <h4 className="font-medium font-heading text-[18px] px-[0] lg:px-[20px] lg:text-[28px] tracking-[1px]  max-[768px]:p-0 max-[768px]:text-[15px] mb-4 sm:mb-0">
               Volumetric Video
             </h4>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
             {premiumContent
               ? premiumData.map((item, index) => (
@@ -190,7 +181,6 @@ const Index = ({ labelStatus }) => {
                     tagType={item.tagType}
                     // tags ="vol"
                     thumbnailIcon={false}
-                    handleUnlockPremiumClick={handleUnlockPremiumClick}
                   />
                 ))
               : filteredData.map((item, index) => (
@@ -204,11 +194,11 @@ const Index = ({ labelStatus }) => {
                     tagType={item.tagType}
                     // tags ="vol"
                     thumbnailIcon={false}
-                    handleUnlockPremiumClick={handleUnlockPremiumClick}
+                    handleData={() => setOpen(true)}
                   />
                 ))}
           </div>
-          <div className="volumetric-card-right-shadow"></div>
+          <UnlockPremium status={open} text="Unlock the access exclusive content and early releases curated just for you. Subscribe for <b>$24.00/Month ( $288.00/year )</b>." heading="Unlock the Premium" handleData={() => setOpen(false)} handleSub={() => setPremiumContent(true)}/>
         </div>
       ) : (
         <div class="__explore_default_button flex justify-center items-center h-[50vh] max-[768px]:flex-none max-[1280px]:h-[100%]">

@@ -26,7 +26,8 @@ const BeforeLogin = () => {
   const headerRef = useRef(null);
   // handle scroll event
   const handleScroll = (elTopOffset, elHeight) => {
-    if (window.pageYOffset > (elTopOffset + elHeight)) {
+    // if (window.pageYOffset > (elTopOffset + elHeight)) {
+    if (window.pageYOffset > 10) {
       setSticky({ isSticky: true, offset: elHeight });
     } else {
       setSticky({ isSticky: false, offset: 0 });

@@ -8,7 +8,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-
+import NotFound from "components/not-found/Index";
 // import Apartments from 'pages/marketplace/apartments/Index';
 // import Ships from "pages/marketplace/ships/Index";
 // import Entertainments from 'pages/marketplace/entertainments/Index';
@@ -20,9 +20,9 @@ const Index = ({ value, element }) => {
     { label: 'Apartment', coming: false },
     { label: 'Ship', coming: false },
     { label: 'Entertainment', coming: false },
-    { label: 'Clothing', coming: true },
-    { label: 'Gaming', coming: true },
-    { label: 'Companion', coming: true },
+    { label: 'Clothing', coming: false },
+    { label: 'Gaming', coming: false },
+    { label: 'Companion', coming: false },
   ]);
   const [values, setValues] = useState(0);
 
@@ -60,7 +60,7 @@ const Index = ({ value, element }) => {
     if (value) setValues(+value);
   }, [value]);
   return (
-    <div className='container app-container mx-auto px-2 md:px-3 xl:px-6 2xl:px-14 relative z-10'>
+    <div className='container app-container mx-auto px-2 md:px-3 xl:px-6 2xl:px-10 relative z-10'>
       <ul className="flex overflow-x-auto text-sm md:text-base font-semibold text-center py-5 px-2 md:py-8 md:px-4" data-testid="tablist">
         {allCategory?.map((category, i) => (
           <li className="mr-8" key={i} role='tab'>
@@ -84,16 +84,8 @@ const Index = ({ value, element }) => {
           </li>
         ))}
       </ul>
-
-      <div className="channelId-card-left-shadow "></div>
-      <div className="channelId-card-right-shadow "></div>
       <div className='marketplace_tabs'>
-        {element ? element :
-          <div className='flex h-screen flex-col gap-3 items-center justify-center'>
-            <p className='font-heading font-semibold clip-text'>Coming Soon</p>
-            <p className='text-[#7A7A7A] font-semibold'>Try exploring other exciting contents in marketplace.</p>
-            <NavLink to="/marketplace" className="border-[1.5px] border-sec text-sm mt-4 rounded-lg max-w-[250px] hover:bg-sec hover:text-dark font-bold text-center w-full py-3 px-4">Browse other content</NavLink>
-          </div>}
+        {element ? element : <NotFound className="h-screen" />}
       </div>
     </div>
   );

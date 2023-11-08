@@ -90,7 +90,8 @@ const AfterLogin = () => {
   const headerRef = useRef(null);
   // handle scroll event
   const handleScroll = (elTopOffset, elHeight) => {
-    if (window.pageYOffset > (elTopOffset + elHeight)) {
+    // if (window.pageYOffset > (elTopOffset + elHeight)) {
+    if (window.pageYOffset > 10) {
       setSticky({ isSticky: true, offset: elHeight });
     } else {
       setSticky({ isSticky: false, offset: 0 });
@@ -145,13 +146,15 @@ const AfterLogin = () => {
                 <ul className="flex justify-between items-center text-sm">
                   <li className="mx-2 lg:mx-4">
                     <div ref={searchRef} className="relative w-30 lg:w-72 mx-auto py-4">
-                      <div className="relative rounded-full bg-black shadow border border-solid border-1 border-gray-700">
-                        <div className="absolute top-0 left-2 flex items-center h-full pl-1 ">
-                          <SearchIcon className="text-gray-500" />
+                      <div className="relative rounded-lg bg-black shadow border border-solid border-1 border-[#7A7A7A]">
+                        <div className="absolute top-0 left-2 flex items-center h-full pl-1">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="currentColor">
+                            <path d="M10.4167 9.16667H9.75834L9.525 8.94167C10.3699 7.96169 10.8343 6.71058 10.8333 5.41667C10.8333 4.34535 10.5157 3.2981 9.92046 2.40733C9.32527 1.51656 8.4793 0.822296 7.48954 0.412322C6.49977 0.00234696 5.41066 -0.104921 4.35993 0.104082C3.3092 0.313085 2.34404 0.828973 1.58651 1.58651C0.828973 2.34404 0.313085 3.3092 0.104082 4.35993C-0.104921 5.41066 0.00234696 6.49977 0.412322 7.48954C0.822296 8.4793 1.51656 9.32527 2.40733 9.92046C3.2981 10.5157 4.34535 10.8333 5.41667 10.8333C6.75834 10.8333 7.99167 10.3417 8.94167 9.525L9.16667 9.75834V10.4167L13.3333 14.575L14.575 13.3333L10.4167 9.16667ZM5.41667 9.16667C3.34167 9.16667 1.66667 7.49167 1.66667 5.41667C1.66667 3.34167 3.34167 1.66667 5.41667 1.66667C7.49167 1.66667 9.16667 3.34167 9.16667 5.41667C9.16667 7.49167 7.49167 9.16667 5.41667 9.16667Z" fill="#777777" />
+                          </svg>
                         </div>
                         <input
                           type="text"
-                          className="w-full py-2 pl-12 pr-3 text-xs text-white-700 outline-none bg-white bg-opacity-5 rounded-full"
+                          className="w-full py-2 pl-8 pr-3 text-sm leading-none text-white-700 outline-none bg-white bg-opacity-5 rounded-lg"
                           placeholder="Search"
                           value={searchTerm}
                           onChange={handleInputChange}
@@ -174,6 +177,13 @@ const AfterLogin = () => {
                       </div>
                     </div>
                   </li>
+                  <li className="mx-4 flex">
+                    <button>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M15 17V18C15 18.7956 14.6839 19.5587 14.1213 20.1213C13.5587 20.6839 12.7956 21 12 21C11.2044 21 10.4413 20.6839 9.87868 20.1213C9.31607 19.5587 9 18.7956 9 18V17M15 17H9M15 17H18.59C18.973 17 19.165 17 19.32 16.948C19.4658 16.8986 19.5982 16.8163 19.707 16.7074C19.8157 16.5984 19.8979 16.4659 19.947 16.32C20 16.164 20 15.972 20 15.586C20 15.417 20 15.333 19.986 15.252C19.9614 15.1006 19.9022 14.9568 19.813 14.832C19.765 14.765 19.705 14.705 19.586 14.586L19.196 14.196C19.1338 14.1337 19.0845 14.0598 19.0508 13.9785C19.0172 13.8972 18.9999 13.81 19 13.722V10C19 9.08075 18.8189 8.1705 18.4672 7.32122C18.1154 6.47194 17.5998 5.70026 16.9497 5.05025C16.2997 4.40024 15.5281 3.88463 14.6788 3.53284C13.8295 3.18106 12.9193 3 12 3C11.0807 3 10.1705 3.18106 9.32122 3.53284C8.47194 3.88463 7.70026 4.40024 7.05025 5.05025C6.40024 5.70026 5.88463 6.47194 5.53284 7.32122C5.18106 8.1705 5 9.08075 5 10V13.722C5.00006 13.81 4.98279 13.8972 4.94915 13.9785C4.91552 14.0598 4.8662 14.1337 4.804 14.196L4.414 14.586C4.294 14.706 4.235 14.765 4.188 14.831C4.09803 14.956 4.03814 15.1001 4.013 15.252C4 15.332 4 15.417 4 15.586C4 15.972 4 16.164 4.052 16.32C4.10133 16.4661 4.18378 16.5988 4.29289 16.7077C4.40201 16.8167 4.53484 16.8989 4.681 16.948C4.836 17 5.027 17 5.41 17H9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                    </button>
+                  </li>
                   <li className="mx-4">
                     <a href="" data-testid="shopping-cart-icon">
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -195,19 +205,19 @@ const AfterLogin = () => {
                     elevation: 0,
                     sx: {
                       overflow: 'visible',
-                      mt: 1.5, 
+                      mt: 1.5,
                       backgroundColor: "#000",
                       border: "1px solid #383838",
                       borderRadius: "8px;",
                       width: "245px",
                       padding: "20px 24px",
                       maxHeight: "initial",
-                                
+
                     },
                   }}
                   transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                   anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-                  
+
                 >
                   <div className="flex flex-col">
                     <div className="mb-5">

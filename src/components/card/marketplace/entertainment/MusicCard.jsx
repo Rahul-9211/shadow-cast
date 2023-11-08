@@ -27,7 +27,7 @@ const MusicCard = ({
 
   return (
     <div className=" flex " data-testid="volumetric-card">
-      <div className="aspect-[456/239] mr-[10px] sm:mr-[15px] relative rounded-lg bg-[#181818;]  max-h-24 min-w-[152px]">
+      <div className="aspect-[152/97] mr-[10px] sm:mr-[15px] relative rounded-lg bg-[#181818;]  max-h-24 min-w-[152px]">
         {tags && <span className="tags">{tags}</span>}
         {thumbnailIcon && (
           <span className="music-icon">
@@ -49,18 +49,18 @@ const MusicCard = ({
 
       <div>
         <div className="__entertainment_assets_heading mb-[10px] lg:mb-[10px] sm:flex justify-between">
-          <h4 className=" font-medium font-heading text-[12px] max-[500px]:text-[10px]  px-[0] md:text-[13px] lg:text-[14px] xl:text-[16px] tracking-[1px]  max-[768px]:p-0 max-[768px]:text-[15px] mb-1 sm:mb-0">
+          <h4 className=" font-medium text-[12px] max-[500px]:text-[10px]  px-[0] md:text-[13px] lg:text-[14px] xl:text-[16px] tracking-[1px]  max-[768px]:p-0 max-[768px]:text-[15px] mb-1 sm:mb-0">
             Lady Gaga - Hold my hands
           </h4>
         </div>
         <div className="">
           <div className="flex items-center mb-[10px] sm:mb-[17px]">
             <img
-              className="w-[30px] h-[30px]  sm:w-[35px] sm:h-[35px] rounded-full mr-[8px] "
+              className="w-[28px] h-[28px] rounded-full"
               src={ChannelImage}
               alt="load image"
             />
-            <p className="text-[10px] sm:text-[13px] opacity-50   sm:mr-[20px]">
+            <p className="text-[10px] sm:text-[13px] opacity-50 ml-2">
             Nureal Entertainment
             </p>
           </div>

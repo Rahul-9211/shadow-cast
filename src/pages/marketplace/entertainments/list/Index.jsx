@@ -4,7 +4,7 @@ import Video180 from "../components/180";
 import Video360 from "../components/360";
 import Channels from "../components/channels";
 import Music from "../components/music";
-import Volumetric from "../components/Volumetric";
+import Volumetric from "../components/volumetric";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -29,7 +29,7 @@ const myAssetsTabs = [
   },
   {
     id: 1,
-    parentId: 1,
+    parentId: 0,
     key: "180-video",
     name: "180 Video",
     children: null,
@@ -37,7 +37,7 @@ const myAssetsTabs = [
   },
   {
     id: 2,
-    parentId: 2,
+    parentId: 0,
     key: "360-video",
     name: "360 Video",
     children: null,
@@ -45,7 +45,7 @@ const myAssetsTabs = [
   },
   {
     id: 3,
-    parentId: 3,
+    parentId: 0,
     key: "2D-video",
     name: "2D Video",
     children: null,
@@ -53,7 +53,7 @@ const myAssetsTabs = [
   },
   {
     id: 4,
-    parentId: 4,
+    parentId: 0,
     key: "music",
     name: "Music",
     children: null,
@@ -61,7 +61,7 @@ const myAssetsTabs = [
   },
   {
     id: 5,
-    parentId: 5,
+    parentId: 0,
     key: "channels",
     name: "Channels",
     children: null,
@@ -104,12 +104,13 @@ const Index = () => {
     return tab ? tab : myAssetsTabs[0]; // Default to the first tab if activeTab is not found
   });
 
+  
 
   return (
-    <>
-      <hr className="border-[0.1px] border-[#5A5A5A80] mx-3" />
+    <div className="relative px-2 md:px-4">
+      <hr className="border-[0.1px] border-[#5A5A5A80]" />
 
-      <div className="__myassets_container_main px-[15px] py-[35px] flex flex-col md:flex-row max-[768px]:flex-col max-[768px]:p-0 max-[1280px]:py-[25px]">
+      <div className="__myassets_container_main py-[35px] flex flex-col md:flex-row max-[768px]:flex-col max-[768px]:p-0 max-[1280px]:py-[25px]">
         <div className="__assets_category_panel w-[100%] md:w-[20%]  max-[768px]:w-auto max-[768px]:p-0 max-[1280px]:p-0">
           <h5 className="text-[grey] font-body mb-[10px] font-bold tracking-[1px] max-[768px]:hidden text-sm">
             Category
@@ -141,9 +142,9 @@ const Index = () => {
                 <li
                   role="tab"
                   key={tabs.key}
-                  className={`mr-8 md:mr-[0] whitespace-nowrap ${
+                  className={`mr-8 md:mr-[0] whitespace-nowrap hover:bg-[#FBBC5E4D] rounded-[5px] ${
                     activeTabs.key === tabs.key
-                      ? "bg-[#FBBC5E4D] hover:bg-[#FBBC5E4D] rounded-[5px]"
+                      ? "!bg-[#FBBC5E4D]"
                       : ""
                   }`}
                   onClick={() => {
@@ -169,7 +170,7 @@ const Index = () => {
           {activeTabs.key === "channels" && activeTabs.component}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

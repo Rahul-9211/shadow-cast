@@ -9,7 +9,7 @@
  import React from 'react';
  import Slider from "react-slick";
  import AssetCardOpen from "components/card/assets/AssetCardOpen";
- const SneakyPeek = ({ slider, type , SlideToShow, sneakyPeek }) => {
+ const SneakyPeak = ({ slider, type , SlideToShow, sneakyPeek }) => {
  
      // const CompanionCardClass = {
      //     cardMainclass: "w-full",
@@ -162,4 +162,4 @@
      )
  }
  
- export default SneakyPeek;
+ export default SneakyPeak;

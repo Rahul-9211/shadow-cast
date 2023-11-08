@@ -7,22 +7,27 @@ const AllGaming = () => {
   <AssetCardOpen
   title="Galactic Warfare: Multiverse war"
   cardClass={GamingCardClass}
+  baseRoute=""
   />
   <AssetCardOpen
   title="Galactic Warfare: Multiverse war"
   cardClass={GamingCardClass}
+  baseRoute=""
   />
   <AssetCardOpen
   title="Galactic Warfare: Multiverse war"
   cardClass={GamingCardClass}
+  baseRoute=""
   />
   <AssetCardOpen
   title="Galactic Warfare: Multiverse war"
   cardClass={GamingCardClass}
+  baseRoute=""
   />
    <AssetCardOpen
   title="Galactic Warfare: Multiverse war"
   cardClass={GamingCardClass}
+  baseRoute=""
   />
 </>
 

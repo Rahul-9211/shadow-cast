@@ -15,17 +15,16 @@ import AddToCard from './addToCard';
 import Free from './free';
 import Premium from './premium';
 import InMyAssets from './myAssets';
-import AddToAssets from './addToAssets';
-import AddedToAssets from './addedToAssets';
-const BuyCards = ({ type, card, title, price, plan ,btnText ,  handleClick }) => {
+const BuyCards = ({ type, card, title, price, plan, handleData }) => {    
+    const handleClick = (e) => {
+        handleData(e)
+    }
     return (
         <div className='bg-gradient-2 rounded-[20px] py-5 px-7 lg:py-10 lg:px-14'>
-            {type === "BuyNow" && <AddToCard type={card} title={title} price={price}/> }
-            {type === "Free" && <Free title={title} /> }
-            {type === "Premium" && <Premium price={price} plan={plan} title={title} /> }
-            {type === "MyAsset" && <InMyAssets price={price} title={title} /> }
-            {type === "addToAssets" && <AddToAssets btnText={btnText} title={title} handleClick={handleClick}/> }
-            {type === "addedToAssets" && <AddedToAssets btnText={btnText} title={title} handleClick={handleClick}/> }
+            {type === "BuyNow" && <AddToCard type={card} title={title} price={price} handleData={handleClick}/> }
+            {type === "Free" && <Free title={title}  handleData={handleClick}/> }
+            {type === "Premium" && <Premium price={price} plan={plan} title={title} handleData={handleClick}/> }
+            {type === "MyAsset" && <InMyAssets price={price} title={title} handleData={handleClick}/> }
         </div>
     )
 }

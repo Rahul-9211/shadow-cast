@@ -4,8 +4,8 @@ import PremiumLockIcon from 'assets/images/myassets/material-symbols_lock-outlin
 
 const EntertainmentCardClass = {
   cardMainclass:
-    "w-[317px] h-[136px] pl-[10px] mb-[100px] hover:cursor-pointer  max-[768px]:w-[100%] max-[768px]:p-0",
-  cardMediaClass: "w-[100%] hover:shadow-[0px_0px_5px_0px_rgba(102,102,102,1)] flex justify-center items-center text-center bg-[#2B2B2B] min-h-[110px] rounded-[10px]",
+    "w-full min-h-[136px] mb-[30px] hover:cursor-pointer hover:scale-[1.024] transition duration-300 ease-in-out max-[768px]:w-[100%] max-[768px]:p-0",
+  cardMediaClass: "w-[100%] flex justify-center items-center text-center bg-[#2B2B2B] min-h-[136px] rounded-[10px]",
   cardtitleClass:
     "py-[12px] font-body text-[14px] font-light pl-[6px] max-[768px]:text-[13px]",
   cardButtonclass:

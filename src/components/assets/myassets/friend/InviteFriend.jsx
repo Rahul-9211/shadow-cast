@@ -36,12 +36,12 @@ const InviteFriend = () => {
                      max-[768px]:w-[100%]
                      max-[1280px]:h-[220px]
                      ">
-        <h2 className="text-[20px] font-heading max-[768px]:text-[15px] max-[1280px]:text-[13px]">Invite Friends</h2>
-        <p className="font-body text-[16px] mt-[35px] max-[768px]:text-[12px] max-[768px]:px-[15px] max-[1280px]:px-[15px] max-[768px]:mt-[25px] max-[1280px]:text-[12px] max-[1280px]:mt-[15px]">
+        <h2 className="text-[20px] font-heading max-[768px]:text-[13px] max-[768px]:mt-[20px] max-[1280px]:text-[13px]">Invite Friends</h2>
+        <p className="font-body text-[16px] mt-[35px] max-[768px]:text-[11px] max-[768px]:px-[15px] max-[1280px]:px-[15px] max-[768px]:mt-[15px] max-[1280px]:text-[12px] max-[1280px]:mt-[15px]">
           Explore the virtual world with your friends and invite them to your{" "}
           <br /> virtual space and tours.
         </p>
-        <button onClick={() => {setInviteModal(!isInviteModalStatus)}} className="bg-transparency border border-[#F3A151] px-[130px] py-[7px] mt-[30px] rounded-[8px] font-medium transition-all hover:text-[#000] hover:bg-[#FBBC5E]">
+        <button onClick={() => {setInviteModal(!isInviteModalStatus)}} className="bg-transparency border border-[#F3A151] px-[130px] py-[7px] mt-[30px] rounded-[8px] font-medium transition-all hover:text-[#000] hover:bg-[#FBBC5E] max-[768px]:mt-[10px] max-[768px]:px-[80px] max-[768px]:text-[14px] max-[768px]:py-[3px]">
           Invite
         </button>
       </div>

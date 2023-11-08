@@ -12,10 +12,13 @@ import { useNavigate } from "react-router-dom";
 // import { useGLTF, Stage, PresentationControls } from '@react-three/drei';
 import { Fade, Zoom } from "react-reveal";
 import PremAptImg from "assets/images/ship-banner.jpeg";
-import FeatureImg from "assets/images/feature-icon.png"
+import FeaturedCard from "components/card/feature";
 import MarketPlaceCard from "components/card/marketplace";
 import ShadowFrame from "components/shadow-frame";
-import FeaturedCard from "components/card/feature";
+import FeatureImg1 from "assets/images/feature-icon.png"
+import FeatureImg2 from "assets/images/feature-icon-2.png"
+import FeatureImg3 from "assets/images/feature-icon-3.png"
+import FeatureImg4 from "assets/images/feature-icon-4.png"
 import Ship1 from "assets/images/ship-1.png";
 import Ship2 from "assets/images/ship-2.png";
 import Ship3 from "assets/images/ship-3.png";
@@ -33,22 +36,22 @@ const Index = () => {
   const navigate = useNavigate();
   const [aptFeaturedCard, setAptFeaturedCard] = useState([
     {
-      img: FeatureImg,
+      img: FeatureImg1,
       title: "Ultimate Gaming Experience",
       desc: `Our apartments and ships are equipped with everything you need to unleash your gaming prowess. Engage in thrilling multiplayer battles, conquer epic quests, and explore immersive virtual worlds, all from the comfort of your own living space.`,
     },
     {
-      img: FeatureImg,
+      img: FeatureImg2,
       title: "Exclusive Immersive Streaming",
       desc: `Immerse yourself in a realm of unparalleled entertainment with your choice of 180 and 360 immersive entertainment content. granting you access to an extraordinary selection of movies, shows, virtual travel experiences and live events with your friends.`,
     },
     {
-      img: FeatureImg,
+      img: FeatureImg3,
       title: "Volumetric Video",
       desc: `Science Fiction Holograms become a reality. Discover a world of captivating virtual reality content with Volumetric Video. See your favourite Artist standing right in front of you. Relax in your living space with a Personal Performance from the biggest Rock Stars on the Planet.`,
     },
     {
-      img: FeatureImg,
+      img: FeatureImg4,
       title: "180 and 360 Entertainment",
       desc: `Dive into captivating 180 and 360-degree VR videos for immersive visual adventures. Explore stunning landscapes, thrilling stories, and captivating narratives in virtual reality. Experience every angle, depth, and action like never before.`,
     },

@@ -17,6 +17,7 @@ const VolumetricVideo = () => {
       <AssetCardOpen key="" name="" title="StellarVerse Spectacle: Cosmic Symphony" subtitleButton="Watch in VR" cardClass={EntertainmentCardClass} />
       <AssetCardOpen key="" name="" title="StellarVerse Spectacle: Cosmic Symphony" subtitleButton="Watch in VR" cardClass={EntertainmentCardClass} />
       <AssetCardOpen key="" name="" title="StellarVerse Spectacle: Cosmic Symphony" subtitleButton="Watch in VR" cardClass={EntertainmentCardClass} />
+      
     </>
   );
 };

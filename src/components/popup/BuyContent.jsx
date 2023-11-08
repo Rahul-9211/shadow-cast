@@ -10,7 +10,7 @@ import * as React from 'react';
 import Dialog from '@mui/material/Dialog';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
-const BuyContent = ({ status, handleData, heading, text }) => {
+const BuyContent = ({ status, handleData, heading, text, buttonTxt }) => {
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
     const handleClick = () => {
@@ -18,16 +18,16 @@ const BuyContent = ({ status, handleData, heading, text }) => {
     }
     return (
         <Dialog
-            maxWidth={'lg'}
+            maxWidth={fullScreen}
             open={status}
             onClose={handleClick}
             aria-labelledby="responsive-dialog-title"
         >
-            <div className='py-7 lg:py-14 px-6 lg:px-28 bg-[#2C2C2C] text-white'>
-                <div className='text-center max-w-[638px]'>
+            <div className='py-8 px-9 bg-[#2C2C2C] text-white lg:w-[650px]'>
+                <div className='text-left'>
                     <h2 className='font-heading text-lg md:text-2xl mb-4 lg:mb-8'>{heading}</h2>
                     <p className="text-sm lg:text-base leading-relaxed">{text}</p>
-                    <button type="button" onClick={handleClick} className="font-bold rounded-lg btn-gradient leading-none text-black py-3 px-12 mt-6">Got it!</button>
+                    <button type="button" onClick={handleClick} className="font-bold rounded-lg w-full btn-gradient leading-none text-black py-3 px-12 mt-6">{buttonTxt || "Got it!"}</button>
                 </div>
             </div>
         </Dialog>

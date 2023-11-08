@@ -116,18 +116,6 @@ export const MyAssetsDummy = [
   },
 ];
 
-// Class Object for Assets Cards
-
-export const CardClassObj = {
-  cardmain:
-    "relative __card_view_main flex flex-col w-[487px] h-[361px] bg-[#2f2e2e] rounded-[20px] mt-[20px] hover:cursor-pointer hover:shadow-[0px_0px_5px_0px_rgba(102,102,102,1)] max-[768px]:w-[100%] max-[768px]:h-[100%] max-[768px]:pb-[10px]",
-  cardImg: "",
-  cardtitle:
-    "py-[12px] font-bold font-body px-[12px] py-[10px] max-[768px]:text-[14px] max-[768px]:py-[15px] max-[768px]:px-[13px] max-[1280px]:text-[13px] max-[1280px]:px-[7px]",
-  cardDesc:
-    "px-[12px] font-body text-[12px] mb-[7px] font-light max-[768px]:text-[10px] max-[768px]:px-[13px] max-[1280px]:text-[10px] max-[1280px]:px-[7px]",
-};
-
 // Assets Entertainment Tabs
 export const EntainTabs = [
   { id: 0, key: "volumetric-video", name: "Volumetric Videos" },
@@ -142,12 +130,13 @@ export const EntainTabs = [
 
 export const EntertainmentCardClass = {
   cardMainclass:
-    "w-[456px] h-[239px] mb-[120px] hover:cursor-pointer hover:shadow-[0px_0px_5px_0px_rgba(102,102,102,1)] hover:rounded-[16px] max-[768px]:w-[100%] max-[768px]:p-0",
-  cardMediaClass: "w-[100%] bg-[#2B2B2B] min-h-[250px] rounded-[16px]",
+    "w-full min-h-[256px] hover:cursor-pointer hover:rounded-[16px] hover:scale-[1.024] transition duration-300 ease-in-out max-[668px]:w-[100%] max-[768px]:p-0 max-[1366px]:p-0 ",
+  cardMediaClass: "w-[100%] bg-[#2B2B2B] h-[256px] min-h-[180px] rounded-[16px] max-[1366px]:h-[200px] max-[1200px]:h-[180px] ",
   cardtitleClass: "py-[12px] font-light pl-[6px] max-[768px]:text-[13px]",
   cardButtonclass:
-    "pl-[6px] flex font-bold bg-[#FBBC5E0D] px-[15px] py-[7px] rounded-[8px] text-center text-[15px] hover:shadow-[0_0_3px_1px_rgba(251,188,94,0.47)] hover:border-[#FBBC5E] max-[768px]:text-[13px]",
+    "pl-[6px] font-bold bg-[#FBBC5E0D] px-[15px] py-[7px] rounded-[8px] text-center text-[15px] hover:shadow-[0_0_3px_1px_rgba(251,188,94,0.47)] hover:border-[#FBBC5E] max-[768px]:text-[13px]",
 };
+
 
 // Assets Clothing Tabs
 export const ClothTabs = [
@@ -159,16 +148,16 @@ export const ClothTabs = [
 
 export const ClothingCardClass = {
   cardMainclass:
-    "w-[233px] h-[257px] pl-[15px] mb-[15px] hover:cursor-pointer  max-[768px]:w-[100%] max-[768px]:p-0",
-  cardMediaClass: "w-[100%] bg-[#2B2B2B] hover:shadow-[0px_0px_5px_0px_rgba(102,102,102,1)] min-h-[200px] rounded-[10px]",
+    "w-full min-h-[257px] pl-[10px] mb-[0px] hover:cursor-pointer hover:scale-[1.024] transition duration-300 ease-in-out max-[768px]:w-[100%] max-[768px]:p-0",
+  cardMediaClass: "w-[100%] bg-[#2B2B2B] min-h-[257px] rounded-[10px]",
   cardtitleClass: "py-[12px] font-light pl-[6px] max-[768px]:text-[13px]",
   cardButtonclass: "",
 };
 
 export const GamingCardClass = {
   cardMainclass:
-    "w-[20%] pl-[25px] mb-[15px] hover:cursor-pointer max-[768px]:w-[100%] max-[768px]:p-0",
-  cardMediaClass: "w-[100%] hover:shadow-[0px_0px_5px_0px_rgba(102,102,102,1)] bg-[#2B2B2B] min-h-[200px] rounded-[10px]",
+    "w-full min-h-[257px] mb-[0px] hover:cursor-pointer hover:scale-[1.024] transition duration-300 ease-in-out max-[768px]:w-[100%] max-[768px]:p-0",
+  cardMediaClass: "w-[100%] bg-[#2B2B2B] min-h-[257px] rounded-[10px]",
   cardtitleClass: "py-[12px] font-light pl-[6px] max-[768px]:text-[13px]",
   cardButtonclass: "",
 };
@@ -179,7 +168,62 @@ export const FriendSearchList = [
       username: "xavier29",
       name: "Xavier Samuel",
       email: "xasa@gmail.com",
-      isfriend: false,
-      isRequestSent: false,
+      status: 'FULLFILL',
+    },
+    {
+      userId: "USER-2",
+      username: "xavier29",
+      name: "Xavier Samuel",
+      email: "xasa@gmail.com",
+      status: 'PENDING',
+    },
+    {
+      userId: "USER-3",
+      username: "xavier29",
+      name: "Xavier Samuel",
+      email: "xasa@gmail.com",
+      status: null,
+    },
+    {
+      userId: "USER-4",
+      username: "xavier29",
+      name: "Xavier Samuel",
+      email: "xasa@gmail.com",
+      status: null,
+    },
+    {
+      userId: "USER-5",
+      username: "xavier29",
+      name: "Xavier Samuel",
+      email: "xasa@gmail.com",
+      status: null,
+    },
+    {
+      userId: "USER-6",
+      username: "xavier29",
+      name: "Xavier Samuel",
+      email: "xasa@gmail.com",
+      status: null,
+    },
+    {
+      userId: "USER-7",
+      username: "xavier29",
+      name: "Xavier Samuel",
+      email: "xasa@gmail.com",
+      status: null,
+    },
+    {
+      userId: "USER-8",
+      username: "xavier29",
+      name: "Xavier Samuel",
+      email: "xasa@gmail.com",
+      status: null,
+    },
+    {
+      userId: "USER-9",
+      username: "xavier29",
+      name: "Xavier Samuel",
+      email: "xasa@gmail.com",
+      status: null,
     },
 ]

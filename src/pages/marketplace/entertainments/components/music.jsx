@@ -2,8 +2,8 @@
  * This file is part of FourthStar User Dashboard
  *(c) 2023 ShadowCast.Io <craig@shadowcast.io>
  *------------------------------------------------------
- *@module user
- *@developer sudhanshu  <sameer@shadowcast.io>
+ *@module Music
+ *@developer Sudhanshu
  */
 
 
@@ -14,11 +14,6 @@ import PremiumLockIcon from "assets/images/myassets/material-symbols_lock-outlin
 import AssetCardOpen from "components/card/assets/AssetCardOpen";
 import FilterDropdown from "../../../../components/FilterDropdown/FilterDropdown";
 import VolumetricCard from "components/card/marketplace/entertainment/VolumetricCard";
-
-
-
-/*It defines a
-component called `Index` that renders a list of Music cards. */
 
 const Index = () => {
   const [selectedFilter, setSelectedFilter] = useState("All");
@@ -104,7 +99,7 @@ const Index = () => {
       {IsDataAvailable ? (
         <div className="__entertainment_assets_main  pt-4 max-[768px]:p-0">
           <div className="__entertainment_assets_heading mb-[29px] lg:mb-[39px] sm:flex justify-between">
-            <h4 className="font-medium font-heading text-[18px] px-[0] lg:px-[20px] lg:text-[28px] tracking-[1px]  max-[768px]:p-0 max-[768px]:text-[15px] mb-4 sm:mb-0">
+            <h4 className="font-medium font-heading text-[18px] lg:text-[28px] tracking-[1px]  max-[768px]:p-0 max-[768px]:text-[15px] mb-4 sm:mb-0">
             Music
             </h4>
             <div className="pt-3">

@@ -1,4 +1,4 @@
-import VolumetricVideo from "./Volumetric";
+import VolumetricVideo from "./volumetric";
 import Music from "./music";
 import _2DVideo from "./2d";
 import _360Video from "./360";

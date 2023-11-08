@@ -12,8 +12,8 @@ import AssetCardOpen from "components/card/assets/AssetCardOpen";
 
 const CompanionCardClass = {
   cardMainclass:
-    "w-[20%] pl-[25px] mb-[15px] hover:cursor-pointer max-[768px]:w-[100%] max-[768px]:p-0",
-  cardMediaClass: "w-[100%] hover:shadow-[0px_0px_5px_0px_rgba(102,102,102,1)] bg-[#2B2B2B] min-h-[200px] rounded-[10px]",
+    "w-full min-h-[257px] pl-[10px] mb-[0px] hover:cursor-pointer hover:scale-[1.024] transition duration-300 ease-in-out max-[768px]:w-[100%] max-[768px]:p-0",
+  cardMediaClass: "w-[100%] bg-[#2B2B2B] min-h-[257px] rounded-[10px]",
   cardtitleClass: "py-[12px] text-[14px] font-light pl-[6px] max-[768px]:text-[13px]",
   cardButtonclass: "",
 };
@@ -28,12 +28,13 @@ const Companion = () => {
       {IsDataAvailable ? (
         <div className="__clothing_assets_main pl-[15px] max-[768px]:p-0">
           <div className="__clothing_assets_heading mb-[10px]">
-            <h4 className="font-medium font-heading text-[18px] tracking-[1px] px-[28px] max-[768px]:p-0 max-[768px]:text-[15px] max-[1280px]:px-[20px]">
+            <h4 className="font-medium font-heading text-[18px] tracking-[1px] px-[10px] max-[768px]:p-0 max-[768px]:text-[15px]">
               Companion
             </h4>
           </div>
 
-          <div className="_assets_container mt-[30px] flex flex-wrap justify-around max-[768px]:flex-col">
+          <div className="_assets_container grid grid-cols-4 md:grid-cols-4 max-[1200px]:md:grid-cols-3 max-[768px]:grid-cols-2 gap-x-5 gap-y-4 lg:gap-y-8 mb-14 md:mb-28 mx-auto relative z-10 mt-[30px]">
+            <AssetCardOpen title="Robo Dog" cardClass={CompanionCardClass} />
             <AssetCardOpen title="Robo Dog" cardClass={CompanionCardClass} />
             <AssetCardOpen title="Robo Dog" cardClass={CompanionCardClass} />
             <AssetCardOpen title="Robo Dog" cardClass={CompanionCardClass} />

@@ -154,7 +154,7 @@ const SignIn = () => {
                         {formErrors.password && (<span className="text-error text-sm">{formErrors.password}</span>)}
                     </div>
                     <div className="mb-6">
-                        <NavLink href="/otp-verification" className="text-sec hover:text-secDark font-semibold text-sm">Forgot Password?</NavLink>
+                        <NavLink to="/otp-verification" className="text-sec hover:text-secDark font-semibold text-sm">Forgot Password?</NavLink>
                     </div>
                     <button type="submit" className="font-bold rounded-lg btn-gradient w-full text-black py-3 px-5" disabled={!isFormValid()}>Sign In</button>
                 </form>

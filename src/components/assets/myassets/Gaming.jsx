@@ -33,15 +33,14 @@ const Gaming = () => {
   {IsDataAvailable ? (
     <div className="__gaming_assets_main pl-[15px] max-[768px]:p-0">
       <div className="__gaming_assets_heading mb-[10px]">
-        <h4 className="font-medium font-heading text-[18px] tracking-[1px] px-[28px] max-[768px]:p-0 max-[768px]:text-[15px] max-[1280px]:px-[20px]">
+        <h4 className="font-medium font-heading text-[18px] tracking-[1px] max-[768px]:p-0 max-[768px]:text-[15px]">
           Gaming
         </h4>
       </div>
 
-      <div className="__gaming__tabs_main pl-[15px] mt-[22px] max-[768px]:w-auto max-[768px]:p-0 max-[1280px]:p-0">
+      <div className="__gaming__tabs_main mt-[22px] max-[768px]:w-auto max-[768px]:p-0 max-[1280px]:p-0">
         <ul
-          className="
-            pl-[15px] 
+          className=" 
             flex 
             overflow
             gap-[20px] 
@@ -49,6 +48,7 @@ const Gaming = () => {
             max-[768px]:overflow-x-scroll 
             max-[768px]:p-0 
             max-[768px]:[&>li]:underline-offset-1
+            max-[768px]:text-[15px]
             "
         >
           {GamingTabs?.map((tabs, ind) => {
@@ -69,7 +69,7 @@ const Gaming = () => {
         </ul>
       </div>
 
-      <div className="_assets_container mt-[30px] flex flex-wrap justify-around max-[768px]:flex-col">
+      <div className="_assets_container grid grid-cols-4 md:grid-cols-4 max-[1200px]:md:grid-cols-3 max-[768px]:grid-cols-2 gap-x-5 gap-y-4 lg:gap-y-8 mb-14 md:mb-28 mx-auto relative z-10 mt-[30px]">
         {/* Entertainment Tabs Container */}
         {gamingActiveTab.activetabs === "all" && (
           <AllGaming />

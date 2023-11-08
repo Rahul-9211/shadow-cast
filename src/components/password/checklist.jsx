@@ -28,7 +28,7 @@ const CheckList = (props) => {
             <p className="text-sm font-semibold text-white mb-4">Your password must contain:</p>
             {rules.map((rule) => {
                 const cn =
-                    props.value && props.value.match(rule.pattern) ? "passed" : "";
+                    props.value && props.value.match(rule.pattern) ? "passed" : props.value.length > 0 ? "!text-error": "";
                 return <p className={`${cn} text-sm font-semibold mb-2 items`}>{rule.label}</p>;
             })}
         </div>

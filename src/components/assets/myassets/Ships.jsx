@@ -1,8 +1,7 @@
 import React from 'react'
-import AssetCardClose from 'components/card/assets/AssetCardClose'
-import { CardClassObj } from 'constant'
 import Explore from 'components/Explore/Explore'
 import ShipImg from 'assets/images/myassets/Ship_new.png'
+import MarketPlaceCard from 'components/card/marketplace'
 /**
  * This file is part of FourthStar User Dashboard
  *(c) 2023 ShadowCast.Io <craig@shadowcast.io>
@@ -11,6 +10,52 @@ import ShipImg from 'assets/images/myassets/Ship_new.png'
  *@developer Aditya P
  */
  
+ const ShipsData = [
+  {
+    id: "ap-1",
+    img: ShipImg,
+    title: "StarHawk",
+    desc: "Experience the epitome of luxury in these magnificent mansions inspired by the celestial luminaries, offering a sanctuary of prestige and grandeur.",
+  },
+  {
+    id: "ap-2",
+    img: ShipImg,
+    title: "StarHawk",
+    desc: "Experience the epitome of luxury in these magnificent mansions inspired by the celestial luminaries, offering a sanctuary of prestige and grandeur.",
+  },
+  {
+    id: "ap-3",
+    img: ShipImg,
+    title: "StarHawk",
+    desc: "Experience the epitome of luxury in these magnificent mansions inspired by the celestial luminaries, offering a sanctuary of prestige and grandeur.",
+  },
+  {
+    id: "ap-4",
+    img: ShipImg,
+    title: "StarHawk",
+    desc: "Experience the epitome of luxury in these magnificent mansions inspired by the celestial luminaries, offering a sanctuary of prestige and grandeur.",
+  },
+  {
+    id: "ap-5",
+    img: ShipImg,
+    title: "StarHawk",
+    desc: "Experience the epitome of luxury in these magnificent mansions inspired by the celestial luminaries, offering a sanctuary of prestige and grandeur.",
+  },
+  {
+    id: "ap-6",
+    img: ShipImg,
+    title: "StarHawk",
+    desc: "Experience the epitome of luxury in these magnificent mansions inspired by the celestial luminaries, offering a sanctuary of prestige and grandeur.",
+  },
+  {
+    id: "ap-7",
+    img: ShipImg,
+    title: "StarHawk",
+    desc: "Experience the epitome of luxury in these magnificent mansions inspired by the celestial luminaries, offering a sanctuary of prestige and grandeur.",
+  },
+];
+
+
 const Ships = () => {
 
   // This is just a temp variable for testing
@@ -20,47 +65,18 @@ const Ships = () => {
 
   {IsDataAvailable ? (
     <div className="__ships_assets_main pl-[15px] max-[768px]:p-0">
-      <div className="__ships_assets_heading mb-[10px] pl-[20px] max-[768px]:pl-0">
-        <h4 className="font-medium font-heading text-[18px] tracking-[1px] px-[28px] max-[768px]:p-0 max-[768px]:text-[15px] max-[1280px]:px-[20px]">
+      <div className="__ships_assets_heading mb-[10px] max-[768px]:pl-0">
+        <h4 className="font-medium font-heading text-[18px] tracking-[1px] max-[768px]:p-0 max-[768px]:text-[15px]">
           Ships
         </h4>
       </div>
 
-      <div className="_ships_container flex flex-wrap justify-around gap-[10px] max-[768px]:flex-col pl-[40px] max-[768px]:pl-0">
-        <AssetCardClose
-          key=""
-          name=""
-          cardImg={ShipImg}
-          cardTitle="StarHawk"
-          cardDesc="Experience the epitome of luxury in these magnificent mansions inspired by the celestial luminaries, offering a sanctuary of prestige and grandeur."
-          cardClass={CardClassObj}
-        />
-
-        <AssetCardClose
-          key=""
-          name=""
-          cardImg={ShipImg}
-          cardTitle="StarHawk"
-          cardDesc="Experience the epitome of luxury in these magnificent mansions inspired by the celestial luminaries, offering a sanctuary of prestige and grandeur."
-          cardClass={CardClassObj}
-        />
-
-        <AssetCardClose
-          key=""
-          name=""
-          cardImg={ShipImg}
-          cardTitle="StarHawk"
-          cardDesc="Experience the epitome of luxury in these magnificent mansions inspired by the celestial luminaries, offering a sanctuary of prestige and grandeur."
-          cardClass={CardClassObj}
-        />
-        <AssetCardClose
-          key=""
-          name=""
-          cardImg={ShipImg}
-          cardTitle="StarHawk"
-          cardDesc="Experience the epitome of luxury in these magnificent mansions inspired by the celestial luminaries, offering a sanctuary of prestige and grandeur."
-          cardClass={CardClassObj}
-        />
+      <div className="_ships_container grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-4 lg:gap-y-8 mb-14 md:mb-28 mx-auto relative z-10 mt-[30px]">
+          {
+            ShipsData?.map((data) => {
+              return <MarketPlaceCard key={data.id} item={data} type="small" />
+            })
+          }
       </div>
     </div>
   ) : (

@@ -1,17 +1,9 @@
 import React from "react";
-import Video2D from "./components/2d";
-import Video180 from "./components/180";
-import Video360 from "./components/360";
-// import Channels from "./components/channels";
-import Music from "./components/music";
-import Volumetric from "./components/volumetric";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 import nureal from "assets/images/nureal.png";
 import ChannelImage from "assets/images/channel.png";
-
-import { useParams } from "react-router-dom";
 import { Fade, Zoom } from "react-reveal";
 import PremAptImg from "assets/images/apartment-banner.jpeg";
 
@@ -23,8 +15,8 @@ import Premium from "./Premium";
  * This file is part of FourthStar User Dashboard
  *(c) 2023 ShadowCast.Io <craig@shadowcast.io>
  *------------------------------------------------------
- *@module Assets-Home-Module
- *@developer Aditya P
+ *@module Channel-Page
+ *@developer Sudhanshu
  */
 
 const ChannelContent = () => {
@@ -83,10 +75,13 @@ const ChannelContent = () => {
         </div>
       </div>
 
+
       <div
         data-testid="my-assets-main"
-        className="__my_assets_main container mx-auto  "
+        className="__my_assets_main container mx-auto  relative"
       >
+        <ShadowFrame className="w-[250px] md:w-[775px] h-[250px] md:h-[775px] rounded-[250px] md:rounded-[775px] -left-[80px] md:-left-[300px] -top-[80px] md:-top-[250px]" />
+        <ShadowFrame className="w-[250px] md:w-[775px] h-[250px] md:h-[775px] rounded-[250px] md:rounded-[775px] -right-[80px] md:-right-[300px] -bottom-[80px] md:top-[450px]" />
         <div
           data-testid="parent-tabs"
           className="__myassets_parentTabs_main 
@@ -95,20 +90,20 @@ const ChannelContent = () => {
                       py-[15px] 
                       [&>ul]:pb-[15px]
                       max-[768px]:p-0
-                      "
+                      z-10 relative"
         >
+
           <ul
-            className={`flex gap-8 [&>li]:font-medium [&>li]:font-body [&>li]:cursor-pointer`}
+            className={`flex gap-8 [&>li]:font-semibold [&>li]:cursor-pointer`}
           >
             {ChannelContentTab?.map((tabs, ind) => {
               return (
                 <li
                   key={tabs.key}
-                  className={`${
-                    parentActivetab.activeTab === tabs.key
-                      ? "text-[#fff] text-[18px] max-[768px]:text-[12px] transition-all pb-2 border-b-2 border-[#FBBC5E]"
-                      : "text-[gray]"
-                  }`}
+                  className={`text-[#fff] text-xl max-[768px]:text-[12px] transition-all pb-2 border-b-2 ${parentActivetab.activeTab === tabs.key
+                    ? "border-[#FBBC5E]"
+                    : "text-[gray] border-transparent"
+                    }`}
                   onClick={() => setParentActivetab({ activeTab: tabs.key })}
                 >
                   {tabs.name}
@@ -118,14 +113,15 @@ const ChannelContent = () => {
           </ul>
           {/* <hr className="border-[0.1px] border-[#5A5A5A80]" /> */}
         </div>
+        <div className="relative z-10">
+          {/* My Assets Container */}
+          {parentActivetab.activeTab === "all" && <All />}
 
-        {/* My Assets Container */}
-        {parentActivetab.activeTab === "all" && <All />}
-
-        {/* My Avatar Container */}
-        {parentActivetab.activeTab === "premium" && (
-          <Premium loginStatus={true} />
-        )}
+          {/* My Avatar Container */}
+          {parentActivetab.activeTab === "premium" && (
+            <Premium loginStatus={true} />
+          )}
+        </div>
       </div>
     </>
   );

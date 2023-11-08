@@ -11,10 +11,10 @@ import React, { useState } from "react";
 import Explore from "components/Explore/Explore";
 import { EntertainmentCardClass } from "constant";
 import PremiumLockIcon from "assets/images/myassets/material-symbols_lock-outline.png";
-import AssetCardOpen from "components/card/assets/AssetCardOpen";
-import FilterDropdown from "components/FilterDropdown/FilterDropdown";
+// import AssetCardOpen from "components/card/assets/AssetCardOpen";
+// import FilterDropdown from "components/FilterDropdown/FilterDropdown";
 import VolumetricCard from "components/card/marketplace/entertainment/VolumetricCard";
-
+import UnlockPremium from "components/popup/unlockPremium";
 
 
 /*It defines a
@@ -28,8 +28,9 @@ const Index = ({ labelStatus }) => {
   const handleFilterChange = (selectedValue) => {
     setSelectedFilter(selectedValue);
   };
+  const [open, setOpen] = useState(false);
   const IsDataAvailable = true;
-  const premiumContent = false;
+  const [premiumContent, setPremiumContent] = useState(false);
 
 
   const filterOptions = ["All", "Free", "Premium", "Buy"];
@@ -179,13 +180,13 @@ const Index = ({ labelStatus }) => {
                 tagType ={item.tagType}
                 // tags ="vol"
                 thumbnailIcon={true}
+                handleData={() => setOpen(true)}
               />
                 ))}
 
             
           </div>
-          <div className="volumetric-card-right-shadow"></div>
- 
+          <UnlockPremium status={open} text="Unlock the access exclusive content and early releases curated just for you. Subscribe for <b>$24.00/Month ( $288.00/year )</b>." heading="Unlock the Premium" handleData={() => setOpen(false)} handleSub={() => setPremiumContent(true)}/>
         </div>
       ) : (
         <div class="__explore_default_button flex justify-center items-center h-[50vh] max-[768px]:flex-none max-[1280px]:h-[100%]">

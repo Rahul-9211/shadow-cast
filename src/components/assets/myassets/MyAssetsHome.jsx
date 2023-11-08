@@ -119,15 +119,16 @@ const MyAssetsHome = () => {
                      max-[768px]:[&>li]:py-[5px]
                      max-[768px]:[&>li]:my-[10px]
                      max-[768px]:px-0
+                     max-[768px]:text-[11px]
                      "
         >
           {myAssetsTabs?.map((tabs, index) => {
             return (
               <li
                 key={tabs.key}
-                className={`${
+                className={`hover:bg-[#FBBC5E4D] rounded-[5px] ${
                   activeTabs.key === tabs.key
-                    ? "bg-[#FBBC5E4D] hover:bg-[#FBBC5E4D] rounded-[5px]"
+                    ? "!bg-[#FBBC5E4D]"
                     : ""
                 }`}
                 onClick={() => setActivetab(tabs)}

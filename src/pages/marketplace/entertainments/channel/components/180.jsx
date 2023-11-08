@@ -10,7 +10,7 @@
  import { useState } from "react";
  import Explore from "components/Explore/Explore";
  import FilterDropdown from "components/FilterDropdown/FilterDropdown";
- import NotDone from "components/notDone/Index";
+ import NotFound from "components/not-found/Index";
  
  
  /*It defines a
@@ -39,7 +39,7 @@
              
              </div>
            </div>
-          <NotDone/>
+          <NotFound/>
            <div className="volumetric-card-right-shadow"></div>
   
          </div>

@@ -8,13 +8,14 @@
 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import PremAptImg from "assets/images/premium_apt.png";
+import PremImg from "assets/images/ship-l.png";
 import { Fade, Zoom } from 'react-reveal';
 import SlickSlider from 'components/carousel/SlickSlider';
 import MarketPlaceCard from "components/card/marketplace";
 import ShadowFrame from "components/shadow-frame";
 import GameRoom1 from "assets/images/game-room-1.png";
 import GameRoom2 from "assets/images/game-room-2.png";
+import GameRoom3 from "assets/images/game-room-3.png";
 import ShipTheme from "assets/images/ship-theme.png";
 import StandredAppartment from "assets/images/StandredAppartment.png";
 import BuyCards from 'components/buy-cards';
@@ -22,7 +23,7 @@ import Slider from "assets/images/ship-large.png";
 import Thumb1 from "assets/images/ship-thumb-1.png";
 import Thumb2 from "assets/images/ship-thumb-2.png";
 import Thumb3 from "assets/images/ship-thumb-3.png";
-import Popup from 'components/popup';
+import Preview from 'components/popup/Preview';
 import Ship1 from "assets/images/ship-1.png";
 import Ship2 from "assets/images/ship-2.png";
 import Ship3 from "assets/images/ship-3.png";
@@ -45,7 +46,7 @@ const Index = () => {
       title: "Ultimate Gaming Experience",
     },
     {
-      img: "",
+      img: GameRoom3,
       title: "Ultimate Gaming Experience",
     },
   ]);
@@ -132,7 +133,7 @@ const Index = () => {
       <div className="lg:min-h-[350px] mb-6 md:mb-9 z-10 relative bg-[#333] rounded flex justify-center items-center">
         <Zoom>
           <img
-            src={Ship3}
+            src={PremImg}
             alt="Network Problem"
             className="max-w-full w-auto object-cover"
           />
@@ -183,14 +184,14 @@ const Index = () => {
           <h2 className="font-heading text-lg md:text-2xl mb-5">
             Sneaky Peak
           </h2>
-          <div className='max-w-4xl'>
+          <div className='max-w-full'>
             <SlickSlider slider={slider} />
           </div>
           <div className='mt-12'>
             <button type="button" onClick={() => setOpen(true)} className="rounded-lg font-medium bg-gradient-3 border border-sec text-sm md:text-base justify-center py-3 px-5 md:px-10 flex gap-2 mt-4">
               Preview in Market Suite
             </button>
-            <Popup status={open} text="To preview the apartment, login to Oculus to have full apartment view inside Marketing Suite." heading="Preview in Market Suite" handleData={() => setOpen(false)} />
+            <Preview status={open} text="To preview the apartment, login to Oculus to have full apartment view inside Marketing Suite." heading="Preview in Market Suite" handleData={() => setOpen(false)} />
           </div>
         </div>
         <ShadowFrame className="w-[250px] md:w-[775px] h-[250px] md:h-[775px] rounded-[250px] md:rounded-[775px] -right-[80px] md:-right-[300px] -bottom-[80px] md:-bottom-[150px]" />

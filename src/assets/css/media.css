@@ -194,7 +194,7 @@
   right: -13%;
 }
 
-.volumetric-card-left-shadow{
+.volumetric-card-left-shadow {
   width: 600px;
   height: 600px;
   flex-shrink: 0;
@@ -207,7 +207,8 @@
   left: -8%;
   z-index: -1;
 }
-.volumetric-card-right-shadow{
+
+.volumetric-card-right-shadow {
   width: 700px;
   height: 700px;
   flex-shrink: 0;
@@ -222,36 +223,6 @@
 
 }
 
-
-.channelId-card-left-shadow{
-  width: 775px;
-  height: 775px;
-  flex-shrink: 0;
-  border-radius: 600px;
-  opacity: 0.5;
-  background: rgba(255, 233, 201, 0.60);
-  filter: blur(225px);
-  position: absolute;
-  top: 368px;
-  left: -100px;
-  z-index: -1;
-}
-
-
-.channelId-card-right-shadow{
-  width: 775px;
-  height: 775px;
-  flex-shrink: 0;
-  border-radius: 600px;
-  opacity: 0.5;
-  background: rgba(255, 233, 201, 0.60);
-  filter: blur(250px);
-  position: absolute;
-  top: 1000px;
-  right: -130px;
-  z-index: -1;
-
-}
 .menu-bar-after {
   display: none;
 }
@@ -265,10 +236,13 @@
 }
 
 .shadow-frame {
-  border-radius: 775px;
   opacity: 0.5;
-  background: rgba(255, 233, 201, 0.6);
+  background-image: radial-gradient(circle at 50% 50%,rgba(255, 233, 201, 0.6), rgba(76, 0, 255, 0));  
   filter: blur(250px);
+  -webkit-filter: blur(250px);
+	border-radius: 50%;  
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .logo-image img {
@@ -314,14 +288,14 @@
 }
 
 .slickSlider .slick-prev {
-  left: 20px;
+  left: -20px;
   z-index: 20;
   width: 39px;
   height: 39px;
 }
 
 .slickSlider .slick-next {
-  right: 20px;
+  right: -20px;
   z-index: 20;
   width: 39px;
   height: 39px;
@@ -353,6 +327,20 @@
 .slickSlider .slick-prev.slick-disabled:before,
 .slickSlider .slick-next.slick-disabled:before {
   opacity: 0.5;
+}
+
+.slickSlider .slick-slider {
+  overflow: hidden;
+}
+
+/* the parent */
+.slickSlider .slick-list {
+  margin: 0 -9px;
+}
+
+/* item */
+.slickSlider .slick-slide {
+  padding: 0 9px;
 }
 
 .thumbnail-slider-wrap .slick-track {
@@ -558,15 +546,6 @@
   top: calc(50% - 20px);
 }
 
-.css-4pp0nb-MuiPaper-root-MuiDialog-paper{
-  border-radius: 8px !important;
-  background-color: transparent !important;
-}
-
-.bg-gradient-card{
-background: linear-gradient(90deg, rgba(251, 188, 94, 0.20) 0.13%, rgba(243, 161, 81, 0.20) 99.89%);
-}
-
 @keyframes fadeInRight {
   0% {
     opacity: 0;
@@ -739,5 +718,13 @@ background: linear-gradient(90deg, rgba(251, 188, 94, 0.20) 0.13%, rgba(243, 161
 
   .rightShadow {
     right: 70px;
+  }
+
+  .slickSlider .slick-next {
+    right: 20px;
+  }
+
+  .slickSlider .slick-prev {
+    left: 20px;
   }
 }

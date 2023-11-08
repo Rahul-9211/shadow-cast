@@ -10,7 +10,7 @@
 import React from 'react'
 import LargeCard from './largeCard';
 import SmallCard from './smallCard';
-const MarketPlaceCard = ({ item, type }) => {
+const MarketPlaceCard = ({ item, type }) => { 
   return type === "large" ? <LargeCard item={item} /> : <SmallCard item={item} />
 }
 

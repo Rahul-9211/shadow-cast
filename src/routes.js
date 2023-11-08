@@ -12,11 +12,14 @@ import Home from 'pages/home/Index';
 import Marketplace from 'pages/marketplace/Index';
 import ApartmentPage from 'pages/marketplace/apartments/Index';
 import ShipPage from "pages/marketplace/ships/Index";
+import ClothingPage from 'pages/marketplace/clothing/Index'
+import CompanionPage from 'pages/marketplace/companions/Index'
+import GamingPage from 'pages/marketplace/games/Index'
 import ApartmentDetail from 'pages/marketplace/apartments/detail/Index.jsx';
 import ShipsDetail from 'pages/marketplace/ships/detail/Index.jsx';
 import EntertainmentPage from "pages/marketplace/entertainments/Index";
-import EntertainmentDetail from 'pages/marketplace/entertainments/detail/Index.jsx';
-import EntertainmentChannel from 'pages/marketplace/entertainments/channel/Index.jsx';
+// import EntertainmentDetail from 'pages/marketplace/entertainments/detail/Index.jsx';
+// import EntertainmentChannel from 'pages/marketplace/entertainments/channel/Index.jsx';
 import SignUp from 'pages/auth/signup';
 import Layout from 'layout/Index.jsx';
 import AuthLayout from 'AuthLayout/index';
@@ -26,10 +29,12 @@ import ConfirmPassword from 'pages/auth/forgot-password/confirm-password';
 import { MyAssets } from 'pages/myassets';
 import InviteHome from 'pages/friends/InviteHome';
 import MyProfile from 'pages/myprofile/MyProfile';
-import EntertainmentVideo  from 'pages/marketplace/entertainments/list/Index'
+import EntertainmentVideo from 'pages/marketplace/entertainments/list/Index';
 import ChannelContent from 'pages/marketplace/entertainments/channel/Index';
-import EntertainmentContent from "pages/marketplace/entertainments/content/Index"
+import EntertainmentContent from "pages/marketplace/entertainments/content/Index";
+import MarketDetailPage from 'components/detailPage/MarketDetailPage';
 import MusicContent from 'pages/marketplace/entertainments/content/Music';
+import GameCategory from 'pages/marketplace/games/Category/GameCategory';
 // import { Ships } from 'components/assets/myassets';
 
 /* The code is exporting a default function that returns an array of route objects. Each route object
@@ -89,14 +94,6 @@ const routes = [
   {
     name: 'Marketplace-Entertainment',
     key: 'marketplace-entertainment',
-    route: `/marketplace/entertainments/content`,
-    component: <Marketplace value="2" element={<EntertainmentContent/>} />,
-    // component: <EntertainmentVideo value="2" />,
-    useLayout: <Layout />,
-  },
-  {
-    name: 'Marketplace-Entertainment',
-    key: 'marketplace-entertainment',
     route: `/marketplace/entertainments/:activeTab`,
     component: <Marketplace value="2" element={<EntertainmentVideo />} />,
     // component: <EntertainmentVideo value="2" />,
@@ -107,16 +104,8 @@ const routes = [
     key: 'marketplace-entertainment',
     route: `/marketplace/entertainments/:type/:channelId`,
     component: <Marketplace value="2" element={<ChannelContent />} />,
-    // component: <ChannelContent />,
     useLayout: <Layout />,
   },
-  {
-  name: 'Marketplace-Entertainment',
-  key: 'marketplace-entertainment',
-  route: `/marketplace/entertainments/music/content`,
-  component: <Marketplace value="2" element={<MusicContent/>} />,
-  useLayout: <Layout />,
-},
   // {
   //   name: 'Marketplace-Channel',
   //   key: 'marketplace-channel',
@@ -128,29 +117,59 @@ const routes = [
     name: 'Marketplace-Channel',
     key: 'marketplace-channel',
     route: `/marketplace/entertainments/:type/:channelId/:channelContentId`,
-    component: <EntertainmentChannel />,
+    component: <Marketplace value="2" element={<EntertainmentContent />} />,
+    // component: <EntertainmentChannel />,
+    useLayout: <Layout />,
+  },
+
+  {
+    name: 'Marketplace-Entertainment',
+    key: 'marketplace-entertainment',
+    route: `/marketplace/entertainments/music/content`,
+    component: <Marketplace value="2" element={<MusicContent />} />,
     useLayout: <Layout />,
   },
   {
     name: 'Marketplace-Clothing',
     key: 'marketplace-clothing',
     route: '/marketplace/clothing',
-    component: <Marketplace value="3" />,
+    component: <Marketplace value="3" element={<ClothingPage />} />,
     useLayout: <Layout />,
+  },
+  {
+    name: 'Marketplace-Clothing-Detail',
+    key: 'marketplace-clothing-detail',
+    route: '/marketplace/clothing/:categorytype/:item',
+    component: <MarketDetailPage id="CLOTHING" value="3" />,
+    useLayout: <Layout />
   },
   {
     name: 'Marketplace-Games',
     key: 'marketplace-games',
     route: '/marketplace/gaming',
-    component: <Marketplace value="4" />,
+    component: <Marketplace value="4" element={<GamingPage />} />,
+    useLayout: <Layout />,
+  },
+  {
+    name: 'Marketplace-Games-Category',
+    key: 'marketplace-games-category',
+    route: '/marketplace/gaming/:category',
+    component: <GameCategory defaultRoute="all" />,
     useLayout: <Layout />,
   },
   {
     name: 'Marketplace-Companions',
     key: 'marketplace-companions',
     route: '/marketplace/companions',
-    component: <Marketplace value="5" />,
+    component: <Marketplace value="5" element={<CompanionPage />} />,
     useLayout: <Layout />,
+  },
+  {
+    name: 'Marketplace-Companions-Detail',
+    key: 'marketplace-companions-detail',
+    route: '/marketplace/companions/:categorytype/:item',
+    component: <MarketDetailPage id="COMPANION" value="5" />,
+    useLayout: <Layout />
   },
   {
     name: 'Create-Account',

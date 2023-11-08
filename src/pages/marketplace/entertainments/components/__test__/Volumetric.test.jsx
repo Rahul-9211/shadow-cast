@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
-import Index from "../Volumetric";
+import Index from "../volumetric";
 
 describe("Index Component", () => {
   test("renders the component with the default filter 'All'", () => {

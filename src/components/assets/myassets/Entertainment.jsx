@@ -33,22 +33,24 @@ const Entertainment = () => {
       {IsDataAvailable ? (
         <div className="__entertainment_assets_main pl-[15px] max-[768px]:p-0">
           <div className="__entertainment_assets_heading mb-[10px]">
-            <h4 className="font-medium font-heading text-[18px] tracking-[1px] px-[20px] max-[768px]:p-0 max-[768px]:text-[15px] max-[1280px]:px-[20px]">
+            <h4 className="font-medium font-heading text-[18px] tracking-[1px] max-[768px]:p-0 max-[768px]:text-[15px]">
               Entertainments
             </h4>
           </div>
 
-          <div className="__entertaiments__tabs_main pl-[15px] mt-[22px] max-[768px]:w-auto max-[768px]:p-0 max-[1280px]:p-0">
+          <div className="__entertaiments__tabs_main mt-[22px] max-[768px]:w-auto max-[768px]:p-0 max-[1280px]:p-0 relative z-10">
             <ul
-              className="
-                pl-[8px] 
-                flex 
-                overflow
+              className=" 
+                flex
+                overflow-scroll
                 gap-[20px] 
                 hover:[&>li]:cursor-pointer 
                 max-[768px]:overflow-x-scroll 
-                max-[768px]:p-0 
+                max-[768px]:py-[10px]
+                max-[768px]:text-[11px]
+                max-[1280px]:text-[13px] 
                 max-[768px]:[&>li]:underline-offset-1
+                max-[768px]:[&>li]
                 "
             >
               {EntainTabs?.map((tabs, ind) => {
@@ -69,7 +71,13 @@ const Entertainment = () => {
             </ul>
           </div>
 
-          <div className="_assets_container mt-[30px] flex flex-wrap justify-around max-[768px]:flex-col">
+          {entainActiveTab.activetabs === "music" && (
+            <div className="grid grid-cols-3 md:grid-cols-3 gap-x-5 gap-y-4 lg:gap-y-0 mb-10 md:mb-28 mx-auto relative z-10 mt-[30px]">
+              <Music />
+            </div>
+          )}
+          {entainActiveTab.activetabs === "subs" && <Subscription />}
+          <div className="_assets_container grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-4 lg:gap-y-8 mb-10 md:mb-28 mx-auto relative z-10 mt-[30px] ">
             {/* Entertainment Tabs Container */}
             {entainActiveTab.activetabs === "volumetric-video" && (
               <VolumetricVideo />
@@ -77,8 +85,6 @@ const Entertainment = () => {
             {entainActiveTab.activetabs === "360-video" && <_360Video />}
             {entainActiveTab.activetabs === "180-video" && <_180Video />}
             {entainActiveTab.activetabs === "2-d-video" && <_2DVideo />}
-            {entainActiveTab.activetabs === "music" && <Music />}
-            {entainActiveTab.activetabs === "subs" && <Subscription />}
           </div>
         </div>
       ) : (

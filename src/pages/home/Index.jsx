@@ -10,11 +10,12 @@ import React, { useState } from "react";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import { Fade, Zoom } from "react-reveal";
 import ShadowFrame from "components/shadow-frame";
-import LandingBannerImg from "assets/images/Landing page hero section image.png";
+import LandingBannerImg from "assets/images/Landing-page-hero-section-image.png";
 import Landing_1 from "assets/images/home_2.png";
 import Landing_2 from "assets/images/Frame 31.png";
 import Landing_3 from "assets/images/Frame 55.png";
 import Landing_4 from "assets/images/home_5.png";
+import imageMobile from "assets/images/mobile-bg-image.png";
 
 /* The above code is a React component called "Index". It renders a grid layout with multiple sections,
 each containing an image and some text. The component uses various React and Material-UI components
@@ -26,12 +27,11 @@ const Index = () => {
     <>
       <Box className="container-fluid w-[100%]">
         <Box className="bg-gradient-to-b w-[100%] from-black via-transparent to-[#1F1E21] relative z-10">
-          <img
-            src={LandingBannerImg}
-            className="cursor-pointer w-[100%] h-auto"
-            alt="Network problem"
-          />
-
+          <picture>
+            <source media="(max-width: 799px)" srcset={imageMobile} />
+            <source media="(min-width: 800px)" srcset={LandingBannerImg} />
+            <img src={LandingBannerImg} alt="shadowcast" className="cursor-pointer w-[100%] h-auto" />
+          </picture>
           <div className="shadow-bottom" />
         </Box>
 
@@ -113,7 +113,6 @@ const Index = () => {
         <Box className="h-100  flex max-[768px]:flex-col max-[768px]:mb-[50px] justify-between pl-16 pr-16 pt-16 pb-12 sm:pl-48 sm:pr-32 sm:pt-40 sm:pb-32 ">
           <Box className="flex-1 relative">
             <Box className="landingPage-leftShadow"></Box>
-
             <div className="flex  h-full ">
               <img
                 src={Landing_4}

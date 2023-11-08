@@ -23,7 +23,7 @@ const SmallCard = ({ item }) => {
                 <div className="flex flex-wrap justify-between relative z-10 gap-5 items-center px-2 lg:px-4 py-4 pb-2">
                     <div className='max-w-3xl'>
                         <h4 className="font-bold text-base lg:text-xl mb-3 md:mb-4">{item?.title}</h4>
-                        <p className="leading-sung text-sm lg:text-base text-white/[0.90] text-sm">{item?.desc}</p>
+                        <p className="leading-sung text-sm text-white/[0.90]">{item?.desc}</p>
                     </div>
                 </div>
             </div>            

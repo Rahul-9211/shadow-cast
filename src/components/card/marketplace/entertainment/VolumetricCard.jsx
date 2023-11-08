@@ -1,13 +1,12 @@
-import React, { useState } from "react";
+import React , { useState } from "react";
 import AssetMusicIcon from "assets/images/myassets/ph_play-fill.png";
 import UnlockPremium from "components/popup/unlockPremium";
-
 /**
  * This file is part of FourthStar User Dashboard
  *(c) 2023 ShadowCast.Io <craig@shadowcast.io>
  *------------------------------------------------------
  *@module Generic-Entertainment-card
- *@developer Aditya P
+ *@developer Sudhanshu
  */
 
 const VolumetricCard = ({
@@ -17,19 +16,21 @@ const VolumetricCard = ({
   tagType,
   tags,
   thumbnailIcon,
-  handleUnlockPremiumClick
+  handleData
 }) => {
   const [premiumModalStatus , setpremiumModalStatus] = useState(false)
   function handlePremiumModal(){
     setpremiumModalStatus(!premiumModalStatus)
-  }  
-
+  } 
+  const handleClick = () => {
+    handleData(true)
+}
   return (
-    <div className="mb-12" data-testid="volumetric-card">
+    <div className="mb-12 relative z-[1]" data-testid="volumetric-card">
       <div className="aspect-[456/239] relative rounded-2xl bg-[#2B2B2B] mb-2.5 ">
         {tags && <span className="tags">{tags}</span>}
         {thumbnailIcon && (
-          <span className="music-icon">
+          <span className="music-icon z-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -52,11 +53,11 @@ const VolumetricCard = ({
       {tagType === "Paid" && (
         <button className="tag-item px-1  text-base md:text-xs lg:text-base">{subtitleButton}</button>
       )}
-       {tagType === "Unlocked" && (
+      {tagType === "Unlocked" && (
         <button className="tag-item px-1  text-base md:text-xs lg:text-base text-[#6BFEF6]">{subtitleButton}</button>
       )}
       {tagType === "Premium" && (
-        <button className="tag-item flex gap-4 items-center px-1 text-base md:text-xs lg:text-base" onClick={handleUnlockPremiumClick}>
+        <button className="tag-item flex gap-4 items-center px-1 text-base md:text-xs lg:text-base" onClick={handleClick}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -72,9 +73,8 @@ const VolumetricCard = ({
           Unlock Premium
         </button>
       )}
-      {premiumModalStatus ? <UnlockPremium/> : <></>}
+       {premiumModalStatus ? <UnlockPremium/> : <></>}
     </div>
-    
   );
 };
 

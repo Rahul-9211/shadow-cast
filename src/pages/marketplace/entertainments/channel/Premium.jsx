@@ -10,7 +10,6 @@ import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
 import { AssetsParentTab } from "constant";
-import ShadowFrame from "components/shadow-frame";
 /**
  * This file is part of FourthStar User Dashboard
  *(c) 2023 ShadowCast.Io <craig@shadowcast.io>
@@ -140,9 +139,9 @@ const Premium = ({loginStatus}) => {
                 <li
                   role="tab"
                   key={tabs.key}
-                  className={`mr-8 md:mr-[0] whitespace-nowrap ${
+                  className={`mr-8 md:mr-[0] whitespace-nowrap hover:bg-[#FBBC5E4D] rounded-[5px] ${
                     activeTabs.key === tabs.key
-                      ? "bg-[#FBBC5E4D] hover:bg-[#FBBC5E4D] rounded-[5px]"
+                      ? "!bg-[#FBBC5E4D]"
                       : ""
                   }`}
                   onClick={() => {

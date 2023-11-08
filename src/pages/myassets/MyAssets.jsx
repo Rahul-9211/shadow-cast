@@ -19,9 +19,10 @@ const MyAssets = () => {
   });
 
   return (
-    <div data-testid="my-assets-main" className="__my_assets_main container mx-auto px-[80px] py-[25px] max-[768px]:px-[15px] max-[1280px]:px-0 bg-[#1D1D1D]">
-      <ShadowFrame data-testid="shadow-frame" className="z-[10] w-[350px] md:w-[250px] h-[350px] md:h-[400px] rounded-[250px] md:rounded-[400px] left-[-10%] top-[50%] max-[768px]:top-[90%] translate-x-1/2 bottom-0 !bg-[#FFE9C9]" />
-      <ShadowFrame data-testid="shadow-frame" className="z-[10] w-[250px] md:w-[250px] h-[250px] md:h-[400px] rounded-[250px] md:rounded-[400px] right-[0%] top-[60%] max-[768px]:top-[90%] translate-x-1/2 bottom-0 !bg-[#FFE9C9]" />
+    // <div data-testid="my-assets-main" className="__my_assets_main container mx-auto px-[80px] py-[25px] max-[768px]:px-[15px] max-[1280px]:px-0 bg-[#1D1D1D]">
+    <div data-testid="my-assets-main" className="container app-container mx-auto px-2 md:px-3 xl:px-6 2xl:px-10 py-[25px] relative z-10">
+      <ShadowFrame data-testid="shadow-frame" className="z-[0] w-[350px] md:w-[250px] h-[350px] md:h-[400px] rounded-[250px] md:rounded-[400px] left-[-10%] max-[768px]:left-[-50%] top-[50%] max-[768px]:top-[10%] translate-x-1/2 bottom-0 !bg-[#FFE9C9]" />
+      <ShadowFrame data-testid="shadow-frame" className="z-[0] w-[250px] md:w-[250px] h-[250px] md:h-[400px] rounded-[250px] md:rounded-[400px] right-[10%] max-[768px]:right-[50%] top-[60%] max-[768px]:top-[10%] translate-x-1/2 bottom-0 !bg-[#FFE9C9]" />
       <div
         data-testid="parent-tabs"
         className="__myassets_parentTabs_main 
@@ -32,16 +33,15 @@ const MyAssets = () => {
                       max-[768px]:p-0
                       "
       >
-        <ul className={`flex gap-8 [&>li]:font-medium [&>li]:font-body [&>li]:cursor-pointer`}>
+        <ul className={`flex gap-6 [&>li]:font-medium [&>li]:font-body [&>li]:cursor-pointer`}>
           {AssetsParentTab?.map((tabs, ind) => {
             return (
               <li
                 key={tabs.key}
-                className={`${
-                  parentActivetab.activeTab === tabs.key
-                    ? "text-[#fff] text-[18px] max-[768px]:text-[12px] transition-all"
-                    : "text-[gray]"
-                }`}
+                className={`${parentActivetab.activeTab === tabs.key
+                  ? "text-[#fff] text-[18px] max-[768px]:text-[12px] transition-all"
+                  : "text-[gray] text-[18px] max-[768px]:text-[12px] transition-all"
+                  }`}
                 onClick={() => setParentActivetab({ activeTab: tabs.key })}
               >
                 {tabs.name}

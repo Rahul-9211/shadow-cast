@@ -10,39 +10,55 @@ import { ClothingCardClass } from 'constant'
  *@developer Aditya P
  */
 
-const BottomWear = () => {
+const BottomWear = ({type, belongTo}) => {
   return <>
   <AssetCardOpen
   title="NebulaWalker Armor"
   cardClass={ClothingCardClass}
+  category={type}
+  baseRoute={`/marketplace/clothing/${belongTo}`}
 />
 <AssetCardOpen
   title="NebulaWalker Armor"
   cardClass={ClothingCardClass}
+  category={type}
+  baseRoute={`/marketplace/clothing/${belongTo}`}
 />
 <AssetCardOpen
   title="NebulaWalker Armor"
   cardClass={ClothingCardClass}
+  category={type}
+  baseRoute={`/marketplace/clothing/${belongTo}`}
 />
 <AssetCardOpen
   title="NebulaWalker Armor"
   cardClass={ClothingCardClass}
+  category={type}
+  baseRoute={`/marketplace/clothing/${belongTo}`}
 />
 <AssetCardOpen
   title="NebulaWalker Armor"
   cardClass={ClothingCardClass}
+  category={type}
+  baseRoute={`/marketplace/clothing/${belongTo}`}
 />
 <AssetCardOpen
   title="NebulaWalker Armor"
   cardClass={ClothingCardClass}
+  category={type}
+  baseRoute={`/marketplace/clothing/${belongTo}`}
 />
 <AssetCardOpen
   title="NebulaWalker Armor"
   cardClass={ClothingCardClass}
+  category={type}
+  baseRoute={`/marketplace/clothing/${belongTo}`}
 />
 <AssetCardOpen
   title="NebulaWalker Armor"
   cardClass={ClothingCardClass}
+  category={type}
+  baseRoute={`/marketplace/clothing/${belongTo}`}
 />
 </>
 }
