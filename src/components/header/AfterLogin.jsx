@@ -12,6 +12,7 @@ import { Box, Menu, MenuItem } from "@mui/material";
 import logo from "assets/images/logo.png";
 import SearchIcon from "@mui/icons-material/Search";
 import ShadowFrame from "components/shadow-frame";
+import NotificationDropdown from "components/notification/Index";
 const SearchResultItem = ({ text, searchTerm, onClick }) => {
   const highlightedText = text.replace(
     new RegExp(searchTerm, "gi"),
@@ -118,6 +119,31 @@ const AfterLogin = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const [notifications, setNotifications] = useState([
+    "Merrianne has invited you to explore their apartment. Join the party now!",
+    "Great news! Your purchase of Astral Suite Apartment is complete.",
+    "Merrianne has invited you to explore their apartment. Join the party now!",
+    "Great news! Your purchase of Astral Suite Apartment is complete.",
+    "Merrianne has invited you to explore their apartment. Join the party now!",
+    "Great news! Your purchase of Astral Suite Apartment is complete.",
+    "Merrianne has invited you to explore their apartment. Join the party now!",
+    "Great news! Your purchase of Astral Suite Apartment is complete.",
+    "Merrianne has invited you to explore their apartment. Join the party now!",
+    "Great news! Your purchase of Astral Suite Apartment is complete.",
+    "Merrianne has invited you to explore their apartment. Join the party now!",
+    "Great news! Your purchase of Astral Suite Apartment is complete.",
+  ]);
+  const [notificationDropdownOpen, setNotificationDropdownOpen] =
+    useState(false);
+
+  const handleOpenNotificationDropdown = () => {
+    setNotificationDropdownOpen(true);
+  };
+
+  const handleCloseNotificationDropdown = () => {
+    setNotificationDropdownOpen(false);
+  };
   return (
     <>
       <Box
@@ -218,7 +244,7 @@ const AfterLogin = () => {
                     </div>
                   </li>
                   <li className="mx-4 flex">
-                    <button>
+                    <button onClick={handleOpenNotificationDropdown}>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
@@ -236,6 +262,12 @@ const AfterLogin = () => {
                       </svg>
                     </button>
                   </li>
+                  <NotificationDropdown
+                    open={notificationDropdownOpen}
+                    onClose={handleCloseNotificationDropdown}
+                    notifications={notifications}
+                  />
+
                   <li className="mx-4">
                     <a href="" data-testid="shopping-cart-icon">
                       <svg
@@ -377,63 +409,68 @@ const AfterLogin = () => {
             <div className="search-form h-screen  transition ease-in-out delay-150">
               <div className=" absolute  bg-[#1D1D1D] top-0 left-0 right-0 h-screen d-flex justify-start items-start  ">
                 <div className="container flex  items-center px-4 h-full gap-4">
-                 <div className="flex justify-around absolute items-center container w-11/12 top-4">
-                 <div className="mr-2">
-                    <button onClick={() => handleSearch()}>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="28"
-                        height="28"
-                        viewBox="0 0 28 28"
-                        fill="none"
-                      >
-                        <path
-                          d="M3.5 14H24.5M3.5 14L10.5 21M3.5 14L10.5 7"
-                          stroke="white"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                      </svg>
-                    </button>
-                  </div>
-                  <div ref={searchRef} className="relative mx-auto flex-1 mr-4">
-                    <div className="relative rounded-lg bg-[#292929]  shadow border border-solid border-1 border-white">
-                      {/* <div className="absolute top-0 left-2 flex items-center h-full pl-1 ">
+                  <div className="flex justify-around absolute items-center container w-11/12 top-4">
+                    <div className="mr-2">
+                      <button onClick={() => handleSearch()}>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="28"
+                          height="28"
+                          viewBox="0 0 28 28"
+                          fill="none"
+                        >
+                          <path
+                            d="M3.5 14H24.5M3.5 14L10.5 21M3.5 14L10.5 7"
+                            stroke="white"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+                    <div
+                      ref={searchRef}
+                      className="relative mx-auto flex-1 mr-4"
+                    >
+                      <div className="relative rounded-lg bg-[#292929]  shadow border border-solid border-1 border-white">
+                        {/* <div className="absolute top-0 left-2 flex items-center h-full pl-1 ">
                     <SearchIcon className="text-gray-500" />
                   </div> */}
-                      <input
-                        type="text"
-                        className="w-full py-[8px] px-[14px] font-normal  text-md text-white-700 outline-none bg-white bg-opacity-5 "
-                        placeholder="Search"
-                        value={searchTerm}
-                        onChange={handleInputChange}
-                      />
+                        <input
+                          type="text"
+                          className="w-full py-[8px] px-[14px] font-normal  text-md text-white-700 outline-none bg-white bg-opacity-5 "
+                          placeholder="Search"
+                          value={searchTerm}
+                          onChange={handleInputChange}
+                        />
+                      </div>
                     </div>
-                  </div>
-                  <div className="search-right w-8 flex items-center justify-center">
-                    <button type="button" className="focus:outline-none">
-                      {/* <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <div className="search-right w-8 flex items-center justify-center">
+                      <button type="button" className="focus:outline-none">
+                        {/* <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
                     <path d="M17 17L1 1M17 1L1 17" stroke="white" strokeWidth="2" strokeLinecap="round" />
                   </svg> */}
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                      >
-                        <path
-                          d="M21.3187 20.0273L15.232 13.9406C16.1766 12.7195 16.6875 11.2266 16.6875 9.65625C16.6875 7.77656 15.9539 6.01406 14.6273 4.68516C13.3008 3.35625 11.5336 2.625 9.65625 2.625C7.77891 2.625 6.01172 3.35859 4.68516 4.68516C3.35625 6.01172 2.625 7.77656 2.625 9.65625C2.625 11.5336 3.35859 13.3008 4.68516 14.6273C6.01172 15.9562 7.77656 16.6875 9.65625 16.6875C11.2266 16.6875 12.7172 16.1766 13.9383 15.2344L20.025 21.3187C20.0428 21.3366 20.064 21.3508 20.0874 21.3604C20.1107 21.3701 20.1357 21.3751 20.1609 21.3751C20.1862 21.3751 20.2112 21.3701 20.2345 21.3604C20.2578 21.3508 20.279 21.3366 20.2969 21.3187L21.3187 20.2992C21.3366 20.2814 21.3508 20.2602 21.3604 20.2369C21.3701 20.2135 21.3751 20.1885 21.3751 20.1633C21.3751 20.138 21.3701 20.113 21.3604 20.0897C21.3508 20.0664 21.3366 20.0452 21.3187 20.0273ZM13.3688 13.3688C12.375 14.3602 11.0578 14.9062 9.65625 14.9062C8.25469 14.9062 6.9375 14.3602 5.94375 13.3688C4.95234 12.375 4.40625 11.0578 4.40625 9.65625C4.40625 8.25469 4.95234 6.93516 5.94375 5.94375C6.9375 4.95234 8.25469 4.40625 9.65625 4.40625C11.0578 4.40625 12.3773 4.95 13.3688 5.94375C14.3602 6.9375 14.9062 8.25469 14.9062 9.65625C14.9062 11.0578 14.3602 12.3773 13.3688 13.3688Z"
-                          fill="white"
-                        />
-                      </svg>
-                    </button>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                        >
+                          <path
+                            d="M21.3187 20.0273L15.232 13.9406C16.1766 12.7195 16.6875 11.2266 16.6875 9.65625C16.6875 7.77656 15.9539 6.01406 14.6273 4.68516C13.3008 3.35625 11.5336 2.625 9.65625 2.625C7.77891 2.625 6.01172 3.35859 4.68516 4.68516C3.35625 6.01172 2.625 7.77656 2.625 9.65625C2.625 11.5336 3.35859 13.3008 4.68516 14.6273C6.01172 15.9562 7.77656 16.6875 9.65625 16.6875C11.2266 16.6875 12.7172 16.1766 13.9383 15.2344L20.025 21.3187C20.0428 21.3366 20.064 21.3508 20.0874 21.3604C20.1107 21.3701 20.1357 21.3751 20.1609 21.3751C20.1862 21.3751 20.2112 21.3701 20.2345 21.3604C20.2578 21.3508 20.279 21.3366 20.2969 21.3187L21.3187 20.2992C21.3366 20.2814 21.3508 20.2602 21.3604 20.2369C21.3701 20.2135 21.3751 20.1885 21.3751 20.1633C21.3751 20.138 21.3701 20.113 21.3604 20.0897C21.3508 20.0664 21.3366 20.0452 21.3187 20.0273ZM13.3688 13.3688C12.375 14.3602 11.0578 14.9062 9.65625 14.9062C8.25469 14.9062 6.9375 14.3602 5.94375 13.3688C4.95234 12.375 4.40625 11.0578 4.40625 9.65625C4.40625 8.25469 4.95234 6.93516 5.94375 5.94375C6.9375 4.95234 8.25469 4.40625 9.65625 4.40625C11.0578 4.40625 12.3773 4.95 13.3688 5.94375C14.3602 6.9375 14.9062 8.25469 14.9062 9.65625C14.9062 11.0578 14.3602 12.3773 13.3688 13.3688Z"
+                            fill="white"
+                          />
+                        </svg>
+                      </button>
+                    </div>
                   </div>
-                 </div>
                   {showDropdown && (
                     <div className="absolute z-[12] top-20 left-6 w-full max-w-80   bg-transparent">
-                      <p className="pt-4 pl-3 text-xs text-gray-600">{!!searchResults.length ? 'Results' : 'No Result'}</p>
+                      <p className="pt-4 pl-3 text-xs text-gray-600">
+                        {!!searchResults.length ? "Results" : "No Result"}
+                      </p>
                       <ul className="py-2">
                         {searchResults.map((result, index) => (
                           <SearchResultItem

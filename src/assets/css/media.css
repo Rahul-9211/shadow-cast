@@ -546,6 +546,35 @@
   top: calc(50% - 20px);
 }
 
+.css-6hp17o-MuiList-root-MuiMenu-list{
+  padding: 0 !important;
+}
+
+
+/* styles.css (or your component's CSS) */
+.notification-dropdown-content {
+  max-height: 640px;
+  overflow-y: scroll;
+}
+
+.notification-dropdown-content::-webkit-scrollbar {
+  width: 81px;
+}
+
+.notification-dropdown-content::-webkit-scrollbar-thumb {
+  background-color: #FF0000; /* Customize the scrollbar thumb color */
+}
+
+.notification-dropdown-content::-webkit-scrollbar-track {
+  background-color: #000000; /* Customize the scrollbar track color */
+}
+
+/* Firefox scrollbar styling */
+.notification-dropdown-content {
+  scrollbar-width: bold;
+  scrollbar-color: #FF0000 #000000;
+}
+
 @keyframes fadeInRight {
   0% {
     opacity: 0;
