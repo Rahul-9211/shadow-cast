@@ -243,7 +243,7 @@ const AfterLogin = () => {
                       </div>
                     </div>
                   </li>
-                  <li className="mx-4 flex">
+                  <li className="mx-4 flex relative">
                     <button onClick={handleOpenNotificationDropdown}>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -261,7 +261,19 @@ const AfterLogin = () => {
                         />
                       </svg>
                     </button>
+                    {notificationDropdownOpen &&  <div className="notification-dropdown absolute top-8 left-1 delay-200 transition">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="15"
+            viewBox="0 0 18 15"
+            fill="none"
+          >
+            <path d="M9 0L17.6603 15H0.339746L9 0Z" fill="#2D2D2D" />
+          </svg>
+        </div>}
                   </li>
+                  
                   <NotificationDropdown
                     open={notificationDropdownOpen}
                     onClose={handleCloseNotificationDropdown}
@@ -406,10 +418,10 @@ const AfterLogin = () => {
             </Box>
           </Box>
           {showSearch && (
-            <div className="search-form h-screen  transition ease-in-out delay-150">
+            <div className={`search-form h-screen  transition ease-in-out delay-150    `}>
               <div className=" absolute  bg-[#1D1D1D] top-0 left-0 right-0 h-screen d-flex justify-start items-start  ">
                 <div className="container flex  items-center px-4 h-full gap-4">
-                  <div className="flex justify-around absolute items-center container w-11/12 top-4">
+                  <div className="flex justify-around absolute items-center container w-11/12 top-4 ">
                     <div className="mr-2">
                       <button onClick={() => handleSearch()}>
                         <svg
@@ -434,9 +446,7 @@ const AfterLogin = () => {
                       className="relative mx-auto flex-1 mr-4"
                     >
                       <div className="relative rounded-lg bg-[#292929]  shadow border border-solid border-1 border-white">
-                        {/* <div className="absolute top-0 left-2 flex items-center h-full pl-1 ">
-                    <SearchIcon className="text-gray-500" />
-                  </div> */}
+                        
                         <input
                           type="text"
                           className="w-full py-[8px] px-[14px] font-normal  text-md text-white-700 outline-none bg-white bg-opacity-5 "
@@ -448,9 +458,7 @@ const AfterLogin = () => {
                     </div>
                     <div className="search-right w-8 flex items-center justify-center">
                       <button type="button" className="focus:outline-none">
-                        {/* <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-                    <path d="M17 17L1 1M17 1L1 17" stroke="white" strokeWidth="2" strokeLinecap="round" />
-                  </svg> */}
+                      
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="24"

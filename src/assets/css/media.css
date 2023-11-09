@@ -549,7 +549,15 @@
 .css-6hp17o-MuiList-root-MuiMenu-list{
   padding: 0 !important;
 }
+/* CSS classes for transition and animation */
+.mobile-search-form {
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(-100%); /* Initially hidden off-screen */
+}
 
+.mobile-search-form.open {
+  transform: translateX(0); /* Slide in from the left */
+}
 
 /* styles.css (or your component's CSS) */
 .notification-dropdown-content {
