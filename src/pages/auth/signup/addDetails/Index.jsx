@@ -227,7 +227,6 @@ const AddDetails = () => {
             gender: false,
         })
     }
-  
   }
   return (
     <Box className="w-full max-w-[700px] rounded-lg border border-[#363636] p-5 md:p-[32px] lg:p-[58px] signin-form">
@@ -240,6 +239,7 @@ const AddDetails = () => {
             <label
               htmlFor="name"
               className="font-medium text-white/[.80] text-sm"
+              data-testid="Username"
             >
               Username
             </label>
@@ -308,6 +308,7 @@ const AddDetails = () => {
 
             {userGuideLines && (
               <div
+              data-testid = "Username"
                 onBlur={toggleUserGuidelines}
                 className="absolute top-8 -right-[350px] p-5 max-w-[357px] overflow-hidden z-[1] rounded-md bg-[#716046] backdrop-blur-sm"
               >
@@ -336,6 +337,7 @@ const AddDetails = () => {
             <label
               htmlFor="email"
               className="font-medium text-white/[.80] text-sm"
+              data-testid="Date Of Birth"
             >
               Date Of Birth
             </label>
@@ -415,8 +417,9 @@ const AddDetails = () => {
 
           <div className="mb-6">
             <label
-              htmlFor="password"
-              className="font-medium text-white/[.80] text-sm"
+              htmlFor="Gender"
+              className="font-medium text-white/[.80] text-sm" 
+              data-testid="Gender"
             >
               Gender
             </label>
@@ -430,7 +433,7 @@ const AddDetails = () => {
               </div>
 
               <span
-                data-testid="PasswordVisibility"
+                data-testid="Gender"
                 className="vector absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-white"
                 onClick={(e) => toggleGender(e)}
               >
