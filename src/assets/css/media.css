@@ -583,6 +583,28 @@
   scrollbar-color: #FF0000 #000000;
 }
 
+
+.remove-icon{
+
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+
+.date select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url('../images/arrow.svg') no-repeat right center;
+  background-position: right 10px center; 
+  padding-right: 30px; 
+}
+
+option{
+  padding: 10px;
+}
+
 @keyframes fadeInRight {
   0% {
     opacity: 0;

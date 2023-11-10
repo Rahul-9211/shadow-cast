@@ -35,6 +35,7 @@ import EntertainmentContent from "pages/marketplace/entertainments/content/Index
 import MarketDetailPage from 'components/detailPage/MarketDetailPage';
 import MusicContent from 'pages/marketplace/entertainments/content/Music';
 import GameCategory from 'pages/marketplace/games/Category/GameCategory';
+import AddDetails from 'pages/auth/signup/addDetails/Index';
 // import { Ships } from 'components/assets/myassets';
 
 /* The code is exporting a default function that returns an array of route objects. Each route object
@@ -176,6 +177,13 @@ const routes = [
     key: 'Create-Account',
     route: '/signup',
     component: <SignUp />,
+    useLayout: <AuthLayout />,
+  },
+  {
+    name: 'Add-Details',
+    key: 'Add-Details',
+    route: '/signup/add-details',
+    component: <AddDetails />,
     useLayout: <AuthLayout />,
   },
   {
