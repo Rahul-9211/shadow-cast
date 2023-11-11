@@ -7,7 +7,7 @@
  */
 
 import { Box } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 import GoogleLogin from "components/buttons/Google";
 
@@ -41,19 +41,18 @@ const AddDetails = () => {
   });
   const isRequired = (value) => (value === "" ? false : true);
   // Function to toggle between user and creator sign-up
-//   const toggleSignUpType = () => {
-//     setSignUpType((prevSignUpType) =>
-//       prevSignUpType === "user" ? "creator" : "user"
-//     );
-//     window.scrollTo({
-//       top: 0,
-//       behavior: "smooth",
-//     });
-//   };
+  //   const toggleSignUpType = () => {
+  //     setSignUpType((prevSignUpType) =>
+  //       prevSignUpType === "user" ? "creator" : "user"
+  //     );
+  //     window.scrollTo({
+  //       top: 0,
+  //       behavior: "smooth",
+  //     });
+  //   };
   // Function to validate the form data
   const validateForm = () => {
-    let isValid =
-      checkName(formData.name) 
+    let isValid = checkName(formData.name);
     return isValid;
   };
   // Function to handle input changes
@@ -85,13 +84,13 @@ const AddDetails = () => {
   };
 
   // Function to check if the form is valid
-//   const isFormValid = () => {
-//     return (
-//       formData.name &&
-//       isValidEmail(formData.email) &&
-//       isStrongPassword(formData.password)
-//     );
-//   };
+  //   const isFormValid = () => {
+  //     return (
+  //       formData.name &&
+  //       isValidEmail(formData.email) &&
+  //       isStrongPassword(formData.password)
+  //     );
+  //   };
 
   // Function to handle form submission
   const handleSubmit = (e) => {
@@ -125,54 +124,54 @@ const AddDetails = () => {
   };
 
   // checkEmail
-//   const checkEmail = (value) => {
-//     let valid = false;
-//     const fieldInput = value.trim();
-//     if (!isRequired(fieldInput)) {
-//       setFormErrors({
-//         ...formErrors,
-//         email: "Email is required",
-//       });
-//     } else if (!isValidEmail(fieldInput)) {
-//       setFormErrors({
-//         ...formErrors,
-//         email: "Invalid Email Address",
-//       });
-//     } else {
-//       setFormErrors({
-//         ...formErrors,
-//         email: "",
-//       });
-//       valid = true;
-//     }
-//     return valid;
-//   };
+  //   const checkEmail = (value) => {
+  //     let valid = false;
+  //     const fieldInput = value.trim();
+  //     if (!isRequired(fieldInput)) {
+  //       setFormErrors({
+  //         ...formErrors,
+  //         email: "Email is required",
+  //       });
+  //     } else if (!isValidEmail(fieldInput)) {
+  //       setFormErrors({
+  //         ...formErrors,
+  //         email: "Invalid Email Address",
+  //       });
+  //     } else {
+  //       setFormErrors({
+  //         ...formErrors,
+  //         email: "",
+  //       });
+  //       valid = true;
+  //     }
+  //     return valid;
+  //   };
 
-//   // checkPassword
-//   const checkPassword = (value) => {
-//     let valid = false;
-//     const fieldInput = value.trim();
-//     if (!isRequired(fieldInput)) {
-//       setFormErrors({
-//         ...formErrors,
-//         password: "Password is required",
-//       });
-//     }
-//     // else if (!isStrongPassword(fieldInput)) {
-//     //   setFormErrors({
-//     //     ...formErrors,
-//     //     password: 'Password is not strong enough'
-//     //   });
-//     // }
-//     else {
-//       setFormErrors({
-//         ...formErrors,
-//         password: "",
-//       });
-//       valid = true;
-//     }
-//     return valid;
-//   };
+  //   // checkPassword
+  //   const checkPassword = (value) => {
+  //     let valid = false;
+  //     const fieldInput = value.trim();
+  //     if (!isRequired(fieldInput)) {
+  //       setFormErrors({
+  //         ...formErrors,
+  //         password: "Password is required",
+  //       });
+  //     }
+  //     // else if (!isStrongPassword(fieldInput)) {
+  //     //   setFormErrors({
+  //     //     ...formErrors,
+  //     //     password: 'Password is not strong enough'
+  //     //   });
+  //     // }
+  //     else {
+  //       setFormErrors({
+  //         ...formErrors,
+  //         password: "",
+  //       });
+  //       valid = true;
+  //     }
+  //     return valid;
+  //   };
   const [userGuideLines, setuserGuideLines] = useState(false);
 
   const toggleUserGuidelines = (e) => {
@@ -186,8 +185,8 @@ const AddDetails = () => {
 
   const [selectedGender, setselectedGender] = useState("-Select-");
   const handleGender = (e) => {
-  console.log("🚀 ~ file: Index.jsx:193 ~ handleGender ~ e:", e)
-  setGender(!Gender);
+    console.log("🚀 ~ file: Index.jsx:193 ~ handleGender ~ e:", e);
+    setGender(!Gender);
     setselectedGender(e);
   };
   const [Gender, setGender] = useState(false);
@@ -195,39 +194,77 @@ const AddDetails = () => {
     setGender(!Gender);
   };
 
-  const [focus , setFocus] = useState({
-    username:false, 
-    dob : false , 
-    gender : false
-  })
+  const [focus, setFocus] = useState({
+    username: false,
+    dob: false,
+    gender: false,
+  });
 
-  const handleFocus = (value) =>{
-    if(value === "username"){
-        setFocus({
-            ...focus,
-            username: true,
-          });
+  const handleFocus = (value) => {
+    if (value === "username") {
+      setFocus({
+        ...focus,
+        username: true,
+      });
     }
-    if(value === "dob"){
-        setFocus({
-            ...focus,
-            dob: true,
-          });
+    if (value === "dob") {
+      setFocus({
+        ...focus,
+        dob: true,
+      });
     }
-    if(value === "gender"){
-        setFocus({
-            ...focus,
-            gender: true,
-          });
+    if (value === "gender") {
+      setFocus({
+        ...focus,
+        gender: true,
+      });
+    } else {
+      setFocus({
+        username: false,
+        dob: false,
+        gender: false,
+      });
     }
-    else{
-        setFocus({
-            username: false,
-            dob: false,
-            gender: false,
-        })
-    }
-  }
+  };
+
+  const dobRef = useRef(null);
+  const genderDropdownRef = useRef(null);
+  useEffect(() => {
+    console.log('asdasd')
+    const handleOutsideClick = (event) => {
+      if (dobRef.current && !dobRef.current.contains(event.target)) {
+        setCalender(false);
+      }
+
+      if (genderDropdownRef.current && !genderDropdownRef.current.contains(event.target)) {
+        setGender(false);
+      }
+    };
+
+    document.addEventListener("click", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, []);
+
+  const [selectedDate, setselectedDate] = useState("dd/mm/yyyy");
+  const handleDate = (value) => {
+    setCalender(false);
+    const dateString = value.format();
+
+    // Split into date and time
+    const [datePart, timePart] = dateString.split("T");
+
+    // Split the date into day, month, and year
+    const [year, month, day] = datePart.split("-");
+
+    // Create the desired format (dd/mm/yyyy)
+    const formattedDate = `${day}/${month}/${year}`;
+    setselectedDate(formattedDate);
+
+    console.log(formattedDate); // Output: 11/11/2023
+  };
   return (
     <Box className="w-full max-w-[700px] rounded-lg border border-[#363636] p-5 md:p-[32px] lg:p-[58px] signin-form">
       <Box className="text-white max-w-[500px] mx-auto">
@@ -235,7 +272,7 @@ const AddDetails = () => {
           {signUpType === "creator" ? "Become a Creator" : "Add Details"}
         </h1>
         <form className="auth-form mb-5" onSubmit={handleSubmit}>
-          <div className="mb-4" >
+          <div className="mb-4">
             <label
               htmlFor="name"
               className="font-medium text-white/[.80] text-sm"
@@ -249,7 +286,7 @@ const AddDetails = () => {
                 placeholder="eg. John_doe13"
                 name="name"
                 className={`rounded-lg w-full bg-transparent border border-white focus:border-[#FBBC5E] font-normal py-3 px-5 leading-normal font-semibold outline-none ${
-                  formErrors.name ? "!border-error" : "" 
+                  formErrors.name ? "!border-error" : ""
                 } ${focus ? "" : ""}`}
                 id="name"
                 value={formData.name}
@@ -308,7 +345,7 @@ const AddDetails = () => {
 
             {userGuideLines && (
               <div
-              data-testid = "Username"
+                data-testid="Username"
                 onBlur={toggleUserGuidelines}
                 className="absolute top-8 -right-[350px] p-5 max-w-[357px] overflow-hidden z-[1] rounded-md bg-[#716046] backdrop-blur-sm"
               >
@@ -333,17 +370,17 @@ const AddDetails = () => {
             )}
           </div>
 
-          <div className="mb-4" onClick={()=>{handleFocus("dob")}} onBlur={()=>{handleFocus("test")}}>
-            <label
-              htmlFor="email"
+          <div
+            className="mb-4"
+          >
+            <p
               className="font-medium text-white/[.80] text-sm"
               data-testid="Date Of Birth"
             >
               Date Of Birth
-            </label>
-            <div className="mt-2  relative">
+            </p>
+            {/* <div className="mt-2  relative" ref={dobRef}>
               <input
-                placeholder="eg. John_doe13"
                 type="date"
                 name="date"
                 data-testid="date"
@@ -351,7 +388,7 @@ const AddDetails = () => {
                   formErrors.date ? "!border-error" : ""
                 }`}
                 id="date"
-                value={formData.date}
+                value={selectedDate}
                 // onChange={handleInputChange}
                 // onBlur={(e) => checkEmail(e.target.value)}
               />
@@ -375,12 +412,52 @@ const AddDetails = () => {
                 </svg>
               </span>
               {Calender && (
-                <div className="absolute bg-white text-red z-[4]">
+                <div className="absolute bg-white text-black z-[4]">
                   <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <DateCalendar />
+                    <DateCalendar
+                      onChange={(newValue) => handleDate(newValue)}
+                    />
                   </LocalizationProvider>
                 </div>
               )}
+            </div> */}
+
+            <div className="mt-2  relative" ref={dobRef}>
+              <div
+                className={`rounded-lg cursor-pointer w-full remove-icon bg-transparent border border-white focus:border-[#FBBC5E] font-normal py-3 px-5 leading-normal font-semibold outline-none ${
+                  formErrors.date ? "!border-error" : ""
+                }`}
+                onClick={(e) => toggleCalender(e)}
+
+              >
+                <span>{selectedDate}</span>
+                <span
+                  data-testid="PasswordVisibility"
+                  className="vector absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-white"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                  >
+                    <path
+                      d="M19 4H17V3C17 2.73478 16.8946 2.48043 16.7071 2.29289C16.5196 2.10536 16.2652 2 16 2C15.7348 2 15.4804 2.10536 15.2929 2.29289C15.1054 2.48043 15 2.73478 15 3V4H9V3C9 2.73478 8.89464 2.48043 8.70711 2.29289C8.51957 2.10536 8.26522 2 8 2C7.73478 2 7.48043 2.10536 7.29289 2.29289C7.10536 2.48043 7 2.73478 7 3V4H5C4.20435 4 3.44129 4.31607 2.87868 4.87868C2.31607 5.44129 2 6.20435 2 7V19C2 19.7956 2.31607 20.5587 2.87868 21.1213C3.44129 21.6839 4.20435 22 5 22H19C19.7956 22 20.5587 21.6839 21.1213 21.1213C21.6839 20.5587 22 19.7956 22 19V7C22 6.20435 21.6839 5.44129 21.1213 4.87868C20.5587 4.31607 19.7956 4 19 4ZM20 19C20 19.2652 19.8946 19.5196 19.7071 19.7071C19.5196 19.8946 19.2652 20 19 20H5C4.73478 20 4.48043 19.8946 4.29289 19.7071C4.10536 19.5196 4 19.2652 4 19V12H20V19ZM20 10H4V7C4 6.73478 4.10536 6.48043 4.29289 6.29289C4.48043 6.10536 4.73478 6 5 6H7V7C7 7.26522 7.10536 7.51957 7.29289 7.70711C7.48043 7.89464 7.73478 8 8 8C8.26522 8 8.51957 7.89464 8.70711 7.70711C8.89464 7.51957 9 7.26522 9 7V6H15V7C15 7.26522 15.1054 7.51957 15.2929 7.70711C15.4804 7.89464 15.7348 8 16 8C16.2652 8 16.5196 7.89464 16.7071 7.70711C16.8946 7.51957 17 7.26522 17 7V6H19C19.2652 6 19.5196 6.10536 19.7071 6.29289C19.8946 6.48043 20 6.73478 20 7V10Z"
+                      fill={`${focus.dob ? "#FBBC5E" : "white"}`}
+                    />
+                  </svg>
+                </span>
+                {Calender && (
+                  <div className="absolute bg-white text-black top-[51px] z-[4]">
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                      <DateCalendar
+                        onChange={(newValue) => handleDate(newValue)}
+                      />
+                    </LocalizationProvider>
+                  </div>
+                )}
+              </div>
             </div>
             {/* {formErrors.date && (
               <span className="text-error text-sm">{formErrors.date}</span>
@@ -418,16 +495,17 @@ const AddDetails = () => {
           <div className="mb-6">
             <label
               htmlFor="Gender"
-              className="font-medium text-white/[.80] text-sm" 
+              className="font-medium text-white/[.80] text-sm"
               data-testid="Gender"
             >
               Gender
             </label>
-            <div className="mt-2 flex relative date">
+            <div className="mt-2 flex relative date" ref={genderDropdownRef}>
               <div
-                className={`rounded-lg w-full bg-transparent border border-white focus:border-[#51A2FF] font-normal py-3 px-5 leading-normal font-semibold outline-none pr-[40px] ${
+                className={`rounded-lg cursor-pointer w-full bg-transparent border border-white focus:border-[#51A2FF] font-normal py-3 px-5 leading-normal font-semibold outline-none pr-[40px] ${
                   formErrors.password ? "!border-error" : ""
                 }`}
+                onClick={(e) => toggleGender(e)}
               >
                 {selectedGender}
               </div>
@@ -435,6 +513,7 @@ const AddDetails = () => {
               <span
                 data-testid="Gender"
                 className="vector absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-white"
+
                 onClick={(e) => toggleGender(e)}
               >
                 <svg
@@ -453,35 +532,42 @@ const AddDetails = () => {
                   />
                 </svg>
               </span>
-            {Gender &&   <div className="absolute w-full top-14 rounded-lg border border-[#FBBC5E] bg-[#332e28] z-[3] overflow-hidden" onBlur={console.log('called')}>
+              {Gender && (
                 <div
-                  className={`w-full bg-transparent focus:border-[#51A2FF] hover:bg-[#FBBC5E] hover:bg-opacity-10 hover:text-[#FBBC5E] cursor-pointer font-normal py-3 px-5 leading-normal font-semibold outline-none pr-[40px] ${
-                    formErrors.password ? "!border-error" : ""
-                  }`}
-                  onClick={()=>{handleGender("Male")}}
-
+                  className="absolute w-full top-14 rounded-lg border border-[#FBBC5E] bg-[#332e28] z-[3] overflow-hidden"
                 >
-                  Male
+                  <div
+                    className={`w-full bg-transparent focus:border-[#51A2FF] hover:bg-[#FBBC5E] hover:bg-opacity-10 hover:text-[#FBBC5E] cursor-pointer font-normal py-3 px-5 leading-normal font-semibold outline-none pr-[40px] ${
+                      formErrors.password ? "!border-error" : ""
+                    }`}
+                    onClick={() => {
+                      handleGender("Male");
+                    }}
+                  >
+                    Male
+                  </div>
+                  <div
+                    className={` w-full bg-transparent focus:border-[#51A2FF] hover:bg-[#FBBC5E] hover:bg-opacity-10  hover:text-[#FBBC5E] cursor-pointer font-normal py-3 px-5 leading-normal font-semibold outline-none pr-[40px] ${
+                      formErrors.password ? "!border-error" : ""
+                    }`}
+                    onClick={() => {
+                      handleGender("Female");
+                    }}
+                  >
+                    Female
+                  </div>
+                  <div
+                    className={` w-full bg-transparent focus:border-[#51A2FF] hover:bg-[#FBBC5E] hover:bg-opacity-10 hover:text-[#FBBC5E] cursor-pointer font-normal py-3 px-5 leading-normal font-semibold outline-none pr-[40px] ${
+                      formErrors.password ? "!border-error" : ""
+                    }`}
+                    onClick={() => {
+                      handleGender("Others");
+                    }}
+                  >
+                    Others
+                  </div>
                 </div>
-                <div
-                  className={` w-full bg-transparent focus:border-[#51A2FF] hover:bg-[#FBBC5E] hover:bg-opacity-10  hover:text-[#FBBC5E] cursor-pointer font-normal py-3 px-5 leading-normal font-semibold outline-none pr-[40px] ${
-                    formErrors.password ? "!border-error" : ""
-                  }`}
-
-                  onClick={()=>{handleGender("Female")}}
-                >
-                  Female
-                </div>
-                <div
-                  className={` w-full bg-transparent focus:border-[#51A2FF] hover:bg-[#FBBC5E] hover:bg-opacity-10 hover:text-[#FBBC5E] cursor-pointer font-normal py-3 px-5 leading-normal font-semibold outline-none pr-[40px] ${
-                    formErrors.password ? "!border-error" : ""
-                  }`}
-
-                  onClick={()=>{handleGender("Others")}}
-                >
-                  Others
-                </div>
-              </div>}
+              )}
             </div>
           </div>
 
