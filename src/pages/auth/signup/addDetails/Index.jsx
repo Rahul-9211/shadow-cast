@@ -40,20 +40,35 @@ const AddDetails = () => {
     date: "",
   });
   const isRequired = (value) => (value === "" ? false : true);
-  // Function to toggle between user and creator sign-up
-  //   const toggleSignUpType = () => {
-  //     setSignUpType((prevSignUpType) =>
-  //       prevSignUpType === "user" ? "creator" : "user"
-  //     );
-  //     window.scrollTo({
-  //       top: 0,
-  //       behavior: "smooth",
-  //     });
-  //   };
+ 
   // Function to validate the form data
   const validateForm = () => {
-    let isValid = checkName(formData.name);
-    return isValid;
+    const boolName = checkName(formData.name);
+    const boolGender = checkGender(selectedGender);
+    const boolCalenderDate = checkCalenderDate(selectedDate);
+
+    if (boolGender && boolCalenderDate && boolName) {
+      return true;
+    } else return false;
+  };
+
+  const checkGender = (selectedGender) => {
+    if (selectedGender === "-Select-") {
+      setgenderError(true);
+      return false;
+    } else {
+      setgenderError(false);
+      return true;
+    }
+  };
+  const checkCalenderDate = (selectedGender) => {
+    if (selectedDate === "dd/mm/yyyy") {
+      setDOBError(true);
+      return false;
+    } else {
+      setDOBError(false);
+      return true;
+    }
   };
   // Function to handle input changes
   const handleInputChange = (e) => {
@@ -62,41 +77,15 @@ const AddDetails = () => {
       ...formData,
       [name]: value.trim(),
     });
-    // if (name === "name") {
-    //   checkName(value);
-    // }
-    // if (name === "email") {
-    //   if (!value.trim() && !value.trim().includes('@')) {
-    //     checkEmail(value);
-    //   }
-    //   if (value.trim() && value.trim().includes('@')) {
-    //     checkEmail(value);
-    //   } else {
-    //     setFormErrors({
-    //       ...formErrors,
-    //       email: ''
-    //     });
-    //   }
-    // }
-    // if (name === "password") {
-    //   checkPassword(value);
-    // }
+    
   };
-
-  // Function to check if the form is valid
-  //   const isFormValid = () => {
-  //     return (
-  //       formData.name &&
-  //       isValidEmail(formData.email) &&
-  //       isStrongPassword(formData.password)
-  //     );
-  //   };
 
   // Function to handle form submission
   const handleSubmit = (e) => {
+    console.log("🚀 ~ file: Index.jsx:97 ~ handleSubmit ~ e:", e);
     e.preventDefault();
     if (validateForm()) {
-      alert(JSON.stringify(formData));
+      // alert(JSON.stringify(formData));
       setFormData({
         name: "",
         email: "",
@@ -123,55 +112,6 @@ const AddDetails = () => {
     return valid;
   };
 
-  // checkEmail
-  //   const checkEmail = (value) => {
-  //     let valid = false;
-  //     const fieldInput = value.trim();
-  //     if (!isRequired(fieldInput)) {
-  //       setFormErrors({
-  //         ...formErrors,
-  //         email: "Email is required",
-  //       });
-  //     } else if (!isValidEmail(fieldInput)) {
-  //       setFormErrors({
-  //         ...formErrors,
-  //         email: "Invalid Email Address",
-  //       });
-  //     } else {
-  //       setFormErrors({
-  //         ...formErrors,
-  //         email: "",
-  //       });
-  //       valid = true;
-  //     }
-  //     return valid;
-  //   };
-
-  //   // checkPassword
-  //   const checkPassword = (value) => {
-  //     let valid = false;
-  //     const fieldInput = value.trim();
-  //     if (!isRequired(fieldInput)) {
-  //       setFormErrors({
-  //         ...formErrors,
-  //         password: "Password is required",
-  //       });
-  //     }
-  //     // else if (!isStrongPassword(fieldInput)) {
-  //     //   setFormErrors({
-  //     //     ...formErrors,
-  //     //     password: 'Password is not strong enough'
-  //     //   });
-  //     // }
-  //     else {
-  //       setFormErrors({
-  //         ...formErrors,
-  //         password: "",
-  //       });
-  //       valid = true;
-  //     }
-  //     return valid;
-  //   };
   const [userGuideLines, setuserGuideLines] = useState(false);
 
   const toggleUserGuidelines = (e) => {
@@ -189,6 +129,7 @@ const AddDetails = () => {
     setGender(!Gender);
     setselectedGender(e);
   };
+
   const [Gender, setGender] = useState(false);
   const toggleGender = (e) => {
     setGender(!Gender);
@@ -200,43 +141,21 @@ const AddDetails = () => {
     gender: false,
   });
 
-  const handleFocus = (value) => {
-    if (value === "username") {
-      setFocus({
-        ...focus,
-        username: true,
-      });
-    }
-    if (value === "dob") {
-      setFocus({
-        ...focus,
-        dob: true,
-      });
-    }
-    if (value === "gender") {
-      setFocus({
-        ...focus,
-        gender: true,
-      });
-    } else {
-      setFocus({
-        username: false,
-        dob: false,
-        gender: false,
-      });
-    }
-  };
+
 
   const dobRef = useRef(null);
   const genderDropdownRef = useRef(null);
   useEffect(() => {
-    console.log('asdasd')
+    console.log("asdasd");
     const handleOutsideClick = (event) => {
       if (dobRef.current && !dobRef.current.contains(event.target)) {
         setCalender(false);
       }
 
-      if (genderDropdownRef.current && !genderDropdownRef.current.contains(event.target)) {
+      if (
+        genderDropdownRef.current &&
+        !genderDropdownRef.current.contains(event.target)
+      ) {
         setGender(false);
       }
     };
@@ -265,6 +184,9 @@ const AddDetails = () => {
 
     console.log(formattedDate); // Output: 11/11/2023
   };
+
+  const [genderError, setgenderError] = useState(false);
+  const [DOBError, setDOBError] = useState(false);
   return (
     <Box className="w-full max-w-[700px] rounded-lg border border-[#363636] p-5 md:p-[32px] lg:p-[58px] signin-form">
       <Box className="text-white max-w-[500px] mx-auto">
@@ -370,67 +292,22 @@ const AddDetails = () => {
             )}
           </div>
 
-          <div
-            className="mb-4"
-          >
+          <div className="mb-4">
             <p
               className="font-medium text-white/[.80] text-sm"
               data-testid="Date Of Birth"
             >
               Date Of Birth
             </p>
-            {/* <div className="mt-2  relative" ref={dobRef}>
-              <input
-                type="date"
-                name="date"
-                data-testid="date"
-                className={`rounded-lg w-full remove-icon bg-transparent border border-white focus:border-[#FBBC5E] font-normal py-3 px-5 leading-normal font-semibold outline-none ${
-                  formErrors.date ? "!border-error" : ""
-                }`}
-                id="date"
-                value={selectedDate}
-                // onChange={handleInputChange}
-                // onBlur={(e) => checkEmail(e.target.value)}
-              />
 
-              <span
-                data-testid="PasswordVisibility"
-                className="vector absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-white"
-                onClick={(e) => toggleCalender(e)}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                >
-                  <path
-                    d="M19 4H17V3C17 2.73478 16.8946 2.48043 16.7071 2.29289C16.5196 2.10536 16.2652 2 16 2C15.7348 2 15.4804 2.10536 15.2929 2.29289C15.1054 2.48043 15 2.73478 15 3V4H9V3C9 2.73478 8.89464 2.48043 8.70711 2.29289C8.51957 2.10536 8.26522 2 8 2C7.73478 2 7.48043 2.10536 7.29289 2.29289C7.10536 2.48043 7 2.73478 7 3V4H5C4.20435 4 3.44129 4.31607 2.87868 4.87868C2.31607 5.44129 2 6.20435 2 7V19C2 19.7956 2.31607 20.5587 2.87868 21.1213C3.44129 21.6839 4.20435 22 5 22H19C19.7956 22 20.5587 21.6839 21.1213 21.1213C21.6839 20.5587 22 19.7956 22 19V7C22 6.20435 21.6839 5.44129 21.1213 4.87868C20.5587 4.31607 19.7956 4 19 4ZM20 19C20 19.2652 19.8946 19.5196 19.7071 19.7071C19.5196 19.8946 19.2652 20 19 20H5C4.73478 20 4.48043 19.8946 4.29289 19.7071C4.10536 19.5196 4 19.2652 4 19V12H20V19ZM20 10H4V7C4 6.73478 4.10536 6.48043 4.29289 6.29289C4.48043 6.10536 4.73478 6 5 6H7V7C7 7.26522 7.10536 7.51957 7.29289 7.70711C7.48043 7.89464 7.73478 8 8 8C8.26522 8 8.51957 7.89464 8.70711 7.70711C8.89464 7.51957 9 7.26522 9 7V6H15V7C15 7.26522 15.1054 7.51957 15.2929 7.70711C15.4804 7.89464 15.7348 8 16 8C16.2652 8 16.5196 7.89464 16.7071 7.70711C16.8946 7.51957 17 7.26522 17 7V6H19C19.2652 6 19.5196 6.10536 19.7071 6.29289C19.8946 6.48043 20 6.73478 20 7V10Z"
-                    fill={`${focus.dob ? "#FBBC5E" : "white"}`}
-                  />
-                </svg>
-              </span>
-              {Calender && (
-                <div className="absolute bg-white text-black z-[4]">
-                  <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <DateCalendar
-                      onChange={(newValue) => handleDate(newValue)}
-                    />
-                  </LocalizationProvider>
-                </div>
-              )}
-            </div> */}
-
-            <div className="mt-2  relative" ref={dobRef}>
+            <div className="mt-2 flex relative" ref={dobRef}>
               <div
                 className={`rounded-lg cursor-pointer w-full remove-icon bg-transparent border border-white focus:border-[#FBBC5E] font-normal py-3 px-5 leading-normal font-semibold outline-none ${
                   formErrors.date ? "!border-error" : ""
                 }`}
                 onClick={(e) => toggleCalender(e)}
-
               >
-                <span>{selectedDate}</span>
+                <div>{selectedDate}</div>
                 <span
                   data-testid="PasswordVisibility"
                   className="vector absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-white"
@@ -458,39 +335,15 @@ const AddDetails = () => {
                   </div>
                 )}
               </div>
+             
             </div>
-            {/* {formErrors.date && (
-              <span className="text-error text-sm">{formErrors.date}</span>
-            )} */}
+            {DOBError && (
+                <span className="text-error text-sm">Please select DOB</span>
+              )}
+          
           </div>
 
-          {/* <div className="mb-6">
-            <label
-              htmlFor="password"
-              className="font-medium text-white/[.80] text-sm"
-            >
-              Gender
-            </label>
-            <div className="mt-2 flex relative date">
-              <select
-                name="gender"
-                id="gender"
-                className={`rounded-lg w-full bg-transparent border border-white focus:border-[#51A2FF] font-normal py-3 px-5 leading-normal font-semibold outline-none pr-[40px] ${
-                  formErrors.password ? "!border-error" : ""
-                }`}
-              >
-                <option value="" disabled selected>
-                  -Select-
-                </option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-              </select>
-              
-            </div>
-            {formErrors.password && (
-              <span className="text-error text-sm">{formErrors.password}</span>
-            )}
-          </div> */}
+        
 
           <div className="mb-6">
             <label
@@ -513,7 +366,6 @@ const AddDetails = () => {
               <span
                 data-testid="Gender"
                 className="vector absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-white"
-
                 onClick={(e) => toggleGender(e)}
               >
                 <svg
@@ -533,9 +385,7 @@ const AddDetails = () => {
                 </svg>
               </span>
               {Gender && (
-                <div
-                  className="absolute w-full top-14 rounded-lg border border-[#FBBC5E] bg-[#332e28] z-[3] overflow-hidden"
-                >
+                <div className="absolute w-full top-14 rounded-lg border border-[#FBBC5E] bg-[#332e28] z-[3] overflow-hidden">
                   <div
                     className={`w-full bg-transparent focus:border-[#51A2FF] hover:bg-[#FBBC5E] hover:bg-opacity-10 hover:text-[#FBBC5E] cursor-pointer font-normal py-3 px-5 leading-normal font-semibold outline-none pr-[40px] ${
                       formErrors.password ? "!border-error" : ""
@@ -569,6 +419,9 @@ const AddDetails = () => {
                 </div>
               )}
             </div>
+            {genderError && (
+              <span className="text-error text-sm">Please select gender</span>
+            )}
           </div>
 
           <button
