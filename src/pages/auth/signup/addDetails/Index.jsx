@@ -125,8 +125,9 @@ const AddDetails = () => {
 
   const [selectedGender, setselectedGender] = useState("-Select-");
   const handleGender = (e) => {
-    console.log("🚀 ~ file: Index.jsx:193 ~ handleGender ~ e:", e);
+    // console.log("🚀 ~ file: Index.jsx:193 ~ handleGender ~ e:", e);
     setGender(!Gender);
+    setgenderError(false)
     setselectedGender(e);
   };
 
@@ -180,6 +181,7 @@ const AddDetails = () => {
 
     // Create the desired format (dd/mm/yyyy)
     const formattedDate = `${day}/${month}/${year}`;
+    setDOBError(false)
     setselectedDate(formattedDate);
 
     console.log(formattedDate); // Output: 11/11/2023
