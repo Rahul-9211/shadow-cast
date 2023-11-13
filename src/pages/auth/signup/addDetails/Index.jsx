@@ -303,7 +303,7 @@ const AddDetails = () => {
             <div className="mt-2 flex relative" ref={dobRef}>
               <div
                 className={`rounded-lg cursor-pointer w-full remove-icon bg-transparent border border-white focus:border-[#FBBC5E] font-normal py-3 px-5 leading-normal font-semibold outline-none ${
-                  formErrors.date ? "!border-error" : ""
+                  DOBError ? "!border-error" : ""
                 }`}
                 onClick={(e) => toggleCalender(e)}
               >
@@ -356,7 +356,7 @@ const AddDetails = () => {
             <div className="mt-2 flex relative date" ref={genderDropdownRef}>
               <div
                 className={`rounded-lg cursor-pointer w-full bg-transparent border border-white focus:border-[#51A2FF] font-normal py-3 px-5 leading-normal font-semibold outline-none pr-[40px] ${
-                  formErrors.password ? "!border-error" : ""
+                  genderError ? "!border-error" : ""
                 }`}
                 onClick={(e) => toggleGender(e)}
               >
