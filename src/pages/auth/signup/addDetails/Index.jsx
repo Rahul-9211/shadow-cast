@@ -26,6 +26,29 @@ import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 /* This code is a React component for user registration with the option to switch between "User" and "Creator" accounts. It performs real-time validation for name, email, and password, including password strength checks. Users can toggle the visibility of the password, and the form is enabled for submission when all requirements are met.
  */
 const AddDetails = () => {
+  const [screenSize, setScreenSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+
+  // Function to update screen size
+  const updateScreenSize = () => {
+    setScreenSize({
+      width: window.innerWidth,
+      height: window.innerHeight,
+    });
+  };
+
+  useEffect(() => {
+    // Add event listener for resize event
+    window.addEventListener('resize', updateScreenSize);
+    console.log("screen size ", screenSize.width)
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', updateScreenSize);
+    };
+  }, [screenSize.width]);
   const [signUpType, setSignUpType] = useState("user");
   const [formData, setFormData] = useState({
     name: "",
@@ -144,6 +167,7 @@ const AddDetails = () => {
 
 
 
+  const userGuideLineRef = useRef(null);
   const dobRef = useRef(null);
   const genderDropdownRef = useRef(null);
   useEffect(() => {
@@ -158,6 +182,12 @@ const AddDetails = () => {
         !genderDropdownRef.current.contains(event.target)
       ) {
         setGender(false);
+      }
+      if (
+        userGuideLineRef.current &&
+        !userGuideLineRef.current.contains(event.target)
+      ) {
+        setuserGuideLines(false);
       }
     };
 
@@ -204,7 +234,7 @@ const AddDetails = () => {
             >
               Username
             </label>
-            <div className="mt-2 relative">
+            <div className="mt-2 relative" ref={userGuideLineRef} >
               <input
                 type="text"
                 placeholder="eg. John_doe13"
@@ -245,13 +275,9 @@ const AddDetails = () => {
                   />
                 </svg>
               </span>
-            </div>
-            {formErrors.name && (
-              <span className="text-error text-sm">{formErrors.name}</span>
-            )}
 
             {userGuideLines && (
-              <div className="notification-dropdown absolute top-12 right-1 delay-200 transition">
+              <div className={`notification-dropdown absolute ${screenSize.width >1226 ? "top-4 right-1" : "top-8 right-4 rotate-90"} delay-200 transition`}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
@@ -271,7 +297,7 @@ const AddDetails = () => {
               <div
                 data-testid="Username"
                 onBlur={toggleUserGuidelines}
-                className="absolute top-8 -right-[350px] p-5 max-w-[357px] overflow-hidden z-[1] rounded-md bg-[#716046] backdrop-blur-sm"
+                className={`absolute ${screenSize.width > 1226 ? "top-0 -right-[350px]" : "-right-[0px]"} p-5 max-w-[357px] overflow-hidden z-[1] rounded-md bg-[#716046] backdrop-blur-sm`}
               >
                 <p className="text-[14px] text-[#FBBC5E] font-bold pb-[9px]">
                   Username Guidelines
@@ -292,6 +318,12 @@ const AddDetails = () => {
                 </ul>
               </div>
             )}
+            </div>
+
+            {formErrors.name && (
+              <span className="text-error text-sm">{formErrors.name}</span>
+            )}
+
           </div>
 
           <div className="mb-4">

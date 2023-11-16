@@ -17,6 +17,7 @@
     "babel-jest": "^29.6.3",
     "dayjs": "^1.11.10",
     "lodash": "^4.17.21",
+    "material-ui-popup-state": "^5.0.10",
     "react": "^18.2.0",
     "react-carousel-minimal": "^1.4.1",
     "react-dom": "^18.2.0",
