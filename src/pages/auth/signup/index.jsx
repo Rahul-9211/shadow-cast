@@ -13,6 +13,8 @@ import GoogleLogin from "components/buttons/Google";
 import { isValidEmail, isStrongPassword, togglePasswordVisibility } from "utils/index";
 import eyeOff from "assets/images/eye-off.svg";
 import CheckList from "components/password/checklist";
+import axios from "axios";
+import { SERVICE_URL } from "api/services";
 /* This code is a React component for user registration with the option to switch between "User" and "Creator" accounts. It performs real-time validation for name, email, and password, including password strength checks. Users can toggle the visibility of the password, and the form is enabled for submission when all requirements are met.
  */
 const SignUp = () => {
@@ -87,11 +89,12 @@ const SignUp = () => {
     e.preventDefault();
     if (validateForm()) {
       alert(JSON.stringify(formData))
-      setFormData({
-        name: "",
-        email: "",
-        password: "",
-      })
+      CheckCredentials()
+      // setFormData({
+      //   name: "",
+      //   email: "",
+      //   password: "",
+      // })
     }
   };
   // checkName
@@ -162,6 +165,28 @@ const SignUp = () => {
     }
     return valid;
   };
+
+  
+  async function CheckCredentials() {
+    console.log("signIP API", formData.email, formData.password);
+    const payload = {
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      userName : formData.userName,
+      email: formData.email,
+      password: formData.password,
+    };
+    try {
+      const response = await axios.post(SERVICE_URL.SIGN_UP, payload);
+      const data = await response.json();
+    } catch (error) {
+      console.log(
+        "🚀 ~ file: index.jsx:151 ~ CheckCredentials ~ error:",
+        error
+      );
+      alert("some error occured ");
+    }
+  }
 
   return (
     <Box className="w-full max-w-[700px] rounded-lg border border-[#363636] p-5 md:p-[32px] lg:p-[58px] signin-form">

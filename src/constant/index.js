@@ -227,3 +227,7 @@ export const FriendSearchList = [
       status: null,
     },
 ]
+
+export const API_BASE_URL_DEV = "http://backend.xyz"
+export const API_BASE_URL_STAGING = "http://backend.xyz"
+export const API_BASE_URL_PROD = "http://backend.xyz"

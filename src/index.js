@@ -16,6 +16,8 @@ import 'assets/css/style.css';
 import 'assets/css/media.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import store from './redux/store/index'; // Import the Redux store
+import { Provider } from 'react-redux';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 /* The `root.render()` method is rendering the main component of the application, `<App />`, inside a
@@ -25,10 +27,12 @@ identify potential problems in the application. It performs additional checks an
 that the code follows best practices. */
 root.render(
   <React.StrictMode>
+  <Provider store={store}>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </React.StrictMode>
+    </Provider>
+  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
