@@ -21,10 +21,10 @@ import 'react-toastify/dist/ReactToastify.css';
 const OtpVerification = () => {
   const {name , email , username , dob , password} = useSelector((state) => state.userData);
   
-  const SuccessNotify = () => toast.success(' OTP has been sent!', {
-    position: "top-right",
-    autoClose: 5000,
-    hideProgressBar: false,
+  const SuccessNotify = () => toast.success(' OTP sent successfully!', {
+    position: "bottom-left",
+    autoClose: 3000,
+    hideProgressBar: true,
     closeOnClick: true,
     pauseOnHover: true,
     draggable: true,
@@ -33,9 +33,9 @@ const OtpVerification = () => {
     });
 
     const ErrorNotify = () => toast.error(' Some Error occured!', {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
+      position: "bottom-left",
+      autoClose: 3000,
+      hideProgressBar: true,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
