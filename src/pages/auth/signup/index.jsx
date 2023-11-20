@@ -122,6 +122,7 @@ const SignUp = () => {
       try {
         const response = await axios.post(SERVICE_URL.SIGN_UP, payload);
         const data = await response.data;
+        console.log("🚀 ~ file: index.jsx:125 ~ handleSubmit ~ data:", data)
         if (!data.response.errorCode) {
           console.log("🚀 ~ file: index.jsx:116 ~ handleSubmit ~ data:", data);
           const newUserData = {

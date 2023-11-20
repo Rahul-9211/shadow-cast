@@ -8,14 +8,35 @@
 import { Box } from "@mui/material";
 import { useState } from "react";
 import GoogleLogin from "components/buttons/Google";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { isValidEmail, togglePasswordVisibility } from "utils/index";
 import eyeOff from "assets/images/eye-off.svg";
+import { SERVICE_URL } from "pages/api/services";
+import axios from "axios";
+import { setUserData } from "store/slicer/userAuth/userData";
+import { useDispatch } from "react-redux";
+import BtnLoader from "components/ButtonLoader/BtnLoader";
+
+import { ToastContainer, toast } from 'react-toastify';
 /* This code is a React component for user sign-in with the option to switch between "User" and "Creator" accounts. It performs real-time validation for email, and password, including password strength checks. Users can toggle the visibility of the password, and the form is enabled for submission when all requirements are met.
  */
 
 
 const SignIn = () => {
+    
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const ErrorNotify = () => toast.error('Authorization failed!', {
+    position: "bottom-left",
+    autoClose: 3000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+    });
+
     const [signInType, setSignInType] = useState("user");
     const [formData, setFormData] = useState({
         email: "",
@@ -73,18 +94,56 @@ const SignIn = () => {
             formData.password
         );
     };
+  const [btnLoaderStatus, setBtnLoaderStatus] = useState(false);
+
 
     // Function to handle form submission
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        if (validateForm()) {
-            alert(JSON.stringify(formData))
-            setFormData({
-                email: "",
-                password: "",
-            })
+      
+        if (!validateForm()) {
+          return;
         }
-    };
+      
+        try {
+          setBtnLoaderStatus(true);
+      
+          const payload = {
+            email: formData.email,
+            password: formData.password,
+          };
+      
+          const response = await axios.post(SERVICE_URL.SIGN_IN, payload);
+          const data = response.data;
+      
+          if (data.response.statusEnum) {
+            const newUserData = {
+              name: `${data.response.data.user.firstName} ${data.response.data.user.lastName}`,
+              email: formData.email,
+              username: data.response.data.userName,
+              dob: data.response.data.dob,
+              gender: data.response.data.gender,
+            };
+      
+            dispatch(setUserData(newUserData));
+            localStorage.setItem("auth_token", data.response.data.accessToken);
+            navigate('/');
+          } else {
+            throw new Error("StatusEnum is 0");
+          }
+        } catch (error) {
+            ErrorNotify()
+          console.error("Error occurred:", error);
+
+        } finally {
+          setBtnLoaderStatus(false);
+          setFormData({
+            email: "",
+            password: "",
+          });
+        }
+      };
+      
 
     // checkEmail
     const checkEmail = (value) => {
@@ -129,7 +188,7 @@ const SignIn = () => {
         }
         return valid;
     };
-    return (
+    return (<>
         <Box className="w-full max-w-[700px] rounded-lg border border-[#363636] p-5 md:p-[32px] lg:p-[58px] signin-form">
             <Box className="text-white max-w-[500px] mx-auto">
                 <h1 className="text-lg lg:text-xl text-center font-heading mb-[36px]">
@@ -156,7 +215,7 @@ const SignIn = () => {
                     <div className="mb-6">
                         <NavLink to="/otp-verification" className="text-sec hover:text-secDark font-semibold text-sm">Forgot Password?</NavLink>
                     </div>
-                    <button type="submit" className="font-bold rounded-lg btn-gradient w-full text-black py-3 px-5" disabled={!isFormValid()}>Sign In</button>
+                    <button type="submit" className="flex items-center justify-center  font-bold rounded-lg btn-gradient w-full text-black py-3 px-5" disabled={!isFormValid()}>Sign In {btnLoaderStatus ? <BtnLoader /> : ""}</button>
                 </form>
 
                 <div className="divider flex gap-x-2 mb-5">
@@ -179,6 +238,8 @@ const SignIn = () => {
                 </p>
             </Box>
         </Box>
+        
+        <ToastContainer /></>
     )
 }
 
