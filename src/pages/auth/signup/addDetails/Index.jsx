@@ -8,7 +8,7 @@
 
  import { Box } from "@mui/material";
  import { useEffect, useRef, useState } from "react";
- import { NavLink } from "react-router-dom";
+ import { NavLink, useNavigate } from "react-router-dom";
  import GoogleLogin from "components/buttons/Google";
  
  import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
@@ -23,9 +23,16 @@
  import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
  import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
  import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import { SERVICE_URL } from "pages/api/services";
+import { setUserData } from "store/slicer/userAuth/userData";
  /* This code is a React component for user registration with the option to switch between "User" and "Creator" accounts. It performs real-time validation for name, email, and password, including password strength checks. Users can toggle the visibility of the password, and the form is enabled for submission when all requirements are met.
   */
  const AddDetails = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch()
+  const {username , dob} = useSelector((state)=> state.userData)
    const [screenSize, setScreenSize] = useState({
      width: window.innerWidth,
      height: window.innerHeight,
@@ -42,7 +49,6 @@
    useEffect(() => {
      // Add event listener for resize event
      window.addEventListener('resize', updateScreenSize);
-     console.log("screen size ", screenSize.width)
  
      // Clean up the event listener on component unmount
      return () => {
@@ -51,7 +57,7 @@
    }, [screenSize.width]);
    const [signUpType, setSignUpType] = useState("user");
    const [formData, setFormData] = useState({
-     name: "",
+     name: username,
      email: "",
      password: "",
      date: "12/10/2000",
@@ -104,34 +110,76 @@
    };
  
    // Function to handle form submission
-   const handleSubmit = (e) => {
-     console.log("🚀 ~ file: Index.jsx:97 ~ handleSubmit ~ e:", e);
+   const handleSubmit = async (e) => {
+    //  console.log("🚀 ~ file: Index.jsx:97 ~ handleSubmit ~ e:", e);
      e.preventDefault();
      if (validateForm()) {
-       // alert(JSON.stringify(formData));
-       setFormData({
-         name: "",
-         email: "",
-         password: "",
-       });
+       alert(JSON.stringify(formData));
+
+       try {
+        const payload = {
+          username : formData.name ,
+          dob : selectedDate,
+          gender : selectedGender
+        }
+        // const response = await axios.post("URL", payload)
+        // const dataSave = true;
+        dispatch(setUserData(payload))
+        navigate('/')
+       } catch (error) {
+        
+       }
+      //  setFormData({
+      //    name: "",
+      //    email: "",
+      //    password: "",
+      //  });
      }
    };
    // checkName
-   const checkName = (value) => {
+   const checkName = async (value) => {
      let valid = false;
      const fieldInput = value.trim();
      if (!isRequired(fieldInput)) {
        setFormErrors({
          ...formErrors,
-         name: "UserName is required",
+         name: "Username is required",
        });
-     } else {
-       setFormErrors({
-         ...formErrors,
-         name: "",
-       });
-       valid = true;
-     }
+     } else if(fieldInput){
+const payload = {
+  username: fieldInput
+}
+      try {
+        // const response = await axios.post(SERVICE_URL.USERNAME_VALIDATOR, payload)
+        const isUsernameAvailable = true;
+        if (isUsernameAvailable) {
+          setFormErrors({
+            ...formErrors,
+            name: "",
+          });
+          valid = true;
+        }
+        else{
+          setFormErrors({
+            ...formErrors,
+            name: "Username is not available",
+          });
+          valid = true;
+        }
+      } catch (error) {
+        setFormErrors({
+          ...formErrors,
+          name: "Unable to check username",
+        });
+      }
+     } 
+    //  else {
+    //    setFormErrors({
+    //      ...formErrors,
+    //      name: "",
+    //    });
+    //    valid = true;
+    //  }
      return valid;
    };
  
@@ -171,7 +219,6 @@
    const dobRef = useRef(null);
    const genderDropdownRef = useRef(null);
    useEffect(() => {
-     console.log("asdasd");
      const handleOutsideClick = (event) => {
        if (dobRef.current && !dobRef.current.contains(event.target)) {
          setCalender(false);
@@ -198,7 +245,7 @@
      };
    }, []);
  
-   const [selectedDate, setselectedDate] = useState("dd/mm/yyyy");
+   const [selectedDate, setselectedDate] = useState(dob);
    const handleDate = (value) => {
      setCalender(false);
      const dateString = value.format();
@@ -237,7 +284,7 @@
              <div className="mt-2 relative" ref={userGuideLineRef} >
                <input
                  type="text"
-                 placeholder="eg. John_doe13"
+                 placeholder={username}
                  name="name"
                  className={`rounded-lg w-full bg-transparent border border-white focus:border-[#FBBC5E] font-normal py-3 px-5 leading-normal font-semibold outline-none ${
                    formErrors.name ? "!border-error" : ""

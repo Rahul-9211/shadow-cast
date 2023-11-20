@@ -8,12 +8,42 @@
  */
 
 import { Box } from "@mui/material";
+import axios from "axios";
+import { SERVICE_URL } from "pages/api/services";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 /* This code is a React component for getting OTP is you forgot account passwords.
  */
 const OtpVerification = () => {
+  const {name , email , username , dob , password} = useSelector((state) => state.userData);
+  
+  const SuccessNotify = () => toast.success(' OTP has been sent!', {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+    });
+
+    const ErrorNotify = () => toast.error(' Some Error occured!', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      });
+
+
   const [formData, setFormData] = useState({
     verificationCode: "",
   });
@@ -54,24 +84,58 @@ const OtpVerification = () => {
       setFormErrors({ ...formErrors, verificationCode: "" });
     }
   };
-
+const sendCodeAgain =async () =>{
+  try {
+    const payload = {
+      email : email,
+    }
+    const response = await axios.post("URL", payload)
+    if(response.statusCode === 200){
+      SuccessNotify()
+    }
+    else{
+      ErrorNotify()
+    }
+  } catch (error) {
+    console.log("🚀 ~ file: index.jsx:99 ~ sendCodeAgain ~ error:", error)
+    ErrorNotify()
+    
+  }
+}
   // Function to handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit =async  (e) => {
     e.preventDefault();
     if (validateForm()) {
       console.log("Form data submitted:", formData);
+      try {
+        const payload = {
+          email : email,
+          otp : formData.verificationCode
+        }
+        const response = await axios.post(SERVICE_URL.VERIFY_USER, payload)
+        if(response.statusCode === 200){
+          SuccessNotify()
+        }
+        else{
+          ErrorNotify()
+        }
+      } catch (error) {
+        console.log("🚀 ~ file: index.jsx:99 ~ sendCodeAgain ~ error:", error)
+        ErrorNotify()
+        
+      }
     }
   };
 
 
-
-
-  return (
+  return (<>
     <Box
       className="w-full max-w-[700px] rounded-lg border border-[#363636] p-5 md:p-[32px] lg:p-[58px] signin-form"
     >
       <Box className="text-white max-w-[500px] mx-auto">
+ {password}
         <h1 className="text-lg lg:text-xl text-center font-heading mb-[28px]">OTP Verification</h1>
+        { username }
         <p className="text-center mb-[50px]">
           Please Enter the verification code we sent to your Email.{" "}
         </p>
@@ -97,10 +161,14 @@ const OtpVerification = () => {
 
           <button type="submit" className="font-bold rounded-lg btn-gradient w-full text-black py-3 px-5 mt-6">Verify</button>
 
-          <button type="button" className="text-center font-semibold text-sec hover:text-secDark w-full mt-[14px]">Resend Code</button>
+
+          <button type="button" onClick={sendCodeAgain} className="text-center font-semibold text-sec hover:text-secDark w-full mt-[14px]">Resend Code</button>
         </form>
+
       </Box>
     </Box>
+        <ToastContainer /></>
+
   );
 };
 

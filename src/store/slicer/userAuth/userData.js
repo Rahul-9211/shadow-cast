@@ -3,11 +3,11 @@ import { createSlice } from '@reduxjs/toolkit';
 
 // Define the initial state
 const initialState = {
-  userName: 'tempuser',
+  name: 'tempuser',
   email: 'tesmp@gmail.com',
   password: '',
   username: '',
-  dob: '',
+  dob: 'dd/mm/yyyy',
   gender: '',
 };
 
@@ -17,8 +17,8 @@ const userDataSlice = createSlice({
   initialState,
   reducers: {
     setUserData: (state, action) => {
-      const { userName, email, password, username, dob, gender } = action.payload;
-      state.userName = userName || state.userName;
+      const { name, email, password, username, dob, gender } = action.payload;
+      state.name = name || state.name;
       state.email = email || state.email;
       state.password = password || state.password;
       state.username = username || state.username;

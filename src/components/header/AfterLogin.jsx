@@ -15,6 +15,7 @@ import logo from "assets/images/logo.png";
 import SearchIcon from "@mui/icons-material/Search";
 import ShadowFrame from "components/shadow-frame";
 import NotificationDropdown from "components/notification/Index";
+import {  useSelector } from "react-redux";
 const SearchResultItem = ({ text, searchTerm, onClick }) => {
   const highlightedText = text.replace(
     new RegExp(searchTerm, "gi"),
@@ -34,6 +35,8 @@ const SearchResultItem = ({ text, searchTerm, onClick }) => {
 };
 
 const AfterLogin = () => {
+  
+  const {name , email , password , dob  , username , gender} = useSelector((state) => state.userData);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
@@ -342,8 +345,10 @@ const AfterLogin = () => {
                 >
                   <div className="flex flex-col">
                     <div className="mb-5">
-                      <h5 className="text-sm font-semibold text-white mb-1">John Doe</h5>
-                      <p className="text-[#7A7A7A] text-sm font-medium">johndoe@gmail.com</p>
+                      <h5 className="text-sm font-semibold text-white mb-1">{name}  </h5>
+                      <p className="text-[#7A7A7A] text-sm font-medium">{email}</p>
+
+                     
                     </div>
                     <ul className="flex flex-col gap-4 border-t border-[#383838] pt-3">
                       <li>

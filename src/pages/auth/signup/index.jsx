@@ -14,13 +14,20 @@ import { isValidEmail, isStrongPassword, togglePasswordVisibility } from "utils/
 import eyeOff from "assets/images/eye-off.svg";
 import CheckList from "components/password/checklist";
 import { useDispatch, useSelector } from "react-redux";
-import { increment, decrement } from 'store/slicer/userAuth/counter';
+import { increment, decrement } from "store/slicer/userAuth/counter";
+import { setUserData } from "store/slicer/userAuth/userData";
+import axios from "axios";
+import { SERVICE_URL } from "pages/api/services";
+import {useNavigate} from "react-router-dom"
+import BtnLoader from "components/ButtonLoader/BtnLoader";
 /* This code is a React component for user registration with the option to switch between "User" and "Creator" accounts. It performs real-time validation for name, email, and password, including password strength checks. Users can toggle the visibility of the password, and the form is enabled for submission when all requirements are met.
  */
 const SignUp = () => {
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const count = useSelector((state) => state.counter.count);
+  const {password, username} = useSelector((state) => state.userData);
 
   const [signUpType, setSignUpType] = useState("user");
   const [formData, setFormData] = useState({
@@ -48,6 +55,7 @@ const SignUp = () => {
   // Function to validate the form data
   const validateForm = () => {
     let isValid = checkName(formData.name) && checkEmail(formData.email) && checkPassword(formData.password);
+    console.log("🚀 ~ file: index.jsx:54 ~ validateForm ~ isValid:", isValid)
     return isValid;
   };
   // Function to handle input changes
@@ -55,7 +63,7 @@ const SignUp = () => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value.trim(),
+      [name]: value,
     });
     // if (name === "name") {
     //   checkName(value);
@@ -87,12 +95,43 @@ const SignUp = () => {
     );
   };
 
-
+const [btnLoaderStatus , setBtnLoaderStatus] = useState(false)
   // Function to handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    setBtnLoaderStatus(true)
     e.preventDefault();
     if (validateForm()) {
-      alert(JSON.stringify(formData))
+      // alert(JSON.stringify(formData))
+const [fistname , lastName] = formData.name.trim().split(" ")
+      const payload = {
+        name: lastName ? fistname+ ' ' + lastName : fistname,
+        email: formData.email,
+        password: formData.password,
+      };
+      console.log("🚀 ~ file: index.jsx:111 ~ handleSubmit ~ payload:", payload)
+      
+      try {
+        const response = await axios.post(SERVICE_URL.SIGN_UP, payload);
+        const data = await response.data;
+        console.log("🚀 ~ file: index.jsx:116 ~ handleSubmit ~ data:", data)
+        const newUserData = {
+          name: formData.name,
+          email: formData.email,
+          password: formData.password,
+          username : data.response.data.userName
+        };
+        dispatch(setUserData(newUserData));
+    setBtnLoaderStatus(false)
+
+        navigate('/signup/add-details');
+      } catch (error) {
+        console.log(
+          "🚀 ~ file: index.jsx:151 ~ CheckCredentials ~ error:",
+          error
+        );
+        alert("some error occured ");
+      }
+   
       setFormData({
         name: "",
         email: "",
@@ -152,13 +191,13 @@ const SignUp = () => {
         ...formErrors,
         password: "Password is required"
       });
-    } 
+    }
     // else if (!isStrongPassword(fieldInput)) {
     //   setFormErrors({
     //     ...formErrors,
     //     password: 'Password is not strong enough'
     //   });
-    // } 
+    // }
     else {
       setFormErrors({
         ...formErrors,
@@ -177,7 +216,7 @@ const SignUp = () => {
           <div className="mb-4">
             <label htmlFor="name" className="font-medium text-white/[.80] text-sm">Name</label>
             <div className="mt-2">
-              <input type="text" name="name" className={`rounded-lg w-full bg-transparent border border-white focus:border-[#51A2FF] font-normal py-3 px-5 leading-normal font-semibold outline-none ${formErrors.name ? '!border-error' : ''}`} id="name" value={formData.name} onChange={handleInputChange} onBlur={e => checkName(e.target.value)} />
+              <input type="text" name="name" data-testid="name" className={`rounded-lg w-full bg-transparent border border-white focus:border-[#51A2FF] font-normal py-3 px-5 leading-normal font-semibold outline-none ${formErrors.name ? '!border-error' : ''}`} id="name" value={formData.name} onChange={handleInputChange} onBlur={e => checkName(e.target.value)} />
               {formErrors.name && (<span className="text-error text-sm">{formErrors.name}</span>)}
             </div>
           </div>
@@ -202,7 +241,7 @@ const SignUp = () => {
             {formErrors.password && (<span className="text-error text-sm">{formErrors.password}</span>)}
           </div>
 
-          <button type="submit" className="font-bold rounded-lg btn-gradient w-full text-black py-3 px-5" disabled={!isFormValid()}>Create my account</button>
+          <button type="submit" className="flex items-center justify-center font-bold rounded-lg btn-gradient w-full text-black py-3 px-5" disabled={!isFormValid()}>Create my account {btnLoaderStatus ? <BtnLoader/> : ""}</button>
         </form>
 
         <div className="divider flex gap-x-2 mb-5">
@@ -223,11 +262,6 @@ const SignUp = () => {
             {signUpType === "creator" ? "Create User Account" : "Become a Creator"}
           </button>
         </p>
-        <div>
-      <h1>Counter: {count}</h1>
-      <button onClick={() => dispatch(increment())}>Increment</button>
-      <button onClick={() => dispatch(decrement())}>Decrement</button>
-    </div>
       </Box>
     </Box>
   );
