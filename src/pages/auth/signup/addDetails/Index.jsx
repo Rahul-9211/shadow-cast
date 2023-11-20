@@ -122,12 +122,12 @@ import { setUserData } from "store/slicer/userAuth/userData";
           dob : selectedDate,
           gender : selectedGender
         }
-        // const response = await axios.post("URL", payload)
+        const response = await axios.patch(SERVICE_URL.UPDATE_USERNAME_WITH_GENDER_DOB, payload)
         // const dataSave = true;
         dispatch(setUserData(payload))
         navigate('/')
        } catch (error) {
-        
+        alert("some error occurred")
        }
       //  setFormData({
       //    name: "",
@@ -150,14 +150,16 @@ const payload = {
   username: fieldInput
 }
       try {
-        // const response = await axios.post(SERVICE_URL.USERNAME_VALIDATOR, payload)
-        const isUsernameAvailable = true;
+        const response = await axios.post(SERVICE_URL.USERNAME_VALIDATOR, payload)
+        const isUsernameAvailable = response.data.response.statusEnum;
         if (isUsernameAvailable) {
           setFormErrors({
             ...formErrors,
             name: "",
           });
           valid = true;
+        // console.log("🚀 ~ file: Index.jsx:154 ~ checkName ~ response:", response)
+
         }
         else{
           setFormErrors({

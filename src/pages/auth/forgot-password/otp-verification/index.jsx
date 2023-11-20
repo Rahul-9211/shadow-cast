@@ -15,10 +15,12 @@ import { useSelector } from "react-redux";
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { NavLink, useNavigate } from "react-router-dom";
 
 /* This code is a React component for getting OTP is you forgot account passwords.
  */
 const OtpVerification = () => {
+  const navigate = useNavigate();
   const {name , email , username , dob , password} = useSelector((state) => state.userData);
   
   const SuccessNotify = () => toast.success(' OTP sent successfully!', {
@@ -89,7 +91,7 @@ const sendCodeAgain =async () =>{
     const payload = {
       email : email,
     }
-    const response = await axios.post("URL", payload)
+    const response = await axios.post(SERVICE_URL.RESEND_VERIFICATION_EMAIL, payload)
     if(response.statusCode === 200){
       SuccessNotify()
     }
@@ -112,9 +114,13 @@ const sendCodeAgain =async () =>{
           email : email,
           otp : formData.verificationCode
         }
+        console.log("🚀 ~ file: index.jsx:115 ~ handleSubmit ~ payload:", payload)
         const response = await axios.post(SERVICE_URL.VERIFY_USER, payload)
-        if(response.statusCode === 200){
-          SuccessNotify()
+        console.log("🚀 ~ file: index.jsx:117 ~ handleSubmit ~ response:", response)
+        if(response.status === 200){
+          // SuccessNotify()
+        navigate("/signup/add-details");
+
         }
         else{
           ErrorNotify()
@@ -133,9 +139,7 @@ const sendCodeAgain =async () =>{
       className="w-full max-w-[700px] rounded-lg border border-[#363636] p-5 md:p-[32px] lg:p-[58px] signin-form"
     >
       <Box className="text-white max-w-[500px] mx-auto">
- {password}
         <h1 className="text-lg lg:text-xl text-center font-heading mb-[28px]">OTP Verification</h1>
-        { username }
         <p className="text-center mb-[50px]">
           Please Enter the verification code we sent to your Email.{" "}
         </p>
